@@ -11,7 +11,7 @@
         <EntityTypeShape EntityType="pan_dbModel.articulo" Width="1.5" PointX="8" PointY="0.75" />
         <EntityTypeShape EntityType="pan_dbModel.costo" Width="1.5" PointX="2.5" PointY="3.875" />
         <EntityTypeShape EntityType="pan_dbModel.precio_venta" Width="1.5" PointX="2.625" PointY="0.75" />
-        <EntityTypeShape EntityType="pan_dbModel.cabera_receta" Width="1.5" PointX="5.125" PointY="3.5" />
+        <EntityTypeShape EntityType="pan_dbModel.cabecera_receta" Width="1.5" PointX="5.125" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="pan_dbModel.detalle_receta" Width="1.5" PointX="5.125" PointY="0.75" />
         <AssociationConnector Association="pan_dbModel.familialinea" />
         <AssociationConnector Association="pan_dbModel.productofamilia" />

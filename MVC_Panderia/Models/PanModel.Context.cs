@@ -31,7 +31,7 @@ namespace MVC_Panderia.Models
         public DbSet<articulo> articuloSet { get; set; }
         public DbSet<costo> costoSet { get; set; }
         public DbSet<precio_venta> precio_ventaSet { get; set; }
-        public DbSet<cabera_receta> cabera_recetaSet { get; set; }
+        public DbSet<cabecera_receta> cabecera_recetaSet { get; set; }
         public DbSet<detalle_receta> detalle_recetaSet { get; set; }
         public DbSet<cabecera_produccion> cabecera_produccionSet { get; set; }
         public DbSet<detalle_produccion> detalle_produccionSet { get; set; }
