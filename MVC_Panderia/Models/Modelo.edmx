@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Namespace="Modelo.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
+        <EntityContainer Name="ModeloTargetContainer" >
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Modelo" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="ModeloContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="unidad_medidaSet" EntityType="Modelo.unidad_medida" />
+          <EntitySet Name="lineaSet" EntityType="Modelo.linea" />
+          <EntitySet Name="familiaSet" EntityType="Modelo.familia" />
+          <EntitySet Name="articuloSet" EntityType="Modelo.articulo" />
+          <EntitySet Name="costoSet" EntityType="Modelo.costo" />
+          <EntitySet Name="precio_ventaSet" EntityType="Modelo.precio_venta" />
+          <EntitySet Name="cabecera_recetaSet" EntityType="Modelo.cabecera_receta" />
+          <EntitySet Name="detalle_recetaSet" EntityType="Modelo.detalle_receta" />
+          <EntitySet Name="cabecera_produccionSet" EntityType="Modelo.cabecera_produccion" />
+          <EntitySet Name="detalle_produccionSet" EntityType="Modelo.detalle_produccion" />
+          <AssociationSet Name="unidad_medidaproducto" Association="Modelo.unidad_medidaproducto">
+            <End Role="unidad_medida" EntitySet="unidad_medidaSet" />
+            <End Role="articulo" EntitySet="articuloSet" />
+          </AssociationSet>
+          <AssociationSet Name="costocabera_receta" Association="Modelo.costocabera_receta">
+            <End Role="costo" EntitySet="costoSet" />
+            <End Role="cabecera_receta" EntitySet="cabecera_recetaSet" />
+          </AssociationSet>
+          <AssociationSet Name="precio_ventacabera_receta" Association="Modelo.precio_ventacabera_receta">
+            <End Role="precio_venta" EntitySet="precio_ventaSet" />
+            <End Role="cabecera_receta" EntitySet="cabecera_recetaSet" />
+          </AssociationSet>
+          <AssociationSet Name="cabera_recetadetalle_receta" Association="Modelo.cabera_recetadetalle_receta">
+            <End Role="cabecera_receta" EntitySet="cabecera_recetaSet" />
+            <End Role="detalle_receta" EntitySet="detalle_recetaSet" />
+          </AssociationSet>
+          <AssociationSet Name="cabecera_producciondetalle_produccion" Association="Modelo.cabecera_producciondetalle_produccion">
+            <End Role="cabecera_produccion" EntitySet="cabecera_produccionSet" />
+            <End Role="detalle_produccion" EntitySet="detalle_produccionSet" />
+          </AssociationSet>
+          <AssociationSet Name="familialinea" Association="Modelo.familialinea">
+            <End Role="familia" EntitySet="familiaSet" />
+            <End Role="linea" EntitySet="lineaSet" />
+          </AssociationSet>
+          <AssociationSet Name="cabecera_recetaarticulo" Association="Modelo.cabecera_recetaarticulo">
+            <End Role="cabecera_receta" EntitySet="cabecera_recetaSet" />
+            <End Role="articulo" EntitySet="articuloSet" />
+          </AssociationSet>
+          <AssociationSet Name="articulofamilia" Association="Modelo.articulofamilia">
+            <End Role="articulo" EntitySet="articuloSet" />
+            <End Role="familia" EntitySet="familiaSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="unidad_medida">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" />
+          <NavigationProperty Name="producto" Relationship="Modelo.unidad_medidaproducto" FromRole="unidad_medida" ToRole="articulo" />
+        </EntityType>
+        <EntityType Name="linea">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" />
+          <NavigationProperty Name="familia" Relationship="Modelo.familialinea" FromRole="linea" ToRole="familia" />
+        </EntityType>
+        <EntityType Name="familia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" />
+          <Property Name="lineaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="linea" Relationship="Modelo.familialinea" FromRole="familia" ToRole="linea" />
+          <Property Name="articuloId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="articulo" Relationship="Modelo.articulofamilia" FromRole="familia" ToRole="articulo" />
+        </EntityType>
+        <EntityType Name="articulo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" />
+          <Property Name="familiaId" Type="Int32" Nullable="false" />
+          <Property Name="unidad_medidaId" Type="Int32" Nullable="false" />
+          <Property Name="codigo_barra" Type="String" Nullable="false" />
+          <Property Name="marca" Type="String" Nullable="false" />
+          <Property Name="formato" Type="String" Nullable="false" />
+          <NavigationProperty Name="unidad_medida" Relationship="Modelo.unidad_medidaproducto" FromRole="articulo" ToRole="unidad_medida" />
+          <NavigationProperty Name="cabecera_receta" Relationship="Modelo.cabecera_recetaarticulo" FromRole="articulo" ToRole="cabecera_receta" />
+          <NavigationProperty Name="familia" Relationship="Modelo.articulofamilia" FromRole="articulo" ToRole="familia" />
+        </EntityType>
+        <EntityType Name="costo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" />
+          <Property Name="valor" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="cabera_receta" Relationship="Modelo.costocabera_receta" FromRole="costo" ToRole="cabecera_receta" />
+        </EntityType>
+        <EntityType Name="precio_venta">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" />
+          <Property Name="valor" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="cabecera_receta" Relationship="Modelo.precio_ventacabera_receta" FromRole="precio_venta" ToRole="cabecera_receta" />
+        </EntityType>
+        <EntityType Name="cabecera_receta">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="articuloId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="costo" Relationship="Modelo.costocabera_receta" FromRole="cabecera_receta" ToRole="costo" />
+          <NavigationProperty Name="precio_venta" Relationship="Modelo.precio_ventacabera_receta" FromRole="cabecera_receta" ToRole="precio_venta" />
+          <NavigationProperty Name="detalle_receta" Relationship="Modelo.cabera_recetadetalle_receta" FromRole="cabecera_receta" ToRole="detalle_receta" />
+          <NavigationProperty Name="articulo" Relationship="Modelo.cabecera_recetaarticulo" FromRole="cabecera_receta" ToRole="articulo" />
+        </EntityType>
+        <EntityType Name="detalle_receta">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cantidad" Type="Decimal" Nullable="false" />
+          <Property Name="cabera_recetaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="cabera_receta" Relationship="Modelo.cabera_recetadetalle_receta" FromRole="detalle_receta" ToRole="cabecera_receta" />
+        </EntityType>
+        <EntityType Name="cabecera_produccion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="detalle_produccion" Relationship="Modelo.cabecera_producciondetalle_produccion" FromRole="cabecera_produccion" ToRole="detalle_produccion" />
+        </EntityType>
+        <EntityType Name="detalle_produccion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kilos" Type="Decimal" Nullable="false" />
+          <Property Name="cabera_recetaId" Type="Int32" Nullable="false" />
+          <Property Name="cabecera_produccionId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="cabecera_produccion" Relationship="Modelo.cabecera_producciondetalle_produccion" FromRole="detalle_produccion" ToRole="cabecera_produccion" />
+        </EntityType>
+        <Association Name="unidad_medidaproducto">
+          <End Type="Modelo.unidad_medida" Role="unidad_medida" Multiplicity="1" />
+          <End Type="Modelo.articulo" Role="articulo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="unidad_medida">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="articulo">
+              <PropertyRef Name="unidad_medidaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="costocabera_receta">
+          <End Type="Modelo.costo" Role="costo" Multiplicity="*" />
+          <End Type="Modelo.cabecera_receta" Role="cabecera_receta" Multiplicity="1" />
+        </Association>
+        <Association Name="precio_ventacabera_receta">
+          <End Type="Modelo.precio_venta" Role="precio_venta" Multiplicity="*" />
+          <End Type="Modelo.cabecera_receta" Role="cabecera_receta" Multiplicity="1" />
+        </Association>
+        <Association Name="cabera_recetadetalle_receta">
+          <End Type="Modelo.cabecera_receta" Role="cabecera_receta" Multiplicity="1" />
+          <End Type="Modelo.detalle_receta" Role="detalle_receta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cabecera_receta">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="detalle_receta">
+              <PropertyRef Name="cabera_recetaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="cabecera_producciondetalle_produccion">
+          <End Type="Modelo.cabecera_produccion" Role="cabecera_produccion" Multiplicity="1" />
+          <End Type="Modelo.detalle_produccion" Role="detalle_produccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cabecera_produccion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="detalle_produccion">
+              <PropertyRef Name="cabecera_produccionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="familialinea">
+          <End Type="Modelo.familia" Role="familia" Multiplicity="*" />
+          <End Type="Modelo.linea" Role="linea" Multiplicity="1" />
+        </Association>
+        <Association Name="cabecera_recetaarticulo">
+          <End Type="Modelo.cabecera_receta" Role="cabecera_receta" Multiplicity="*" />
+          <End Type="Modelo.articulo" Role="articulo" Multiplicity="1" />
+        </Association>
+        <Association Name="articulofamilia">
+          <End Type="Modelo.articulo" Role="articulo" Multiplicity="*" />
+          <End Type="Modelo.familia" Role="familia" Multiplicity="1" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="Modelo" />
+        <Alias Key="Target" Value="Modelo.Store" />
+        <EntityContainerMapping CdmEntityContainer="ModeloContainer" StorageEntityContainer="ModeloTargetContainer">
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
