@@ -42,7 +42,7 @@
           <EntitySet Name="articuloSet" EntityType="pan_dbModel.articulo" />
           <EntitySet Name="costoSet" EntityType="pan_dbModel.costo" />
           <EntitySet Name="precio_ventaSet" EntityType="pan_dbModel.precio_venta" />
-          <EntitySet Name="cabera_recetaSet" EntityType="pan_dbModel.cabera_receta" />
+          <EntitySet Name="cabecera_recetaSet" EntityType="pan_dbModel.cabecera_receta" />
           <EntitySet Name="detalle_recetaSet" EntityType="pan_dbModel.detalle_receta" />
           <AssociationSet Name="familialinea" Association="pan_dbModel.familialinea">
             <End Role="familia" EntitySet="familiaSet" />
@@ -57,11 +57,11 @@
             <End Role="producto" EntitySet="articuloSet" />
           </AssociationSet>
           <AssociationSet Name="cabera_recetaproducto" Association="pan_dbModel.cabera_recetaproducto">
-            <End Role="cabera_receta" EntitySet="cabera_recetaSet" />
+            <End Role="cabera_receta" EntitySet="cabecera_recetaSet" />
             <End Role="producto" EntitySet="articuloSet" />
           </AssociationSet>
           <AssociationSet Name="cabera_recetadetalle_receta" Association="pan_dbModel.cabera_recetadetalle_receta">
-            <End Role="cabera_receta" EntitySet="cabera_recetaSet" />
+            <End Role="cabera_receta" EntitySet="cabecera_recetaSet" />
             <End Role="detalle_receta" EntitySet="detalle_recetaSet" />
           </AssociationSet>
           <AssociationSet Name="detalle_recetaarticulo" Association="pan_dbModel.detalle_recetaarticulo">
@@ -70,16 +70,16 @@
           </AssociationSet>
           <AssociationSet Name="costocabera_receta" Association="pan_dbModel.costocabera_receta">
             <End Role="costo" EntitySet="costoSet" />
-            <End Role="cabera_receta" EntitySet="cabera_recetaSet" />
+            <End Role="cabera_receta" EntitySet="cabecera_recetaSet" />
           </AssociationSet>
           <AssociationSet Name="precio_ventacabera_receta" Association="pan_dbModel.precio_ventacabera_receta">
             <End Role="precio_venta" EntitySet="precio_ventaSet" />
-            <End Role="cabera_receta" EntitySet="cabera_recetaSet" />
+            <End Role="cabera_receta" EntitySet="cabecera_recetaSet" />
           </AssociationSet>
           <EntitySet Name="cabecera_produccionSet" EntityType="pan_dbModel.cabecera_produccion" />
           <EntitySet Name="detalle_produccionSet" EntityType="pan_dbModel.detalle_produccion" />
           <AssociationSet Name="cabera_recetadetalle_produccion" Association="pan_dbModel.cabera_recetadetalle_produccion">
-            <End Role="cabera_receta" EntitySet="cabera_recetaSet" />
+            <End Role="cabera_receta" EntitySet="cabecera_recetaSet" />
             <End Role="detalle_produccion" EntitySet="detalle_produccionSet" />
           </AssociationSet>
           <AssociationSet Name="cabecera_producciondetalle_produccion" Association="pan_dbModel.cabecera_producciondetalle_produccion">
@@ -147,7 +147,7 @@
           <Property Name="valor" Type="Int32" Nullable="false" />
           <NavigationProperty Name="cabera_receta" Relationship="pan_dbModel.precio_ventacabera_receta" FromRole="precio_venta" ToRole="cabera_receta" />
         </EntityType>
-        <EntityType Name="cabera_receta">
+        <EntityType Name="cabecera_receta">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -206,7 +206,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="cabera_recetaproducto">
-          <End Type="pan_dbModel.cabera_receta" Role="cabera_receta" Multiplicity="*" />
+          <End Type="pan_dbModel.cabecera_receta" Role="cabera_receta" Multiplicity="*" />
           <End Type="pan_dbModel.articulo" Role="producto" Multiplicity="1" />
           <ReferentialConstraint>
             <Principal Role="producto">
@@ -218,7 +218,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="cabera_recetadetalle_receta">
-          <End Type="pan_dbModel.cabera_receta" Role="cabera_receta" Multiplicity="1" />
+          <End Type="pan_dbModel.cabecera_receta" Role="cabera_receta" Multiplicity="1" />
           <End Type="pan_dbModel.detalle_receta" Role="detalle_receta" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="cabera_receta">
@@ -235,11 +235,11 @@
         </Association>
         <Association Name="costocabera_receta">
           <End Type="pan_dbModel.costo" Role="costo" Multiplicity="*" />
-          <End Type="pan_dbModel.cabera_receta" Role="cabera_receta" Multiplicity="1" />
+          <End Type="pan_dbModel.cabecera_receta" Role="cabera_receta" Multiplicity="1" />
         </Association>
         <Association Name="precio_ventacabera_receta">
           <End Type="pan_dbModel.precio_venta" Role="precio_venta" Multiplicity="*" />
-          <End Type="pan_dbModel.cabera_receta" Role="cabera_receta" Multiplicity="1" />
+          <End Type="pan_dbModel.cabecera_receta" Role="cabera_receta" Multiplicity="1" />
         </Association>
         <EntityType Name="cabecera_produccion">
           <Key>
@@ -261,7 +261,7 @@
           <Property Name="cabecera_produccionId" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="cabera_recetadetalle_produccion">
-          <End Type="pan_dbModel.cabera_receta" Role="cabera_receta" Multiplicity="1" />
+          <End Type="pan_dbModel.cabecera_receta" Role="cabera_receta" Multiplicity="1" />
           <End Type="pan_dbModel.detalle_produccion" Role="detalle_produccion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="cabera_receta">
