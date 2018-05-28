@@ -23,37 +23,45 @@
           <EntitySet Name="detalle_recetaSet" EntityType="Modelo.detalle_receta" />
           <EntitySet Name="cabecera_produccionSet" EntityType="Modelo.cabecera_produccion" />
           <EntitySet Name="detalle_produccionSet" EntityType="Modelo.detalle_produccion" />
-          <AssociationSet Name="unidad_medidaproducto" Association="Modelo.unidad_medidaproducto">
+          <AssociationSet Name="familialinea" Association="Modelo.familialinea">
+            <End Role="familia" EntitySet="familiaSet" />
+            <End Role="linea" EntitySet="lineaSet" />
+          </AssociationSet>
+          <AssociationSet Name="unidad_medidaarticulo" Association="Modelo.unidad_medidaarticulo">
             <End Role="unidad_medida" EntitySet="unidad_medidaSet" />
             <End Role="articulo" EntitySet="articuloSet" />
-          </AssociationSet>
-          <AssociationSet Name="costocabera_receta" Association="Modelo.costocabera_receta">
-            <End Role="costo" EntitySet="costoSet" />
-            <End Role="cabecera_receta" EntitySet="cabecera_recetaSet" />
-          </AssociationSet>
-          <AssociationSet Name="precio_ventacabera_receta" Association="Modelo.precio_ventacabera_receta">
-            <End Role="precio_venta" EntitySet="precio_ventaSet" />
-            <End Role="cabecera_receta" EntitySet="cabecera_recetaSet" />
-          </AssociationSet>
-          <AssociationSet Name="cabera_recetadetalle_receta" Association="Modelo.cabera_recetadetalle_receta">
-            <End Role="cabecera_receta" EntitySet="cabecera_recetaSet" />
-            <End Role="detalle_receta" EntitySet="detalle_recetaSet" />
           </AssociationSet>
           <AssociationSet Name="cabecera_producciondetalle_produccion" Association="Modelo.cabecera_producciondetalle_produccion">
             <End Role="cabecera_produccion" EntitySet="cabecera_produccionSet" />
             <End Role="detalle_produccion" EntitySet="detalle_produccionSet" />
           </AssociationSet>
-          <AssociationSet Name="familialinea" Association="Modelo.familialinea">
-            <End Role="familia" EntitySet="familiaSet" />
-            <End Role="linea" EntitySet="lineaSet" />
-          </AssociationSet>
-          <AssociationSet Name="cabecera_recetaarticulo" Association="Modelo.cabecera_recetaarticulo">
-            <End Role="cabecera_receta" EntitySet="cabecera_recetaSet" />
-            <End Role="articulo" EntitySet="articuloSet" />
-          </AssociationSet>
           <AssociationSet Name="articulofamilia" Association="Modelo.articulofamilia">
             <End Role="articulo" EntitySet="articuloSet" />
             <End Role="familia" EntitySet="familiaSet" />
+          </AssociationSet>
+          <AssociationSet Name="articulocabecera_receta" Association="Modelo.articulocabecera_receta">
+            <End Role="articulo" EntitySet="articuloSet" />
+            <End Role="cabecera_receta" EntitySet="cabecera_recetaSet" />
+          </AssociationSet>
+          <AssociationSet Name="articulodetalle_receta" Association="Modelo.articulodetalle_receta">
+            <End Role="articulo" EntitySet="articuloSet" />
+            <End Role="detalle_receta" EntitySet="detalle_recetaSet" />
+          </AssociationSet>
+          <AssociationSet Name="cabecera_recetadetalle_receta" Association="Modelo.cabecera_recetadetalle_receta">
+            <End Role="cabecera_receta" EntitySet="cabecera_recetaSet" />
+            <End Role="detalle_receta" EntitySet="detalle_recetaSet" />
+          </AssociationSet>
+          <AssociationSet Name="cabecera_recetadetalle_produccion" Association="Modelo.cabecera_recetadetalle_produccion">
+            <End Role="cabecera_receta" EntitySet="cabecera_recetaSet" />
+            <End Role="detalle_produccion" EntitySet="detalle_produccionSet" />
+          </AssociationSet>
+          <AssociationSet Name="cabecera_recetacosto" Association="Modelo.cabecera_recetacosto">
+            <End Role="cabecera_receta" EntitySet="cabecera_recetaSet" />
+            <End Role="costo" EntitySet="costoSet" />
+          </AssociationSet>
+          <AssociationSet Name="cabecera_recetaprecio_venta" Association="Modelo.cabecera_recetaprecio_venta">
+            <End Role="cabecera_receta" EntitySet="cabecera_recetaSet" />
+            <End Role="precio_venta" EntitySet="precio_ventaSet" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="unidad_medida">
@@ -62,7 +70,8 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" Nullable="false" />
-          <NavigationProperty Name="producto" Relationship="Modelo.unidad_medidaproducto" FromRole="unidad_medida" ToRole="articulo" />
+          <Property Name="lineaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="articulo" Relationship="Modelo.unidad_medidaarticulo" FromRole="unidad_medida" ToRole="articulo" />
         </EntityType>
         <EntityType Name="linea">
           <Key>
@@ -78,9 +87,8 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" Nullable="false" />
-          <Property Name="lineaId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="linea" Relationship="Modelo.familialinea" FromRole="familia" ToRole="linea" />
-          <Property Name="articuloId" Type="Int32" Nullable="false" />
+          <Property Name="lineaId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="articulo" Relationship="Modelo.articulofamilia" FromRole="familia" ToRole="articulo" />
         </EntityType>
         <EntityType Name="articulo">
@@ -89,14 +97,15 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" Nullable="false" />
-          <Property Name="familiaId" Type="Int32" Nullable="false" />
-          <Property Name="unidad_medidaId" Type="Int32" Nullable="false" />
           <Property Name="codigo_barra" Type="String" Nullable="false" />
           <Property Name="marca" Type="String" Nullable="false" />
           <Property Name="formato" Type="String" Nullable="false" />
-          <NavigationProperty Name="unidad_medida" Relationship="Modelo.unidad_medidaproducto" FromRole="articulo" ToRole="unidad_medida" />
-          <NavigationProperty Name="cabecera_receta" Relationship="Modelo.cabecera_recetaarticulo" FromRole="articulo" ToRole="cabecera_receta" />
+          <NavigationProperty Name="unidad_medida" Relationship="Modelo.unidad_medidaarticulo" FromRole="articulo" ToRole="unidad_medida" />
+          <Property Name="unidad_medidaId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="familia" Relationship="Modelo.articulofamilia" FromRole="articulo" ToRole="familia" />
+          <Property Name="familiaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="cabecera_receta" Relationship="Modelo.articulocabecera_receta" FromRole="articulo" ToRole="cabecera_receta" />
+          <NavigationProperty Name="detalle_receta" Relationship="Modelo.articulodetalle_receta" FromRole="articulo" ToRole="detalle_receta" />
         </EntityType>
         <EntityType Name="costo">
           <Key>
@@ -105,7 +114,8 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="fecha" Type="DateTime" Nullable="false" />
           <Property Name="valor" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="cabera_receta" Relationship="Modelo.costocabera_receta" FromRole="costo" ToRole="cabecera_receta" />
+          <NavigationProperty Name="cabecera_receta" Relationship="Modelo.cabecera_recetacosto" FromRole="costo" ToRole="cabecera_receta" />
+          <Property Name="cabecera_recetaId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="precio_venta">
           <Key>
@@ -114,18 +124,20 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="fecha" Type="DateTime" Nullable="false" />
           <Property Name="valor" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="cabecera_receta" Relationship="Modelo.precio_ventacabera_receta" FromRole="precio_venta" ToRole="cabecera_receta" />
+          <NavigationProperty Name="cabecera_receta" Relationship="Modelo.cabecera_recetaprecio_venta" FromRole="precio_venta" ToRole="cabecera_receta" />
+          <Property Name="cabecera_recetaId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="cabecera_receta">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="articulo" Relationship="Modelo.articulocabecera_receta" FromRole="cabecera_receta" ToRole="articulo" />
           <Property Name="articuloId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="costo" Relationship="Modelo.costocabera_receta" FromRole="cabecera_receta" ToRole="costo" />
-          <NavigationProperty Name="precio_venta" Relationship="Modelo.precio_ventacabera_receta" FromRole="cabecera_receta" ToRole="precio_venta" />
-          <NavigationProperty Name="detalle_receta" Relationship="Modelo.cabera_recetadetalle_receta" FromRole="cabecera_receta" ToRole="detalle_receta" />
-          <NavigationProperty Name="articulo" Relationship="Modelo.cabecera_recetaarticulo" FromRole="cabecera_receta" ToRole="articulo" />
+          <NavigationProperty Name="detalle_receta" Relationship="Modelo.cabecera_recetadetalle_receta" FromRole="cabecera_receta" ToRole="detalle_receta" />
+          <NavigationProperty Name="detalle_produccion" Relationship="Modelo.cabecera_recetadetalle_produccion" FromRole="cabecera_receta" ToRole="detalle_produccion" />
+          <NavigationProperty Name="costo" Relationship="Modelo.cabecera_recetacosto" FromRole="cabecera_receta" ToRole="costo" />
+          <NavigationProperty Name="precio_venta" Relationship="Modelo.cabecera_recetaprecio_venta" FromRole="cabecera_receta" ToRole="precio_venta" />
         </EntityType>
         <EntityType Name="detalle_receta">
           <Key>
@@ -133,8 +145,10 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="cantidad" Type="Decimal" Nullable="false" />
-          <Property Name="cabera_recetaId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="cabera_receta" Relationship="Modelo.cabera_recetadetalle_receta" FromRole="detalle_receta" ToRole="cabecera_receta" />
+          <NavigationProperty Name="articulo" Relationship="Modelo.articulodetalle_receta" FromRole="detalle_receta" ToRole="articulo" />
+          <Property Name="articuloId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="cabecera_receta" Relationship="Modelo.cabecera_recetadetalle_receta" FromRole="detalle_receta" ToRole="cabecera_receta" />
+          <Property Name="cabecera_recetaId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="cabecera_produccion">
           <Key>
@@ -150,11 +164,24 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="kilos" Type="Decimal" Nullable="false" />
-          <Property Name="cabera_recetaId" Type="Int32" Nullable="false" />
-          <Property Name="cabecera_produccionId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="cabecera_produccion" Relationship="Modelo.cabecera_producciondetalle_produccion" FromRole="detalle_produccion" ToRole="cabecera_produccion" />
+          <Property Name="cabecera_produccionId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="cabecera_receta" Relationship="Modelo.cabecera_recetadetalle_produccion" FromRole="detalle_produccion" ToRole="cabecera_receta" />
+          <Property Name="cabecera_recetaId" Type="Int32" Nullable="false" />
         </EntityType>
-        <Association Name="unidad_medidaproducto">
+        <Association Name="familialinea">
+          <End Type="Modelo.familia" Role="familia" Multiplicity="*" />
+          <End Type="Modelo.linea" Role="linea" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="linea">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="familia">
+              <PropertyRef Name="lineaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="unidad_medidaarticulo">
           <End Type="Modelo.unidad_medida" Role="unidad_medida" Multiplicity="1" />
           <End Type="Modelo.articulo" Role="articulo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -163,26 +190,6 @@
             </Principal>
             <Dependent Role="articulo">
               <PropertyRef Name="unidad_medidaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="costocabera_receta">
-          <End Type="Modelo.costo" Role="costo" Multiplicity="*" />
-          <End Type="Modelo.cabecera_receta" Role="cabecera_receta" Multiplicity="1" />
-        </Association>
-        <Association Name="precio_ventacabera_receta">
-          <End Type="Modelo.precio_venta" Role="precio_venta" Multiplicity="*" />
-          <End Type="Modelo.cabecera_receta" Role="cabecera_receta" Multiplicity="1" />
-        </Association>
-        <Association Name="cabera_recetadetalle_receta">
-          <End Type="Modelo.cabecera_receta" Role="cabecera_receta" Multiplicity="1" />
-          <End Type="Modelo.detalle_receta" Role="detalle_receta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="cabecera_receta">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="detalle_receta">
-              <PropertyRef Name="cabera_recetaId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -198,17 +205,89 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="familialinea">
-          <End Type="Modelo.familia" Role="familia" Multiplicity="*" />
-          <End Type="Modelo.linea" Role="linea" Multiplicity="1" />
-        </Association>
-        <Association Name="cabecera_recetaarticulo">
-          <End Type="Modelo.cabecera_receta" Role="cabecera_receta" Multiplicity="*" />
-          <End Type="Modelo.articulo" Role="articulo" Multiplicity="1" />
-        </Association>
         <Association Name="articulofamilia">
           <End Type="Modelo.articulo" Role="articulo" Multiplicity="*" />
           <End Type="Modelo.familia" Role="familia" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="familia">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="articulo">
+              <PropertyRef Name="familiaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="articulocabecera_receta">
+          <End Type="Modelo.articulo" Role="articulo" Multiplicity="1" />
+          <End Type="Modelo.cabecera_receta" Role="cabecera_receta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="articulo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="cabecera_receta">
+              <PropertyRef Name="articuloId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="articulodetalle_receta">
+          <End Type="Modelo.articulo" Role="articulo" Multiplicity="1" />
+          <End Type="Modelo.detalle_receta" Role="detalle_receta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="articulo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="detalle_receta">
+              <PropertyRef Name="articuloId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="cabecera_recetadetalle_receta">
+          <End Type="Modelo.cabecera_receta" Role="cabecera_receta" Multiplicity="1" />
+          <End Type="Modelo.detalle_receta" Role="detalle_receta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cabecera_receta">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="detalle_receta">
+              <PropertyRef Name="cabecera_recetaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="cabecera_recetadetalle_produccion">
+          <End Type="Modelo.cabecera_receta" Role="cabecera_receta" Multiplicity="1" />
+          <End Type="Modelo.detalle_produccion" Role="detalle_produccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cabecera_receta">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="detalle_produccion">
+              <PropertyRef Name="cabecera_recetaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="cabecera_recetacosto">
+          <End Type="Modelo.cabecera_receta" Role="cabecera_receta" Multiplicity="1" />
+          <End Type="Modelo.costo" Role="costo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cabecera_receta">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="costo">
+              <PropertyRef Name="cabecera_recetaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="cabecera_recetaprecio_venta">
+          <End Type="Modelo.cabecera_receta" Role="cabecera_receta" Multiplicity="1" />
+          <End Type="Modelo.precio_venta" Role="precio_venta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cabecera_receta">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="precio_venta">
+              <PropertyRef Name="cabecera_recetaId" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
       </Schema>
     </edmx:ConceptualModels>
