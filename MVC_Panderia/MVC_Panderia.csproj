@@ -151,50 +151,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\articulo.cs">
-      <DependentUpon>PanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\cabecera_produccion.cs">
-      <DependentUpon>PanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\cabera_receta.cs">
-      <DependentUpon>PanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\costo.cs">
-      <DependentUpon>PanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\detalle_produccion.cs">
-      <DependentUpon>PanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\detalle_receta.cs">
-      <DependentUpon>PanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\familia.cs">
-      <DependentUpon>PanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\linea.cs">
-      <DependentUpon>PanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PanModel.Context.cs">
+    <Compile Include="Models\Modelo.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PanModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PanModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PanModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PanModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\precio_venta.cs">
-      <DependentUpon>PanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\unidad_medida.cs">
-      <DependentUpon>PanModel.tt</DependentUpon>
+      <DependentUpon>Modelo.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -209,28 +169,18 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\PanModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>PanModel.Context.cs</LastGenOutput>
-      <DependentUpon>PanModel.edmx</DependentUpon>
-    </Content>
     <Content Include="Models\PanModel.edmx.sql" />
-    <Content Include="Models\PanModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PanModel.edmx</DependentUpon>
-      <LastGenOutput>PanModel.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\PanModel.edmx">
+    <EntityDeploy Include="Models\Modelo.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>PanModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>Modelo.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\PanModel.edmx.diagram">
-      <DependentUpon>PanModel.edmx</DependentUpon>
+    <Content Include="Models\Modelo.edmx.diagram">
+      <DependentUpon>Modelo.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
