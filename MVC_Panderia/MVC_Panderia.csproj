@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -161,10 +162,23 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Modelo.Designer.cs">
+    <Compile Include="Models\linea.cs">
+      <DependentUpon>modeloCosteos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\modeloCosteos.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Modelo.edmx</DependentUpon>
+      <DependentUpon>modeloCosteos.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\modeloCosteos.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>modeloCosteos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\modeloCosteos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>modeloCosteos.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -179,18 +193,28 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\PanModel.edmx.sql" />
+    <Content Include="Models\modeloCosteos.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>modeloCosteos.edmx</DependentUpon>
+      <LastGenOutput>modeloCosteos.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\modeloCosteos.edmx.sql" />
+    <Content Include="Models\modeloCosteos.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>modeloCosteos.edmx</DependentUpon>
+      <LastGenOutput>modeloCosteos.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\Modelo.edmx">
+    <EntityDeploy Include="Models\modeloCosteos.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Modelo.Designer.cs</LastGenOutput>
+      <LastGenOutput>modeloCosteos.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Modelo.edmx.diagram">
-      <DependentUpon>Modelo.edmx</DependentUpon>
+    <Content Include="Models\modeloCosteos.edmx.diagram">
+      <DependentUpon>modeloCosteos.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -217,6 +241,8 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\linea\Index.cshtml" />
+    <Content Include="Views\linea\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\articulo\" />
@@ -226,7 +252,6 @@
     <Folder Include="Views\detalle_produccion\" />
     <Folder Include="Views\detalle_receta\" />
     <Folder Include="Views\familia\" />
-    <Folder Include="Views\linea\" />
     <Folder Include="Views\precio_venta\" />
     <Folder Include="Views\unidad_medida\" />
   </ItemGroup>
