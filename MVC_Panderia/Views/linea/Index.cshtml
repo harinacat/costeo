@@ -1,0 +1,28 @@
+﻿<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<p>Use this area to provide additional information.</p>
+@Html.ActionLink("Nueva Linea", "Create", "linea")
+<table cellpadding="5" border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in @ViewBag.lineas)
+        {
+
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.nombre</td>
+                <td>Acciones</td>
+            </tr>
+
+        }
+
+    </tbody>
+</table>
