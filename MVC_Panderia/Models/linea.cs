@@ -14,7 +14,14 @@ namespace MVC_Panderia.Models
     
     public partial class linea
     {
+        public linea()
+        {
+            this.familias = new HashSet<familia>();
+        }
+    
         public int Id { get; set; }
         public string nombre { get; set; }
+    
+        public virtual ICollection<familia> familias { get; set; }
     }
 }

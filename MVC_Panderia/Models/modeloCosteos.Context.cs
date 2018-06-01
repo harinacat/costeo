@@ -25,6 +25,15 @@ namespace MVC_Panderia.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public DbSet<articulo> articuloes { get; set; }
+        public DbSet<cabecera_produccion> cabecera_produccion { get; set; }
+        public DbSet<cabecera_receta> cabecera_receta { get; set; }
+        public DbSet<costo> costos { get; set; }
+        public DbSet<detalle_produccion> detalle_produccion { get; set; }
+        public DbSet<detalle_receta> detalle_receta { get; set; }
+        public DbSet<familia> familias { get; set; }
         public DbSet<linea> lineas { get; set; }
+        public DbSet<unidad_medida> unidad_medida { get; set; }
+        public DbSet<precio_venta> precio_venta { get; set; }
     }
 }
