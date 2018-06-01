@@ -47,7 +47,7 @@ namespace MVC_Panderia.Controllers
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch(Exception exp)
             {
                 return View();
             }
@@ -56,7 +56,9 @@ namespace MVC_Panderia.Controllers
         // GET: Linea/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            pan_dbEntities1 db = new pan_dbEntities1();
+            var Row = db.lineas.Where(s => s.Id == id).FirstOrDefault();
+            return View(Row);
         }
 
         // POST: Linea/Edit/5
@@ -83,7 +85,9 @@ namespace MVC_Panderia.Controllers
         // GET: Linea/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            pan_dbEntities1 db = new pan_dbEntities1();
+            var Row = db.lineas.Where(s => s.Id == id).FirstOrDefault();
+            return View(Row);
         }
 
         // POST: Linea/Delete/5
@@ -92,9 +96,11 @@ namespace MVC_Panderia.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
-
-
+                pan_dbEntities1 db = new pan_dbEntities1();
+                linea ln = new linea();
+                ln = db.lineas.Find(Convert.ToInt16(collection.Get("id")));
+                db.lineas.Remove(ln);
+                db.SaveChanges();
 
                 return RedirectToAction("Index");
             }
