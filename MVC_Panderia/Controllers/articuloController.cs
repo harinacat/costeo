@@ -26,7 +26,8 @@ namespace MVC_Panderia.Controllers
         // GET: Linea/Create
         public ActionResult Create()
         {
-            FKs();
+            ViewBag.familiaId = new SelectList(db.familias, "Id", "nombre");
+            ViewBag.unidad_medidaId= new SelectList(db.unidad_medida, "Id", "nombre");
             return View();
         }
 
@@ -57,8 +58,10 @@ namespace MVC_Panderia.Controllers
         // GET: Linea/Edit/5
         public ActionResult Edit(int id)
         {
+            
             var Row = db.articuloes.Where(s => s.Id == id).FirstOrDefault();
-            FKs();
+            ViewBag.familiaId = new SelectList(db.familias, "Id", "nombre", Row.familiaId );
+            ViewBag.unidad_medidaId = new SelectList(db.unidad_medida, "Id", "nombre", Row.unidad_medidaId);
             return View(Row);
         }
 
@@ -90,7 +93,8 @@ namespace MVC_Panderia.Controllers
         public ActionResult Delete(int id)
         {
             var Row = db.articuloes.Where(s => s.Id == id).FirstOrDefault();
-            FKs();
+            ViewBag.familiaId = new SelectList(db.familias, "Id", "nombre", Row.familiaId);
+            ViewBag.unidad_medidaId = new SelectList(db.unidad_medida, "Id", "nombre", Row.unidad_medidaId);
             return View(Row);
         }
 
@@ -110,19 +114,6 @@ namespace MVC_Panderia.Controllers
             {
                 return View();
             }
-        }
-
-        private void FKs()
-        {
-            var FamiliaQry = from d in db.familias
-                             orderby d.nombre
-                             select new { d.Id, d.nombre };
-            ViewBag.FamiliaLst = new SelectList(FamiliaQry, "Id", "Nombre");
-
-            var MedidaQry = from d in db.unidad_medida
-                            orderby d.nombre
-                            select new { d.Id, d.nombre };
-            ViewBag.MedidaLst = new SelectList(MedidaQry, "Id", "Nombre");
         }
 
     }

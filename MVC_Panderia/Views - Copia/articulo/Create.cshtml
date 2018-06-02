@@ -4,8 +4,7 @@
     ViewBag.Title = "Nuevo Articulo";
 }
 
-@using (Html.BeginForm())
-{
+<form method="post" action="@Url.Action("Create", "articulo")">
     <div class="row  pb-2">
         <div class="col-12"><h4>@ViewBag.Title </h4></div>
     </div>
@@ -17,13 +16,13 @@
         </div>
         <div class="form-group col-6">
             <label>Familia</label>
-            @Html.DropDownList("familiaId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.DropDownListFor(model => model.familiaId, (SelectList)ViewBag.FamiliaLst, new { @class = "form-control",aria_describedby="dropdownMenu1"})
         </div>
     </div>
     <div class="row">
         <div class="form-group col-6">
             <label>Medida</label>
-            @Html.DropDownList("unidad_medidaId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.DropDownListFor(model => model.unidad_medidaId, (SelectList)ViewBag.MedidaLst, new { @class = "form-control", aria_describedby = "dropdownMenu2" })
         </div>
         <div class="form-group col-6">
             <label>Codigo Barra</label>
@@ -43,5 +42,6 @@
     <button type="submit" class="btn btn-primary pl-2">Guardar</button>
     <button type="button" value="Cancel" class="btn btn-primary pl-2" onclick="javascript:document.location.href='@Url.Action("Index", "articulo")'">Cancelar</button>
 
-}
+
+</form>
 
