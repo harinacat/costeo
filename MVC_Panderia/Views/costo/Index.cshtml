@@ -1,1 +1,38 @@
-﻿
+﻿@{
+    ViewBag.Title = "Costo";
+}
+
+<div class="row  pb-2">
+    <div class="col-6"><h4>@ViewBag.Title </h4></div>
+    <div class="col-6">
+        @Html.ActionLink("Nuevo Costo", "Create", "costo", new { @class = "btn btn-primary float-right" })
+    </div>
+</div>
+<div class="row">
+    <div class="table-responsive col-12">
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th>Id</th>
+                    <th>Fecha</th>
+                    <th>Valor</th>
+                    <th>Accion</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in @ViewBag.costo)
+                {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.fecha</td>
+                    <td>@item.valor</td>
+                    <td>
+                        @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-primary pl-2" })
+                        @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }, new { @class = "btn btn-primary pl-2" })
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
