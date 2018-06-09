@@ -2,8 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/02/2018 10:21:56
--- Generated from EDMX file: \\mac\Home\Documents\GitHub\costeo\MVC_Panderia\Models\modeloCosteos.edmx
+
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -23,6 +22,7 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_articulodetalle_receta]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[detalle_receta] DROP CONSTRAINT [FK_articulodetalle_receta];
 GO
+
 IF OBJECT_ID(N'[dbo].[FK_cabecera_producciondetalle_produccion]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[detalle_produccion] DROP CONSTRAINT [FK_cabecera_producciondetalle_produccion];
 GO
@@ -35,18 +35,12 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_costodetalle_produccion]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[detalle_produccion] DROP CONSTRAINT [FK_costodetalle_produccion];
 GO
-IF OBJECT_ID(N'[dbo].[FK_familiaarticulo]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[articuloes] DROP CONSTRAINT [FK_familiaarticulo];
+
 GO
 IF OBJECT_ID(N'[dbo].[FK_lineafamilia]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[familias] DROP CONSTRAINT [FK_lineafamilia];
 GO
-IF OBJECT_ID(N'[dbo].[FK_unidad_medidaarticulo]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[articuloes] DROP CONSTRAINT [FK_unidad_medidaarticulo];
-GO
-IF OBJECT_ID(N'[dbo].[FK_ventadetalle_produccion]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[detalle_produccion] DROP CONSTRAINT [FK_ventadetalle_produccion];
-GO
+
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -79,9 +73,8 @@ GO
 IF OBJECT_ID(N'[dbo].[unidad_medida]', 'U') IS NOT NULL
     DROP TABLE [dbo].[unidad_medida];
 GO
-IF OBJECT_ID(N'[dbo].[ventas]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[ventas];
-GO
+
+
 
 -- --------------------------------------------------
 -- Creating all tables
