@@ -159,7 +159,7 @@
     <Compile Include="Controllers\familiaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\lineaController.cs" />
-    <Compile Include="Controllers\precio_ventaController.cs" />
+    <Compile Include="Controllers\precioVentaController.cs" />
     <Compile Include="Controllers\unidad_medidaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
