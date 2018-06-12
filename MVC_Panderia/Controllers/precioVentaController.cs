@@ -8,7 +8,7 @@ using MVC_Panderia.Models;
 
 namespace MVC_Panderia.Controllers
 {
-    public class precio_ventaController : Controller
+    public class precioVentaController : Controller
     {
         pan_dbEntities1 db = new pan_dbEntities1();
         // GET: Linea
