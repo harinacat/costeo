@@ -155,16 +155,16 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\articuloController.cs" />
-    <Compile Include="Controllers\cabecera_produccionController.cs" />
-    <Compile Include="Controllers\cabecera_recetaController.cs" />
+    <Compile Include="Controllers\cabeceraProduccionController.cs" />
+    <Compile Include="Controllers\cabeceraRecetaController.cs" />
     <Compile Include="Controllers\costoController.cs" />
-    <Compile Include="Controllers\detalle_produccionController.cs" />
-    <Compile Include="Controllers\detalle_recetaController.cs" />
+    <Compile Include="Controllers\detalleProduccionController.cs" />
+    <Compile Include="Controllers\detalleRecetaController.cs" />
     <Compile Include="Controllers\familiaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\lineaController.cs" />
     <Compile Include="Controllers\precioVentaController.cs" />
-    <Compile Include="Controllers\unidad_medidaController.cs" />
+    <Compile Include="Controllers\unidadMedidaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
