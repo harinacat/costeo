@@ -81,7 +81,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\articuloControllerTest.cs" />
+    <Compile Include="Controllers\cabeceraProduccionControllerTest.cs" />
+    <Compile Include="Controllers\cabeceraRecetaControllerTest.cs" />
+    <Compile Include="Controllers\costoControllerTest.cs" />
+    <Compile Include="Controllers\detalleProduccionControllerTest.cs" />
+    <Compile Include="Controllers\detalleRecetaControllerTest.cs" />
+    <Compile Include="Controllers\familiaControllerTest.cs" />
+    <Compile Include="Controllers\lineaControllerTest.cs" />
     <Compile Include="Controllers\precioVentaControllerTest.cs" />
+    <Compile Include="Controllers\unidadMedidaControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>

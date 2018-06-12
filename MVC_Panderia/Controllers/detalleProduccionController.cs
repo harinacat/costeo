@@ -5,9 +5,12 @@ using System.Web;
 using System.Web.Mvc;
 using MVC_Panderia.Models;
 
-
 namespace MVC_Panderia.Controllers
 {
+
+    public class detalleProduccionController
+    {
+
     public class cabecera_produccionController:Controller
      {
         // GET: Linea
@@ -110,5 +113,7 @@ namespace MVC_Panderia.Controllers
             }
         }
 
+
     }
+}
 }
