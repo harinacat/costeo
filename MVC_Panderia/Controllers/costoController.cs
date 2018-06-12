@@ -10,7 +10,7 @@ namespace MVC_Panderia.Controllers
 {
     public class costoController : Controller
     {
-        // GET: Linea
+        // GET: Costo
         public ActionResult Index()
         {
             pan_dbEntities1 db = new pan_dbEntities1();
@@ -19,7 +19,7 @@ namespace MVC_Panderia.Controllers
             return View();
         }
 
-        // GET: Linea/Details/5
+        // GET: Costo/Details/5
         public ActionResult Details(int id)
         {
             return View();
@@ -31,7 +31,7 @@ namespace MVC_Panderia.Controllers
             return View();
         }
 
-        // POST: Linea/Create
+        // POST: Costo/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -54,7 +54,7 @@ namespace MVC_Panderia.Controllers
             }
         }
 
-        // GET: Linea/Edit/5
+        // GET: Costo/Edit/5
         public ActionResult Edit(int id)
         {
             pan_dbEntities1 db = new pan_dbEntities1();
@@ -62,7 +62,7 @@ namespace MVC_Panderia.Controllers
             return View(Row);
         }
 
-        // POST: Linea/Edit/5
+        // POST: Costo/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -84,7 +84,7 @@ namespace MVC_Panderia.Controllers
             }
         }
 
-        // GET: Linea/Delete/5
+        // GET: Costo/Delete/5
         public ActionResult Delete(int id)
         {
             pan_dbEntities1 db = new pan_dbEntities1();
@@ -92,7 +92,7 @@ namespace MVC_Panderia.Controllers
             return View(Row);
         }
 
-        // POST: Linea/Delete/5
+        // POST: Costo/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
