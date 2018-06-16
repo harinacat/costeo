@@ -161,9 +161,11 @@
     <Compile Include="Controllers\lineaController.cs" />
     <Compile Include="Controllers\precio_ventaController.cs" />
     <Compile Include="Controllers\unidad_medidaController.cs" />
+    <Compile Include="Controllers\usuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\SHA1.cs" />
     <Compile Include="Models\articulo.cs">
       <DependentUpon>modeloCosteos.tt</DependentUpon>
     </Compile>
@@ -207,6 +209,9 @@
       <DependentUpon>modeloCosteos.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\unidad_medida.cs">
+      <DependentUpon>modeloCosteos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usuario.cs">
       <DependentUpon>modeloCosteos.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -356,53 +361,11 @@
     <Content Include="Views\unidad_medida\Delete.cshtml" />
     <Content Include="Views\unidad_medida\Edit.cshtml" />
     <Content Include="Views\unidad_medida\Index.cshtml" />
-    <Content Include="Views - Copia\_ViewStart.cshtml" />
-    <Content Include="Views - Copia\articulo\Create.cshtml" />
-    <Content Include="Views - Copia\articulo\Delete.cshtml" />
-    <Content Include="Views - Copia\articulo\Edit.cshtml" />
-    <Content Include="Views - Copia\articulo\Index.cshtml" />
-    <Content Include="Views - Copia\cabecera_produccion\Create.cshtml" />
-    <Content Include="Views - Copia\cabecera_produccion\Delete.cshtml" />
-    <Content Include="Views - Copia\cabecera_produccion\Edit.cshtml" />
-    <Content Include="Views - Copia\cabecera_produccion\Index.cshtml" />
-    <Content Include="Views - Copia\cabecera_receta\Create.cshtml" />
-    <Content Include="Views - Copia\cabecera_receta\Delete.cshtml" />
-    <Content Include="Views - Copia\cabecera_receta\Edit.cshtml" />
-    <Content Include="Views - Copia\cabecera_receta\Index.cshtml" />
-    <Content Include="Views - Copia\costo\Create.cshtml" />
-    <Content Include="Views - Copia\costo\Delete.cshtml" />
-    <Content Include="Views - Copia\costo\Edit.cshtml" />
-    <Content Include="Views - Copia\costo\Index.cshtml" />
-    <Content Include="Views - Copia\detalle_produccion\Create.cshtml" />
-    <Content Include="Views - Copia\detalle_produccion\Delete.cshtml" />
-    <Content Include="Views - Copia\detalle_produccion\Edit.cshtml" />
-    <Content Include="Views - Copia\detalle_produccion\Index.cshtml" />
-    <Content Include="Views - Copia\detalle_receta\Create.cshtml" />
-    <Content Include="Views - Copia\detalle_receta\Delete.cshtml" />
-    <Content Include="Views - Copia\detalle_receta\Edit.cshtml" />
-    <Content Include="Views - Copia\detalle_receta\Index.cshtml" />
-    <Content Include="Views - Copia\familia\Create.cshtml" />
-    <Content Include="Views - Copia\familia\Delete.cshtml" />
-    <Content Include="Views - Copia\familia\Edit.cshtml" />
-    <Content Include="Views - Copia\familia\Index.cshtml" />
-    <Content Include="Views - Copia\Home\About.cshtml" />
-    <Content Include="Views - Copia\Home\Contact.cshtml" />
-    <Content Include="Views - Copia\Home\Index.cshtml" />
-    <Content Include="Views - Copia\linea\Create.cshtml" />
-    <Content Include="Views - Copia\linea\Delete.cshtml" />
-    <Content Include="Views - Copia\linea\Edit.cshtml" />
-    <Content Include="Views - Copia\linea\Index.cshtml" />
-    <Content Include="Views - Copia\precio_venta\Create.cshtml" />
-    <Content Include="Views - Copia\precio_venta\Delete.cshtml" />
-    <Content Include="Views - Copia\precio_venta\Edit.cshtml" />
-    <Content Include="Views - Copia\precio_venta\Index.cshtml" />
-    <Content Include="Views - Copia\Shared\_Layout.cshtml" />
-    <Content Include="Views - Copia\Shared\Error.cshtml" />
-    <Content Include="Views - Copia\unidad_medida\Create.cshtml" />
-    <Content Include="Views - Copia\unidad_medida\Delete.cshtml" />
-    <Content Include="Views - Copia\unidad_medida\Edit.cshtml" />
-    <Content Include="Views - Copia\unidad_medida\Index.cshtml" />
-    <Content Include="Views - Copia\Web.config" />
+    <Content Include="Views\usuario\Index.cshtml" />
+    <Content Include="Views\usuario\Create.cshtml" />
+    <Content Include="Views\usuario\Edit.cshtml" />
+    <Content Include="Views\usuario\Delete.cshtml" />
+    <Content Include="Views\usuario\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="fonts\" />

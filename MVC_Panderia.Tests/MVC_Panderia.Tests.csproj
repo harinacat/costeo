@@ -92,7 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MVC_Panderia\MVC_Panderia.csproj">
-      <Project>{0D7E1A88-19C7-4298-8087-F17073A761AE}</Project>
+      <Project>{0d7e1a88-19c7-4298-8087-f17073a761ae}</Project>
       <Name>MVC_Panderia</Name>
     </ProjectReference>
   </ItemGroup>
