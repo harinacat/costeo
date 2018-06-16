@@ -1,38 +1,39 @@
-﻿@{
+﻿@model IEnumerable<MVC_Panderia.Models.cabecera_receta>
+
+@{
     ViewBag.Title = "Receta";
 }
-
-<div class="row  pb-2">
-    <div class="col-6"><h4>@ViewBag.Title </h4></div>
-    <div class="col-6">
-        @Html.ActionLink("Nueva Receta", "Create", "cabecera_receta", new { @class = "btn btn-primary float-right" })
+@using (Html.BeginForm())
+{
+    <div class="row  pb-2">
+        <div class="col-6"><h4>@ViewBag.Title </h4></div>
+        <div class="col-6">
+            @Html.ActionLink("Nueva Receta", "Create", "cabecera_receta", new { @class = "btn btn-primary float-right" })
+        </div>
     </div>
-</div>
-<div class="row">
-    <div class="table-responsive col-12">
-        <table class="table">
-            <thead class="thead-light">
-                <tr>
-                    <th>Id</th>
-                    <th>Fecha</th>
-                    <th>Valor</th>
-                    <th>Accion</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in @ViewBag.Receta)
-                {
+    <div class="row">
+        <div class="table-responsive col-12">
+            <table class="table">
+                <thead class="thead-light">
                     <tr>
-                        <td>@item.Id</td>
-                        <td>@item.fecha</td>
-                        <td>@item.valor</td>
-                        <td>
-                            @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-primary pl-2" })
-                            @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }, new { @class = "btn btn-primary pl-2" })
-                        </td>
+                        <th>Id</th>
+                        <th>Articulo</th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@Html.DisplayFor(modelItem => item.articulo.nombre)</td>
+                            <td>
+                                @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-primary pl-2" })
+                                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }, new { @class = "btn btn-primary pl-2" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
+}

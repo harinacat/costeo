@@ -1,4 +1,4 @@
-// La generación de código T4 está habilitada para el modelo '\\Mac\Home\Documents\GitHub\costeo\MVC_Panderia\Models\modeloCosteos.edmx'. 
+﻿// La generación de código T4 está habilitada para el modelo 'D:\D\UNIVERSIDAD\2018\Taller de Prueba de Software\costeo\MVC_Panderia\Models\modeloCosteos.edmx'. 
 // Para habilitar la generación de código heredada, cambie el valor de la propiedad del diseñador 'Estrategia de generación de código'
 // por 'ObjectContext heredado'. Esta propiedad está disponible en la ventana Propiedades cuando se abre
 // el modelo en el diseñador.

@@ -1,0 +1,4 @@
+﻿ALTER TABLE [dbo].[usuarios]
+ADD CONSTRAINT [PK_usuarios]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
