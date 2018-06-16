@@ -8,7 +8,7 @@ using MVC_Panderia.Models;
 
 namespace MVC_Panderia.Controllers
 {
-    public class unidadMedidaController : Controller
+    public class unidad_medidaController : Controller
     {
         // GET: Unidad_medida
         public ActionResult Index()

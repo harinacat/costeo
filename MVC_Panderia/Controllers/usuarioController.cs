@@ -28,7 +28,7 @@ namespace MVC_Panderia.Controllers
             if (Row!=null)
             {
                 Helpers.sha1 OjbSha1 = new Helpers.sha1();
-                if (Row.contraseña == OjbSha1.Encode(collection.Get("contraseña")))
+                if (Row.contraseña == OjbSha1.Encode(collection.Get("contrasena")))
                 {
                     FormsAuthentication.SetAuthCookie(collection.Get("Id"), false);
                 }
