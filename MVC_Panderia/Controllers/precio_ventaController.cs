@@ -5,21 +5,16 @@ using System.Web;
 using System.Web.Mvc;
 using MVC_Panderia.Models;
 
+
 namespace MVC_Panderia.Controllers
 {
-
-    public class detalleProduccionController
+    public class precio_ventaController : Controller
     {
-
-    public class cabecera_produccionController:Controller
-     {
+        pan_dbEntities1 db = new pan_dbEntities1();
         // GET: Linea
         public ActionResult Index()
         {
-            pan_dbEntities1 db = new pan_dbEntities1();
-            var cabecera_produccion = db.cabecera_produccion.ToList();
-            ViewBag.cabecera_produccion = cabecera_produccion;
-            return View();
+            return View(db.precio_venta.ToList());
         }
 
         // GET: Linea/Details/5
@@ -42,15 +37,16 @@ namespace MVC_Panderia.Controllers
             {
                 // TODO: Add insert logic here
                 pan_dbEntities1 db = new pan_dbEntities1();
-                cabecera_produccion ln = new cabecera_produccion();
-                ln.fecha = Convert.ToDateTime(collection.Get("fecha"));
-                db.cabecera_produccion.Add(ln);
+                precio_venta pv = new precio_venta();
+                pv.fecha = Convert.ToDateTime(collection.Get("fecha"));
+                pv.valor = Convert.ToInt32(collection.Get("valor"));
+                db.precio_venta.Add(pv);
                 db.SaveChanges();
 
 
                 return RedirectToAction("Index");
             }
-            catch(Exception exp)
+            catch (Exception exp)
             {
                 return View();
             }
@@ -60,11 +56,11 @@ namespace MVC_Panderia.Controllers
         public ActionResult Edit(int id)
         {
             pan_dbEntities1 db = new pan_dbEntities1();
-            var Row = db.cabecera_produccion.Where(s => s.Id == id).FirstOrDefault();
+            var Row = db.precio_venta.Where(s => s.Id == id).FirstOrDefault();
             return View(Row);
         }
 
-        // POST: Linea/Edit/5
+        // POST: Precio_Venta/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -72,9 +68,10 @@ namespace MVC_Panderia.Controllers
             {
                 // TODO: Add update logic here
                 pan_dbEntities1 db = new pan_dbEntities1();
-                cabecera_produccion ln = new cabecera_produccion();
-                ln = db.cabecera_produccion.Find(Convert.ToInt16(collection.Get("fecha")));
-                ln.fecha = Convert.ToDateTime(collection.Get("fecha"));
+                precio_venta pv = new precio_venta();
+                pv = db.precio_venta.Find(Convert.ToInt16(collection.Get("id")));
+                pv.fecha = Convert.ToDateTime(collection.Get("fecha"));
+                pv.valor = Convert.ToInt32(collection.Get("valor"));
                 db.SaveChanges();
 
                 return RedirectToAction("Index");
@@ -89,7 +86,7 @@ namespace MVC_Panderia.Controllers
         public ActionResult Delete(int id)
         {
             pan_dbEntities1 db = new pan_dbEntities1();
-            var Row = db.cabecera_produccion.Where(s => s.Id == id).FirstOrDefault();
+            var Row = db.precio_venta.Where(s => s.Id == id).FirstOrDefault();
             return View(Row);
         }
 
@@ -100,9 +97,9 @@ namespace MVC_Panderia.Controllers
             try
             {
                 pan_dbEntities1 db = new pan_dbEntities1();
-                cabecera_produccion ln = new cabecera_produccion();
-                ln = db.cabecera_produccion.Find(Convert.ToInt16(collection.Get("id")));
-                db.cabecera_produccion.Remove(ln);
+                precio_venta pv = new precio_venta();
+                pv = db.precio_venta.Find(Convert.ToInt16(collection.Get("id")));
+                db.precio_venta.Remove(pv);
                 db.SaveChanges();
 
                 return RedirectToAction("Index");
@@ -113,7 +110,5 @@ namespace MVC_Panderia.Controllers
             }
         }
 
-
     }
-}
 }

@@ -16,7 +16,7 @@ namespace MVC_Panderia.Tests.Controllers
         public void Index()
         {
             // Arrange
-            precioVentaController controller = new precioVentaController();
+            precio_ventaController controller = new precio_ventaController();
 
             // Act
             ViewResult result = controller.Index() as ViewResult;
@@ -29,7 +29,7 @@ namespace MVC_Panderia.Tests.Controllers
         public void Create()
         {
             // Arrange
-            precioVentaController controller = new precioVentaController();
+            precio_ventaController controller = new precio_ventaController();
 
             // Act
             ViewResult result = controller.Create() as ViewResult;
@@ -42,7 +42,7 @@ namespace MVC_Panderia.Tests.Controllers
         public void Edit()
         {
             // Arrange
-            precioVentaController controller = new precioVentaController();
+            precio_ventaController controller = new precio_ventaController();
 
             // Act
             ViewResult result = controller.Edit(1) as ViewResult;
@@ -54,7 +54,7 @@ namespace MVC_Panderia.Tests.Controllers
         public void Delete()
         {
             // Arrange
-            precioVentaController controller = new precioVentaController();
+            precio_ventaController controller = new precio_ventaController();
 
             // Act
             ViewResult result = controller.Delete(1) as ViewResult;
