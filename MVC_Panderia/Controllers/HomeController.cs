@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace MVC_Panderia.Controllers
 {
     public class HomeController : Controller
@@ -26,5 +27,7 @@ namespace MVC_Panderia.Controllers
 
             return View();
         }
+
+       
     }
 }

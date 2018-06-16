@@ -1,0 +1,1 @@
+﻿INSERT INTO [dbo].[usuarios] ([Id], [nombre_usuario], [contraseña], [email]) VALUES (170347765,'gvargas', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'gvargas@gmail.com')
