@@ -16,51 +16,51 @@ namespace MVC_Panderia.Tests.Controllers
         public void Index()
         {
             //// Arrange
-            //cabeceraProduccionController controller = new cabeceraProduccionController();
+            cabeceraProduccionController controller = new cabeceraProduccionController();
 
             //// Act
-            //ViewResult result = controller.Index() as ViewResult;
+            ViewResult result = controller.Index() as ViewResult;
 
             //// Assert
-            //Assert.IsNotNull(result);
+            Assert.IsNotNull(result);
         }
 
         [TestMethod]
         public void Create()
         {
             //// Arrange
-            //cabeceraProduccionController controller = new cabeceraProduccionController();
+            cabeceraProduccionController controller = new cabeceraProduccionController();
 
             //// Act
-            //ViewResult result = controller.Create() as ViewResult;
+            ViewResult result = controller.Create() as ViewResult;
 
             //// Assert
-            //Assert.IsNotNull(result);
+            Assert.IsNotNull(result);
         }
 
         [TestMethod]
         public void Edit()
         {
             //// Arrange
-            //cabeceraProduccionController controller = new cabeceraProduccionController();
+            cabeceraProduccionController controller = new cabeceraProduccionController();
 
             //// Act
-            //ViewResult result = controller.Edit(1) as ViewResult;
+            ViewResult result = controller.Edit(1) as ViewResult;
 
             //// Assert
-            //Assert.IsNotNull(result);
+            Assert.IsNotNull(result);
         }
         [TestMethod]
         public void Delete()
         {
             //// Arrange
-            //cabeceraProduccionController controller = new cabeceraProduccionController();
+            cabeceraProduccionController controller = new cabeceraProduccionController();
 
             //// Act
-            //ViewResult result = controller.Delete(1) as ViewResult;
+            ViewResult result = controller.Delete(1) as ViewResult;
 
             //// Assert
-            //Assert.IsNotNull(result);
+            Assert.IsNotNull(result);
         }
     }
 }
