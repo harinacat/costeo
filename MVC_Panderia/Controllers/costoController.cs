@@ -14,9 +14,7 @@ namespace MVC_Panderia.Controllers
         public ActionResult Index()
         {
             pan_dbEntities1 db = new pan_dbEntities1();
-            var costo = db.costos.ToList();
-            ViewBag.costo = costo;
-            return View();
+            return View(db.costos.ToList());
         }
 
         // GET: Costo/Details/5
