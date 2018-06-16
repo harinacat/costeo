@@ -16,7 +16,7 @@ namespace MVC_Panderia.Tests.Controllers
         public void Index()
         {
             //// Arrange
-            cabeceraRecetaController controller = new cabeceraRecetaController();
+            cabecera_recetaController controller = new cabecera_recetaController();
 
             //// Act
             ViewResult result = controller.Index() as ViewResult;
@@ -29,7 +29,7 @@ namespace MVC_Panderia.Tests.Controllers
         public void Create()
         {
             //// Arrange
-            cabeceraRecetaController controller = new cabeceraRecetaController();
+            cabecera_recetaController controller = new cabecera_recetaController();
 
             //// Act
             ViewResult result = controller.Create() as ViewResult;
@@ -54,7 +54,7 @@ namespace MVC_Panderia.Tests.Controllers
         public void Delete()
         {
             //// Arrange
-            cabeceraRecetaController controller = new cabeceraRecetaController();
+            cabecera_recetaController controller = new cabecera_recetaController();
 
             //// Act
             ViewResult result = controller.Delete(1) as ViewResult;
