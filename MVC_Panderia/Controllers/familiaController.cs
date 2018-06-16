@@ -62,7 +62,8 @@ namespace MVC_Panderia.Controllers
             pan_dbEntities1 db = new pan_dbEntities1();
             var Row = db.familias.Where(s => s.Id == id).FirstOrDefault();
             ViewBag.lineaId = new SelectList(db.lineas, "Id", "nombre", Row.lineaId);
-            return View(Row);
+            //return View(Row);
+            return View();
         }
 
         // POST: Linea/Edit/5
