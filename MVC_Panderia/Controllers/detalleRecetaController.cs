@@ -5,7 +5,7 @@ using System.Web;
 
 namespace MVC_Panderia.Controllers
 {
-    public class precio_ventaController
+    public class detalleRecetaController
     {
     }
 }

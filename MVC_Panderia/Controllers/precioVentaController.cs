@@ -8,18 +8,16 @@ using MVC_Panderia.Models;
 
 namespace MVC_Panderia.Controllers
 {
-    public class costoController : Controller
+    public class precioVentaController : Controller
     {
-        // GET: Costo
+        pan_dbEntities1 db = new pan_dbEntities1();
+        // GET: Linea
         public ActionResult Index()
         {
-            pan_dbEntities1 db = new pan_dbEntities1();
-            var costo = db.costos.ToList();
-            ViewBag.costo = costo;
-            return View();
+            return View(db.precio_venta.ToList());
         }
 
-        // GET: Costo/Details/5
+        // GET: Linea/Details/5
         public ActionResult Details(int id)
         {
             return View();
@@ -31,7 +29,7 @@ namespace MVC_Panderia.Controllers
             return View();
         }
 
-        // POST: Costo/Create
+        // POST: Linea/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -39,10 +37,10 @@ namespace MVC_Panderia.Controllers
             {
                 // TODO: Add insert logic here
                 pan_dbEntities1 db = new pan_dbEntities1();
-                costo cs = new costo();
-                cs.fecha = Convert.ToDateTime(collection.Get("fecha"));
-                cs.valor = Convert.ToInt32(collection.Get("valor"));
-                db.costos.Add(cs);
+                precio_venta pv = new precio_venta();
+                pv.fecha = Convert.ToDateTime(collection.Get("fecha"));
+                pv.valor = Convert.ToInt32(collection.Get("valor"));
+                db.precio_venta.Add(pv);
                 db.SaveChanges();
 
 
@@ -54,15 +52,15 @@ namespace MVC_Panderia.Controllers
             }
         }
 
-        // GET: Costo/Edit/5
+        // GET: Linea/Edit/5
         public ActionResult Edit(int id)
         {
             pan_dbEntities1 db = new pan_dbEntities1();
-            var Row = db.costos.Where(s => s.Id == id).FirstOrDefault();
+            var Row = db.precio_venta.Where(s => s.Id == id).FirstOrDefault();
             return View(Row);
         }
 
-        // POST: Costo/Edit/5
+        // POST: Precio_Venta/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -70,10 +68,10 @@ namespace MVC_Panderia.Controllers
             {
                 // TODO: Add update logic here
                 pan_dbEntities1 db = new pan_dbEntities1();
-                costo cs = new costo();
-                cs = db.costos.Find(Convert.ToInt16(collection.Get("id")));
-                cs.fecha = Convert.ToDateTime(collection.Get("fecha"));
-                cs.valor = Convert.ToInt32(collection.Get("valor"));
+                precio_venta pv = new precio_venta();
+                pv = db.precio_venta.Find(Convert.ToInt16(collection.Get("id")));
+                pv.fecha = Convert.ToDateTime(collection.Get("fecha"));
+                pv.valor = Convert.ToInt32(collection.Get("valor"));
                 db.SaveChanges();
 
                 return RedirectToAction("Index");
@@ -84,24 +82,24 @@ namespace MVC_Panderia.Controllers
             }
         }
 
-        // GET: Costo/Delete/5
+        // GET: Linea/Delete/5
         public ActionResult Delete(int id)
         {
             pan_dbEntities1 db = new pan_dbEntities1();
-            var Row = db.costos.Where(s => s.Id == id).FirstOrDefault();
+            var Row = db.precio_venta.Where(s => s.Id == id).FirstOrDefault();
             return View(Row);
         }
 
-        // POST: Costo/Delete/5
+        // POST: Linea/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
             try
             {
                 pan_dbEntities1 db = new pan_dbEntities1();
-                costo cs = new costo();
-                cs = db.costos.Find(Convert.ToInt16(collection.Get("id")));
-                db.costos.Remove(cs);
+                precio_venta pv = new precio_venta();
+                pv = db.precio_venta.Find(Convert.ToInt16(collection.Get("id")));
+                db.precio_venta.Remove(pv);
                 db.SaveChanges();
 
                 return RedirectToAction("Index");

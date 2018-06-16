@@ -5,21 +5,24 @@ using System.Web;
 using System.Web.Mvc;
 using MVC_Panderia.Models;
 
-
 namespace MVC_Panderia.Controllers
 {
-    public class costoController : Controller
+
+    public class detalleProduccionController
     {
-        // GET: Costo
+
+    public class cabecera_produccionController:Controller
+     {
+        // GET: Linea
         public ActionResult Index()
         {
             pan_dbEntities1 db = new pan_dbEntities1();
-            var costo = db.costos.ToList();
-            ViewBag.costo = costo;
+            var cabecera_produccion = db.cabecera_produccion.ToList();
+            ViewBag.cabecera_produccion = cabecera_produccion;
             return View();
         }
 
-        // GET: Costo/Details/5
+        // GET: Linea/Details/5
         public ActionResult Details(int id)
         {
             return View();
@@ -31,7 +34,7 @@ namespace MVC_Panderia.Controllers
             return View();
         }
 
-        // POST: Costo/Create
+        // POST: Linea/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -39,30 +42,29 @@ namespace MVC_Panderia.Controllers
             {
                 // TODO: Add insert logic here
                 pan_dbEntities1 db = new pan_dbEntities1();
-                costo cs = new costo();
-                cs.fecha = Convert.ToDateTime(collection.Get("fecha"));
-                cs.valor = Convert.ToInt32(collection.Get("valor"));
-                db.costos.Add(cs);
+                cabecera_produccion ln = new cabecera_produccion();
+                ln.fecha = Convert.ToDateTime(collection.Get("fecha"));
+                db.cabecera_produccion.Add(ln);
                 db.SaveChanges();
 
 
                 return RedirectToAction("Index");
             }
-            catch (Exception exp)
+            catch(Exception exp)
             {
                 return View();
             }
         }
 
-        // GET: Costo/Edit/5
+        // GET: Linea/Edit/5
         public ActionResult Edit(int id)
         {
             pan_dbEntities1 db = new pan_dbEntities1();
-            var Row = db.costos.Where(s => s.Id == id).FirstOrDefault();
+            var Row = db.cabecera_produccion.Where(s => s.Id == id).FirstOrDefault();
             return View(Row);
         }
 
-        // POST: Costo/Edit/5
+        // POST: Linea/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -70,10 +72,9 @@ namespace MVC_Panderia.Controllers
             {
                 // TODO: Add update logic here
                 pan_dbEntities1 db = new pan_dbEntities1();
-                costo cs = new costo();
-                cs = db.costos.Find(Convert.ToInt16(collection.Get("id")));
-                cs.fecha = Convert.ToDateTime(collection.Get("fecha"));
-                cs.valor = Convert.ToInt32(collection.Get("valor"));
+                cabecera_produccion ln = new cabecera_produccion();
+                ln = db.cabecera_produccion.Find(Convert.ToInt16(collection.Get("fecha")));
+                ln.fecha = Convert.ToDateTime(collection.Get("fecha"));
                 db.SaveChanges();
 
                 return RedirectToAction("Index");
@@ -84,24 +85,24 @@ namespace MVC_Panderia.Controllers
             }
         }
 
-        // GET: Costo/Delete/5
+        // GET: Linea/Delete/5
         public ActionResult Delete(int id)
         {
             pan_dbEntities1 db = new pan_dbEntities1();
-            var Row = db.costos.Where(s => s.Id == id).FirstOrDefault();
+            var Row = db.cabecera_produccion.Where(s => s.Id == id).FirstOrDefault();
             return View(Row);
         }
 
-        // POST: Costo/Delete/5
+        // POST: Linea/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
             try
             {
                 pan_dbEntities1 db = new pan_dbEntities1();
-                costo cs = new costo();
-                cs = db.costos.Find(Convert.ToInt16(collection.Get("id")));
-                db.costos.Remove(cs);
+                cabecera_produccion ln = new cabecera_produccion();
+                ln = db.cabecera_produccion.Find(Convert.ToInt16(collection.Get("id")));
+                db.cabecera_produccion.Remove(ln);
                 db.SaveChanges();
 
                 return RedirectToAction("Index");
@@ -112,5 +113,7 @@ namespace MVC_Panderia.Controllers
             }
         }
 
+
     }
+}
 }

@@ -1,1 +1,24 @@
-﻿
+﻿@{
+    ViewBag.Title = "Nueva Receta";
+}
+
+<form method="post" action="@Url.Action("Create", "cabecera_receta")">
+    <div class="row  pb-2">
+        <div class="col-12"><h4>@ViewBag.Title </h4></div>
+    </div>
+
+    <div class="form-group">
+        <label>fecha</label>
+        <input class="form-control" name="fecha">
+    </div>
+
+    <div class="form-group">
+        <label>valor</label>
+        <input class="form-control" name="valor">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+
+
+</form>
+
