@@ -57,10 +57,21 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Reportes
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="#">@Html.ActionLink("Analisis de costo por kilo de producto", "Index", "analisis_costos_kilos", new { area = "" }, new { @class = "dropdown-item" })</a>
+                                <a class="dropdown-item" href="#">@Html.ActionLink("Analisis de costo por Jornada laboral", "Index", "analisis_costos_jornada", new { area = "" }, new { @class = "dropdown-item" })</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 @User.Identity.Name
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" href="#">@Html.ActionLink("Cerrar Sesion", "logOut", "usuario", new { area = "" }, new { @class = "dropdown-item" })</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">@Html.ActionLink("Usuarios", "Index", "usuario", new { area = "" }, new { @class = "dropdown-item" })</a>
                             </div>
                         </li>
                     }
