@@ -63,6 +63,7 @@ namespace MVC_Panderia.Controllers
             var Row = db.familias.Where(s => s.Id == id).FirstOrDefault();
             ViewBag.lineaId = new SelectList(db.lineas, "Id", "nombre", Row.lineaId);
             return View(Row);
+     
         }
 
         // POST: Linea/Edit/5

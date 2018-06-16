@@ -215,6 +215,17 @@
       <DependentUpon>modeloCosteos.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Test\articuloControllerTest.cs" />
+    <Compile Include="Test\cabeceraProduccionControllerTest.cs" />
+    <Compile Include="Test\cabeceraRecetaControllerTest.cs" />
+    <Compile Include="Test\costoControllerTest.cs" />
+    <Compile Include="Test\detalleProduccionControllerTest.cs" />
+    <Compile Include="Test\detalleRecetaControllerTest.cs" />
+    <Compile Include="Test\familiaControllerTest.cs" />
+    <Compile Include="Test\HomeControllerTest.cs" />
+    <Compile Include="Test\lineaControllerTest.cs" />
+    <Compile Include="Test\precioVentaControllerTest.cs" />
+    <Compile Include="Test\unidadMedidaControllerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\pan_db.mdf" />
@@ -353,10 +364,10 @@
     <Content Include="Views\familia\Delete.cshtml" />
     <Content Include="Views\familia\Edit.cshtml" />
     <Content Include="Views\familia\Index.cshtml" />
-    <Content Include="Views\precio_venta\Create.cshtml" />
-    <Content Include="Views\precio_venta\Delete.cshtml" />
-    <Content Include="Views\precio_venta\Edit.cshtml" />
-    <Content Include="Views\precio_venta\Index.cshtml" />
+    <Content Include="Views\precioVenta\Create.cshtml" />
+    <Content Include="Views\precioVenta\Delete.cshtml" />
+    <Content Include="Views\precioVenta\Edit.cshtml" />
+    <Content Include="Views\precioVenta\Index.cshtml" />
     <Content Include="Views\unidad_medida\Create.cshtml" />
     <Content Include="Views\unidad_medida\Delete.cshtml" />
     <Content Include="Views\unidad_medida\Edit.cshtml" />
