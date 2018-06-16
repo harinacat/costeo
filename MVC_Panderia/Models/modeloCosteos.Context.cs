@@ -35,5 +35,6 @@ namespace MVC_Panderia.Models
         public DbSet<linea> lineas { get; set; }
         public DbSet<unidad_medida> unidad_medida { get; set; }
         public DbSet<precio_venta> precio_venta { get; set; }
+        public DbSet<usuario> usuarios { get; set; }
     }
 }

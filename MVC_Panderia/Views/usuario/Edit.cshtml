@@ -1,0 +1,90 @@
+﻿@model MVC_Panderia.Models.usuario
+
+@{
+    ViewBag.Title = "Editar Usuario";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="row  pb-2">
+        <div class="col-12"><h4>@ViewBag.Title </h4></div>
+    </div>
+    @Html.HiddenFor(model => model.Id)
+    <div class="row">
+        <div class="form-group col-6">
+            <a href="#" class="btn btn-info pl-2" data-toggle="modal" data-target="#LoginModal">Establecer contraseña</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-6">
+            <div class="form-group">
+                <label>Id</label>
+                @Html.EditorFor(model => model.Id, new { htmlAttributes = new { @class = "form-control" }, disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group col-6">
+            <div class="form-group">
+                <label>Nombre</label>
+                @Html.EditorFor(model => model.nombre_usuario, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-6">
+            <div class="form-group">
+                <label>Correo Electronico</label>
+                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        @Html.EditorFor(model => model.contraseña, new { htmlAttributes = new { @class = "form-control", style = "display:none", id = "txt_password_model" } })
+    </div>
+    <button type="submit" value="Save" class="btn btn-success pl-2">Guardar</button>
+    <button type="button" value="Cancel" class="btn btn-primary pl-2" onclick="javascript:document.location.href='@Url.Action("Index", "linea")'">Cancelar</button>
+    }
+    <form>
+        <div class="modal fade" data-backdrop="static" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="LoginModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="LoginModalLabel">Establecer Contraseña</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="form-control-label" for="txt_password">Contraseña</label>
+                            <input ID="txt_password_nueva" type="Password" required="required" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label" for="txt_password">Confirmar Contraseña</label>
+                            <input ID="txt_password_confirmar" type="Password" required="required" class="form-control" name="txt_password_confirmar" oninput="check(this)">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success pl-2">Establecer</button>
+                        <button Id="btnHideModal" type="button" value="Cancel" class="btn btn-primary pl-2">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#btnHideModal").click(function () {
+                $("#LoginModal").modal('hide');
+                $("#txt_password_nueva").val(null);
+                $("#txt_password_confirmar").val(null);
+            });
+        });
+
+        function check(input) {
+            if (input.value != document.getElementById('txt_password_nueva').value) {
+                input.setCustomValidity('Las contraseñas deben ser iguales.');
+            } else {
+                // input is valid -- reset the error message
+                input.setCustomValidity('');
+            }
+        }
+    </script>
