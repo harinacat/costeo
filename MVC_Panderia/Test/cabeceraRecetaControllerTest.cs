@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MVC_Panderia;
 using MVC_Panderia.Controllers;
+using MVC_Panderia.Models;
 
 namespace MVC_Panderia.Tests.Controllers
 {
@@ -42,7 +43,7 @@ namespace MVC_Panderia.Tests.Controllers
         public void Edit()
         {
             //// Arrange
-            cabeceraRecetaController controller = new cabeceraRecetaController();
+            cabecera_recetaController controller = new cabecera_recetaController();
 
             //// Act
             ViewResult result = controller.Edit(1) as ViewResult;
@@ -57,7 +58,7 @@ namespace MVC_Panderia.Tests.Controllers
             cabecera_recetaController controller = new cabecera_recetaController();
 
             //// Act
-            ViewResult result = controller.Delete(1) as ViewResult;
+            ViewResult result = controller.Delete(0) as ViewResult;
 
             //// Assert
             Assert.IsNotNull(result);

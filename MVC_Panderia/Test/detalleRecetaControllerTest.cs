@@ -16,7 +16,7 @@
 //        public void Index()
 //        {
 //            // Arrange
-//            detalleRecetaController controller = new detalleRecetaController();
+//            detalle_recetaController controller = new detalle_recetaController();
 
 //            // Act
 //            ViewResult result = controller.Index() as ViewResult;
@@ -29,7 +29,7 @@
 //        public void Create()
 //        {
 //            // Arrange
-//            detalleRecetaController controller = new detalleRecetaController();
+//            detalle_recetaController controller = new detalle_recetaController();
 
 //            // Act
 //            ViewResult result = controller.Create() as ViewResult;
@@ -42,7 +42,7 @@
 //        public void Edit()
 //        {
 //            // Arrange
-//            detalleRecetaController controller = new detalleRecetaController();
+//            detalle_recetaController controller = new detalle_recetaController();
 
 //            // Act
 //            ViewResult result = controller.Edit(1) as ViewResult;
@@ -54,7 +54,7 @@
 //        public void Delete()
 //        {
 //            // Arrange
-//            detalleRecetaController controller = new detalleRecetaController();
+//            detalle_recetaController controller = new detalle_recetaController();
 
 //            // Act
 //            ViewResult result = controller.Delete(1) as ViewResult;

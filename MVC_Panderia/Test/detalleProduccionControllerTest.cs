@@ -12,55 +12,55 @@
 //    [TestClass]
 //    public class detalleProduccionControllerTest
 //    {
-//        //[TestMethod]
-//        //public void Index()
-//        //{
-//        //    // Arrange
-//        //    detalleProduccionController controller = new detalleProduccionController();
+//        [TestMethod]
+//        public void Index()
+//        {
+//            // Arrange
+//            detalle_produccionController controller = new detalle_produccionController();
 
-//        //    // Act
-//        //    ViewResult result = controller.Index() as ViewResult;
+//            // Act
+//            ViewResult result = controller.Index() as ViewResult;
 
-//        //    // Assert
-//        //    Assert.IsNotNull(result);
+//            // Assert
+//            Assert.IsNotNull(result);
 //        }
 
 //        [TestMethod]
-//        //public void Create()
+//        public void Create()
 //        {
-//        //    // Arrange
-//        //    detalleProduccionController controller = new detalleProduccionController();
+//            // Arrange
+//            detalle_produccionController controller = new detalle_produccionController();
 
-//        //    // Act
-//        //    ViewResult result = controller.Create() as ViewResult;
+//            // Act
+//            ViewResult result = controller.Create() as ViewResult;
 
-//        //    // Assert
-//        //    Assert.IsNotNull(result);
+//            // Assert
+//            Assert.IsNotNull(result);
 //        }
 
 //        [TestMethod]
-//        //public void Edit()
+//        public void Edit()
 //        {
-//            //// Arrange
-//            //detalleProduccionController controller = new detalleProduccionController();
+//            // Arrange
+//            detalle_produccionController controller = new detalle_produccionController();
 
-//            //// Act
-//            //ViewResult result = controller.Edit(1) as ViewResult;
+//            // Act
+//            ViewResult result = controller.Edit(1) as ViewResult;
 
-//            //// Assert
-//            //Assert.IsNotNull(result);
+//            // Assert
+//            Assert.IsNotNull(result);
 //        }
 //        [TestMethod]
-//        //public void Delete()
+//        public void Delete()
 //        {
-//            //// Arrange
-//            //detalleProduccionController controller = new detalleProduccionController();
+//            // Arrange
+//            detalle_produccionController controller = new detalle_produccionController();
 
-//            //// Act
-//            //ViewResult result = controller.Delete(1) as ViewResult;
+//            // Act
+//            ViewResult result = controller.Delete(1) as ViewResult;
 
-//            //// Assert
-//            //Assert.IsNotNull(result);
+//            // Assert
+//            Assert.IsNotNull(result);
 //        }
 //    }
 
