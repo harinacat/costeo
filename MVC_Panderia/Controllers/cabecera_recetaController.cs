@@ -10,7 +10,7 @@ namespace MVC_Panderia.Controllers
 {
     public class cabecera_recetaController : Controller
     {
-        pan_dbEntities1 db = new pan_dbEntities1();
+        pan_dbEntities db = new pan_dbEntities();
 
         // GET: cabecera_receta
         public ActionResult Index()
@@ -27,7 +27,7 @@ namespace MVC_Panderia.Controllers
         // GET: cabecera_receta/Create
         public ActionResult Create()
         {
-            ViewBag.articuloId = new SelectList(db.articuloes, "Id", "nombre");
+            ViewBag.articuloId = new SelectList(db.articulo, "Id", "nombre");
             return View();
         }
 
@@ -54,7 +54,7 @@ namespace MVC_Panderia.Controllers
         public ActionResult Edit(int id)
         {
             var Row = db.cabecera_receta.Where(s => s.Id == id).FirstOrDefault();
-            ViewBag.articuloId = new SelectList(db.articuloes, "Id", "nombre", Row.articuloId);
+            ViewBag.articuloId = new SelectList(db.articulo, "Id", "nombre", Row.articuloId);
             return View(Row);
         }
 
@@ -82,7 +82,7 @@ namespace MVC_Panderia.Controllers
         public ActionResult Delete(int id)
         {
             var Row = db.cabecera_receta.Where(s => s.Id == id).FirstOrDefault();
-            ViewBag.articuloId = new SelectList(db.articuloes, "Id", "nombre", Row.articuloId);
+            ViewBag.articuloId = new SelectList(db.articulo, "Id", "nombre", Row.articuloId);
             return View(Row);
         }
 
@@ -118,7 +118,7 @@ namespace MVC_Panderia.Controllers
         {
             ViewBag.NombreReceta = nombre;
             ViewBag.cabecera_recetaId = id;
-            ViewBag.articuloId = new SelectList(db.articuloes, "Id", "nombre");
+            ViewBag.articuloId = new SelectList(db.articulo, "Id", "nombre");
            
             return View();
         }
@@ -150,7 +150,7 @@ namespace MVC_Panderia.Controllers
             ViewBag.NombreReceta = nombre;
             ViewBag.cabecera_recetaId = id_cabecera;
             var Row = db.detalle_receta.Where(s => s.Id == id).FirstOrDefault();
-            ViewBag.articuloId = new SelectList(db.articuloes, "Id", "nombre", Row.articuloId);
+            ViewBag.articuloId = new SelectList(db.articulo, "Id", "nombre", Row.articuloId);
             return View(Row);
         }
 
@@ -181,7 +181,7 @@ namespace MVC_Panderia.Controllers
             ViewBag.NombreReceta = nombre;
             ViewBag.cabecera_recetaId = id_cabecera;
             var Row = db.detalle_receta.Where(s => s.Id == id).FirstOrDefault();
-            ViewBag.articuloId = new SelectList(db.articuloes, "Id", "nombre", Row.articuloId);
+            ViewBag.articuloId = new SelectList(db.articulo, "Id", "nombre", Row.articuloId);
             return View(Row);
         }
 

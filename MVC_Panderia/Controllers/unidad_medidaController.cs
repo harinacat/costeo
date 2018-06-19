@@ -13,7 +13,7 @@ namespace MVC_Panderia.Controllers
         // GET: Unidad_medida
         public ActionResult Index()
         {
-            pan_dbEntities1 db = new pan_dbEntities1();
+            pan_dbEntities db = new pan_dbEntities();
             var unidad_medida = db.unidad_medida.ToList();
             ViewBag.unidad_medida = unidad_medida;
             return View();
@@ -38,7 +38,7 @@ namespace MVC_Panderia.Controllers
             try
             {
                 // TODO: Add insert logic here
-                pan_dbEntities1 db = new pan_dbEntities1();
+                pan_dbEntities db = new pan_dbEntities();
                 unidad_medida ln = new unidad_medida();
                 ln.nombre = collection.Get("nombre");
                 db.unidad_medida.Add(ln);
@@ -56,8 +56,8 @@ namespace MVC_Panderia.Controllers
         // GET: Unidad_medida/Edit/5
         public ActionResult Edit(int id)
         {
-            pan_dbEntities1 db = new pan_dbEntities1();
-            var Row = db.lineas.Where(s => s.Id == id).FirstOrDefault();
+            pan_dbEntities db = new pan_dbEntities();
+            var Row = db.linea.Where(s => s.Id == id).FirstOrDefault();
             return View(Row);
         }
 
@@ -68,7 +68,7 @@ namespace MVC_Panderia.Controllers
             try
             {
                 // TODO: Add update logic here
-                pan_dbEntities1 db = new pan_dbEntities1();
+                pan_dbEntities db = new pan_dbEntities();
                 unidad_medida ln = new unidad_medida();
                 ln = db.unidad_medida.Find(Convert.ToInt16(collection.Get("id")));
                 ln.nombre = collection.Get("nombre");
@@ -85,7 +85,7 @@ namespace MVC_Panderia.Controllers
         // GET: Unidad_medida/Delete/5
         public ActionResult Delete(int id)
         {
-            pan_dbEntities1 db = new pan_dbEntities1();
+            pan_dbEntities db = new pan_dbEntities();
             var Row = db.unidad_medida.Where(s => s.Id == id).FirstOrDefault();
             return View(Row);
         }
@@ -96,7 +96,7 @@ namespace MVC_Panderia.Controllers
         {
             try
             {
-                pan_dbEntities1 db = new pan_dbEntities1();
+                pan_dbEntities db = new pan_dbEntities();
                 unidad_medida ln = new unidad_medida();
                 ln = db.unidad_medida.Find(Convert.ToInt16(collection.Get("id")));
                 db.unidad_medida.Remove(ln);

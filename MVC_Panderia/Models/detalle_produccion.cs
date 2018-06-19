@@ -24,6 +24,6 @@ namespace MVC_Panderia.Models
         public virtual cabecera_produccion cabecera_produccion { get; set; }
         public virtual cabecera_receta cabecera_receta { get; set; }
         public virtual costo costo { get; set; }
-        public virtual precio_venta venta { get; set; }
+        public virtual precio_venta precio_venta { get; set; }
     }
 }

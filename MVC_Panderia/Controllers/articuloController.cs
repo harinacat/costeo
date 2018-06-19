@@ -9,12 +9,12 @@ namespace MVC_Panderia.Controllers
 {
     public class articuloController: Controller
     {
-        pan_dbEntities1 db = new pan_dbEntities1();
+        pan_dbEntities db = new pan_dbEntities();
 
         // GET: Linea
         public ActionResult Index()
         {
-            return View(db.articuloes.ToList());
+            return View(db.articulo.ToList());
         }
 
         // GET: Linea/Details/5
@@ -26,7 +26,7 @@ namespace MVC_Panderia.Controllers
         // GET: Linea/Create
         public ActionResult Create()
         {
-            ViewBag.familiaId = new SelectList(db.familias, "Id", "nombre");
+            ViewBag.familiaId = new SelectList(db.familia, "Id", "nombre");
             ViewBag.unidad_medidaId= new SelectList(db.unidad_medida, "Id", "nombre");
             return View();
         }
@@ -45,7 +45,7 @@ namespace MVC_Panderia.Controllers
                 ar.codigo_barra = collection.Get("codigo_barra");
                 ar.marca= collection.Get("marca");
                 ar.formato = collection.Get("formato");
-                db.articuloes.Add(ar);
+                db.articulo.Add(ar);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -59,8 +59,8 @@ namespace MVC_Panderia.Controllers
         public ActionResult Edit(int id)
         {
             
-            var Row = db.articuloes.Where(s => s.Id == id).FirstOrDefault();
-            ViewBag.familiaId = new SelectList(db.familias, "Id", "nombre", Row.familiaId );
+            var Row = db.articulo.Where(s => s.Id == id).FirstOrDefault();
+            ViewBag.familiaId = new SelectList(db.familia, "Id", "nombre", Row.familiaId );
             ViewBag.unidad_medidaId = new SelectList(db.unidad_medida, "Id", "nombre", Row.unidad_medidaId);
             return View(Row);
         }
@@ -73,7 +73,7 @@ namespace MVC_Panderia.Controllers
             {
                 // TODO: Add update logic here
                 articulo ar = new articulo();
-                ar = db.articuloes.Find(Convert.ToInt16(collection.Get("id")));
+                ar = db.articulo.Find(Convert.ToInt16(collection.Get("id")));
                 ar.familiaId = Convert.ToInt32(collection.Get("familiaId"));
                 ar.nombre = collection.Get("nombre");
                 ar.unidad_medidaId = Convert.ToInt32(collection.Get("unidad_medidaId"));
@@ -92,8 +92,8 @@ namespace MVC_Panderia.Controllers
         // GET: Linea/Delete/5
         public ActionResult Delete(int id)
         {
-            var Row = db.articuloes.Where(s => s.Id == id).FirstOrDefault();
-            ViewBag.familiaId = new SelectList(db.familias, "Id", "nombre", Row.familiaId);
+            var Row = db.articulo.Where(s => s.Id == id).FirstOrDefault();
+            ViewBag.familiaId = new SelectList(db.familia, "Id", "nombre", Row.familiaId);
             ViewBag.unidad_medidaId = new SelectList(db.unidad_medida, "Id", "nombre", Row.unidad_medidaId);
             return View(Row);
         }
@@ -105,8 +105,8 @@ namespace MVC_Panderia.Controllers
             try
             {
                 articulo ar = new articulo();
-                ar = db.articuloes.Find(Convert.ToInt16(collection.Get("id")));
-                db.articuloes.Remove(ar);
+                ar = db.articulo.Find(Convert.ToInt16(collection.Get("id")));
+                db.articulo.Remove(ar);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
