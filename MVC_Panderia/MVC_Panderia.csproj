@@ -385,6 +385,10 @@
     <Content Include="Views\usuario\Login.cshtml" />
     <Content Include="Views\analisis_costos_kilos\Index.cshtml" />
     <Content Include="Views\analisis_costos_jornada\Index.cshtml" />
+    <Content Include="Views\cabecera_receta\IndexDetail.cshtml" />
+    <Content Include="Views\cabecera_receta\CreateDetail.cshtml" />
+    <Content Include="Views\cabecera_receta\EditDetail.cshtml" />
+    <Content Include="Views\cabecera_receta\DeleteDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="fonts\" />
