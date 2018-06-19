@@ -9,7 +9,7 @@ namespace MVC_Panderia.Controllers
 {
     public class analisis_costos_jornadaController : Controller
     {
-        pan_dbEntities1 db = new pan_dbEntities1();
+        pan_dbEntities db = new pan_dbEntities();
 
         // GET: Linea
         public ActionResult Index()

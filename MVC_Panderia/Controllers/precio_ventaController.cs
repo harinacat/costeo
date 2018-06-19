@@ -10,7 +10,7 @@ namespace MVC_Panderia.Controllers
 {
     public class precio_ventaController : Controller
     {
-        pan_dbEntities1 db = new pan_dbEntities1();
+        pan_dbEntities db = new pan_dbEntities();
         // GET: Linea
         public ActionResult Index()
         {
@@ -36,7 +36,7 @@ namespace MVC_Panderia.Controllers
             try
             {
                 // TODO: Add insert logic here
-                pan_dbEntities1 db = new pan_dbEntities1();
+                pan_dbEntities db = new pan_dbEntities();
                 precio_venta pv = new precio_venta();
                 pv.fecha = Convert.ToDateTime(collection.Get("fecha"));
                 pv.valor = Convert.ToInt32(collection.Get("valor"));
@@ -55,7 +55,7 @@ namespace MVC_Panderia.Controllers
         // GET: Linea/Edit/5
         public ActionResult Edit(int id)
         {
-            pan_dbEntities1 db = new pan_dbEntities1();
+            pan_dbEntities db = new pan_dbEntities();
             var Row = db.precio_venta.Where(s => s.Id == id).FirstOrDefault();
             return View(Row);
         }
@@ -67,7 +67,7 @@ namespace MVC_Panderia.Controllers
             try
             {
                 // TODO: Add update logic here
-                pan_dbEntities1 db = new pan_dbEntities1();
+                pan_dbEntities db = new pan_dbEntities();
                 precio_venta pv = new precio_venta();
                 pv = db.precio_venta.Find(Convert.ToInt16(collection.Get("id")));
                 pv.fecha = Convert.ToDateTime(collection.Get("fecha"));
@@ -85,7 +85,7 @@ namespace MVC_Panderia.Controllers
         // GET: Linea/Delete/5
         public ActionResult Delete(int id)
         {
-            pan_dbEntities1 db = new pan_dbEntities1();
+            pan_dbEntities db = new pan_dbEntities();
             var Row = db.precio_venta.Where(s => s.Id == id).FirstOrDefault();
             return View(Row);
         }
@@ -96,7 +96,7 @@ namespace MVC_Panderia.Controllers
         {
             try
             {
-                pan_dbEntities1 db = new pan_dbEntities1();
+                pan_dbEntities db = new pan_dbEntities();
                 precio_venta pv = new precio_venta();
                 pv = db.precio_venta.Find(Convert.ToInt16(collection.Get("id")));
                 db.precio_venta.Remove(pv);

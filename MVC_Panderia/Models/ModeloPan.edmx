@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
   <!-- EF Runtime content -->
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="pan_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="articuloes">
+      <Schema Namespace="pan_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="articulo">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -31,7 +31,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="articuloId" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="costos">
+        <EntityType Name="costo">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -59,7 +59,7 @@
           <Property Name="cabecera_recetaId" Type="int" Nullable="false" />
           <Property Name="articuloId" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="familias">
+        <EntityType Name="familia">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -67,12 +67,20 @@
           <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
           <Property Name="lineaId" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="lineas">
+        <EntityType Name="linea">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="precio_venta">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+          <Property Name="valor" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="unidad_medida">
           <Key>
@@ -90,19 +98,11 @@
           <Property Name="contraseña" Type="nvarchar(max)" Nullable="false" />
           <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="ventas">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="fecha" Type="datetime" Nullable="false" />
-          <Property Name="valor" Type="int" Nullable="false" />
-        </EntityType>
         <Association Name="FK_articulocabecera_receta">
-          <End Role="articuloes" Type="Self.articuloes" Multiplicity="1" />
+          <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
           <End Role="cabecera_receta" Type="Self.cabecera_receta" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="articuloes">
+            <Principal Role="articulo">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="cabecera_receta">
@@ -111,10 +111,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_articulodetalle_receta">
-          <End Role="articuloes" Type="Self.articuloes" Multiplicity="1" />
+          <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
           <End Role="detalle_receta" Type="Self.detalle_receta" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="articuloes">
+            <Principal Role="articulo">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="detalle_receta">
@@ -159,10 +159,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_costodetalle_produccion">
-          <End Role="costos" Type="Self.costos" Multiplicity="1" />
+          <End Role="costo" Type="Self.costo" Multiplicity="1" />
           <End Role="detalle_produccion" Type="Self.detalle_produccion" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="costos">
+            <Principal Role="costo">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="detalle_produccion">
@@ -171,46 +171,46 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_familiaarticulo">
-          <End Role="familias" Type="Self.familias" Multiplicity="1" />
-          <End Role="articuloes" Type="Self.articuloes" Multiplicity="*" />
+          <End Role="familia" Type="Self.familia" Multiplicity="1" />
+          <End Role="articulo" Type="Self.articulo" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="familias">
+            <Principal Role="familia">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="articuloes">
+            <Dependent Role="articulo">
               <PropertyRef Name="familiaId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_lineafamilia">
-          <End Role="lineas" Type="Self.lineas" Multiplicity="1" />
-          <End Role="familias" Type="Self.familias" Multiplicity="*" />
+          <End Role="linea" Type="Self.linea" Multiplicity="1" />
+          <End Role="familia" Type="Self.familia" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="lineas">
+            <Principal Role="linea">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="familias">
+            <Dependent Role="familia">
               <PropertyRef Name="lineaId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_unidad_medidaarticulo">
           <End Role="unidad_medida" Type="Self.unidad_medida" Multiplicity="1" />
-          <End Role="articuloes" Type="Self.articuloes" Multiplicity="*" />
+          <End Role="articulo" Type="Self.articulo" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="unidad_medida">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="articuloes">
+            <Dependent Role="articulo">
               <PropertyRef Name="unidad_medidaId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ventadetalle_produccion">
-          <End Role="ventas" Type="Self.ventas" Multiplicity="1" />
+          <End Role="precio_venta" Type="Self.precio_venta" Multiplicity="1" />
           <End Role="detalle_produccion" Type="Self.detalle_produccion" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ventas">
+            <Principal Role="precio_venta">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="detalle_produccion">
@@ -219,23 +219,23 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="pan_dbModelStoreContainer">
-          <EntitySet Name="articuloes" EntityType="Self.articuloes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="articulo" EntityType="Self.articulo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="cabecera_produccion" EntityType="Self.cabecera_produccion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="cabecera_receta" EntityType="Self.cabecera_receta" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="costos" EntityType="Self.costos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="costo" EntityType="Self.costo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="detalle_produccion" EntityType="Self.detalle_produccion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="detalle_receta" EntityType="Self.detalle_receta" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="familias" EntityType="Self.familias" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="lineas" EntityType="Self.lineas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="familia" EntityType="Self.familia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="linea" EntityType="Self.linea" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="precio_venta" EntityType="Self.precio_venta" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="unidad_medida" EntityType="Self.unidad_medida" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ventas" EntityType="Self.ventas" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_articulocabecera_receta" Association="Self.FK_articulocabecera_receta">
-            <End Role="articuloes" EntitySet="articuloes" />
+            <End Role="articulo" EntitySet="articulo" />
             <End Role="cabecera_receta" EntitySet="cabecera_receta" />
           </AssociationSet>
           <AssociationSet Name="FK_articulodetalle_receta" Association="Self.FK_articulodetalle_receta">
-            <End Role="articuloes" EntitySet="articuloes" />
+            <End Role="articulo" EntitySet="articulo" />
             <End Role="detalle_receta" EntitySet="detalle_receta" />
           </AssociationSet>
           <AssociationSet Name="FK_cabecera_producciondetalle_produccion" Association="Self.FK_cabecera_producciondetalle_produccion">
@@ -251,98 +251,46 @@
             <End Role="detalle_receta" EntitySet="detalle_receta" />
           </AssociationSet>
           <AssociationSet Name="FK_costodetalle_produccion" Association="Self.FK_costodetalle_produccion">
-            <End Role="costos" EntitySet="costos" />
+            <End Role="costo" EntitySet="costo" />
             <End Role="detalle_produccion" EntitySet="detalle_produccion" />
           </AssociationSet>
           <AssociationSet Name="FK_familiaarticulo" Association="Self.FK_familiaarticulo">
-            <End Role="familias" EntitySet="familias" />
-            <End Role="articuloes" EntitySet="articuloes" />
+            <End Role="familia" EntitySet="familia" />
+            <End Role="articulo" EntitySet="articulo" />
           </AssociationSet>
           <AssociationSet Name="FK_lineafamilia" Association="Self.FK_lineafamilia">
-            <End Role="lineas" EntitySet="lineas" />
-            <End Role="familias" EntitySet="familias" />
+            <End Role="linea" EntitySet="linea" />
+            <End Role="familia" EntitySet="familia" />
           </AssociationSet>
           <AssociationSet Name="FK_unidad_medidaarticulo" Association="Self.FK_unidad_medidaarticulo">
             <End Role="unidad_medida" EntitySet="unidad_medida" />
-            <End Role="articuloes" EntitySet="articuloes" />
+            <End Role="articulo" EntitySet="articulo" />
           </AssociationSet>
           <AssociationSet Name="FK_ventadetalle_produccion" Association="Self.FK_ventadetalle_produccion">
-            <End Role="ventas" EntitySet="ventas" />
+            <End Role="precio_venta" EntitySet="precio_venta" />
             <End Role="detalle_produccion" EntitySet="detalle_produccion" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="pan_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="pan_dbEntities1" annotation:LazyLoadingEnabled="true" >
-          <EntitySet Name="articuloes" EntityType="pan_dbModel.articulo" />
-          <EntitySet Name="cabecera_produccion" EntityType="pan_dbModel.cabecera_produccion" />
-          <EntitySet Name="cabecera_receta" EntityType="pan_dbModel.cabecera_receta" />
-          <EntitySet Name="costos" EntityType="pan_dbModel.costo" />
-          <EntitySet Name="detalle_produccion" EntityType="pan_dbModel.detalle_produccion" />
-          <EntitySet Name="detalle_receta" EntityType="pan_dbModel.detalle_receta" />
-          <EntitySet Name="familias" EntityType="pan_dbModel.familia" />
-          <EntitySet Name="lineas" EntityType="pan_dbModel.linea" />
-          <EntitySet Name="unidad_medida" EntityType="pan_dbModel.unidad_medida" />
-          <EntitySet Name="precio_venta" EntityType="pan_dbModel.precio_venta" />
-          <AssociationSet Name="FK_articulocabecera_receta" Association="pan_dbModel.FK_articulocabecera_receta">
-            <End Role="articulo" EntitySet="articuloes" />
-            <End Role="cabecera_receta" EntitySet="cabecera_receta" />
-          </AssociationSet>
-          <AssociationSet Name="FK_articulodetalle_receta" Association="pan_dbModel.FK_articulodetalle_receta">
-            <End Role="articulo" EntitySet="articuloes" />
-            <End Role="detalle_receta" EntitySet="detalle_receta" />
-          </AssociationSet>
-          <AssociationSet Name="FK_familiaarticulo" Association="pan_dbModel.FK_familiaarticulo">
-            <End Role="familia" EntitySet="familias" />
-            <End Role="articulo" EntitySet="articuloes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_unidad_medidaarticulo" Association="pan_dbModel.FK_unidad_medidaarticulo">
-            <End Role="unidad_medida" EntitySet="unidad_medida" />
-            <End Role="articulo" EntitySet="articuloes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_cabecera_producciondetalle_produccion" Association="pan_dbModel.FK_cabecera_producciondetalle_produccion">
-            <End Role="cabecera_produccion" EntitySet="cabecera_produccion" />
-            <End Role="detalle_produccion" EntitySet="detalle_produccion" />
-          </AssociationSet>
-          <AssociationSet Name="FK_cabecera_recetadetalle_produccion" Association="pan_dbModel.FK_cabecera_recetadetalle_produccion">
-            <End Role="cabecera_receta" EntitySet="cabecera_receta" />
-            <End Role="detalle_produccion" EntitySet="detalle_produccion" />
-          </AssociationSet>
-          <AssociationSet Name="FK_cabecera_recetadetalle_receta" Association="pan_dbModel.FK_cabecera_recetadetalle_receta">
-            <End Role="cabecera_receta" EntitySet="cabecera_receta" />
-            <End Role="detalle_receta" EntitySet="detalle_receta" />
-          </AssociationSet>
-          <AssociationSet Name="FK_costodetalle_produccion" Association="pan_dbModel.FK_costodetalle_produccion">
-            <End Role="costo" EntitySet="costos" />
-            <End Role="detalle_produccion" EntitySet="detalle_produccion" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ventadetalle_produccion" Association="pan_dbModel.FK_ventadetalle_produccion">
-            <End Role="venta" EntitySet="precio_venta" />
-            <End Role="detalle_produccion" EntitySet="detalle_produccion" />
-          </AssociationSet>
-          <AssociationSet Name="FK_lineafamilia" Association="pan_dbModel.FK_lineafamilia">
-            <End Role="linea" EntitySet="lineas" />
-            <End Role="familia" EntitySet="familias" />
-          </AssociationSet>
-          <EntitySet Name="usuarios" EntityType="pan_dbModel.usuario" />
-        </EntityContainer>
         <EntityType Name="articulo">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="familiaId" Type="Int32" Nullable="false" />
-          <Property Name="nombre" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="unidad_medidaId" Type="Int32" Nullable="false" />
-          <Property Name="codigo_barra" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="marca" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="formato" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="cabecera_receta" Relationship="pan_dbModel.FK_articulocabecera_receta" FromRole="articulo" ToRole="cabecera_receta" />
-          <NavigationProperty Name="detalle_receta" Relationship="pan_dbModel.FK_articulodetalle_receta" FromRole="articulo" ToRole="detalle_receta" />
-          <NavigationProperty Name="familia" Relationship="pan_dbModel.FK_familiaarticulo" FromRole="articulo" ToRole="familia" />
-          <NavigationProperty Name="unidad_medida" Relationship="pan_dbModel.FK_unidad_medidaarticulo" FromRole="articulo" ToRole="unidad_medida" />
+          <Property Name="codigo_barra" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="marca" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="formato" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="cabecera_receta" Relationship="Self.FK_articulocabecera_receta" FromRole="articulo" ToRole="cabecera_receta" />
+          <NavigationProperty Name="detalle_receta" Relationship="Self.FK_articulodetalle_receta" FromRole="articulo" ToRole="detalle_receta" />
+          <NavigationProperty Name="familia" Relationship="Self.FK_familiaarticulo" FromRole="articulo" ToRole="familia" />
+          <NavigationProperty Name="unidad_medida" Relationship="Self.FK_unidad_medidaarticulo" FromRole="articulo" ToRole="unidad_medida" />
         </EntityType>
         <EntityType Name="cabecera_produccion">
           <Key>
@@ -350,7 +298,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="detalle_produccion" Relationship="pan_dbModel.FK_cabecera_producciondetalle_produccion" FromRole="cabecera_produccion" ToRole="detalle_produccion" />
+          <NavigationProperty Name="detalle_produccion" Relationship="Self.FK_cabecera_producciondetalle_produccion" FromRole="cabecera_produccion" ToRole="detalle_produccion" />
         </EntityType>
         <EntityType Name="cabecera_receta">
           <Key>
@@ -358,9 +306,9 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="articuloId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="articulo" Relationship="pan_dbModel.FK_articulocabecera_receta" FromRole="cabecera_receta" ToRole="articulo" />
-          <NavigationProperty Name="detalle_produccion" Relationship="pan_dbModel.FK_cabecera_recetadetalle_produccion" FromRole="cabecera_receta" ToRole="detalle_produccion" />
-          <NavigationProperty Name="detalle_receta" Relationship="pan_dbModel.FK_cabecera_recetadetalle_receta" FromRole="cabecera_receta" ToRole="detalle_receta" />
+          <NavigationProperty Name="articulo" Relationship="Self.FK_articulocabecera_receta" FromRole="cabecera_receta" ToRole="articulo" />
+          <NavigationProperty Name="detalle_produccion" Relationship="Self.FK_cabecera_recetadetalle_produccion" FromRole="cabecera_receta" ToRole="detalle_produccion" />
+          <NavigationProperty Name="detalle_receta" Relationship="Self.FK_cabecera_recetadetalle_receta" FromRole="cabecera_receta" ToRole="detalle_receta" />
         </EntityType>
         <EntityType Name="costo">
           <Key>
@@ -369,7 +317,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="valor" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="detalle_produccion" Relationship="pan_dbModel.FK_costodetalle_produccion" FromRole="costo" ToRole="detalle_produccion" />
+          <NavigationProperty Name="detalle_produccion" Relationship="Self.FK_costodetalle_produccion" FromRole="costo" ToRole="detalle_produccion" />
         </EntityType>
         <EntityType Name="detalle_produccion">
           <Key>
@@ -377,51 +325,43 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="cabecera_produccionId" Type="Int32" Nullable="false" />
-          <Property Name="kilos" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="kilos" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="cabecera_recetaId" Type="Int32" Nullable="false" />
           <Property Name="costoId" Type="Int32" Nullable="false" />
           <Property Name="ventaId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="cabecera_produccion" Relationship="pan_dbModel.FK_cabecera_producciondetalle_produccion" FromRole="detalle_produccion" ToRole="cabecera_produccion" />
-          <NavigationProperty Name="cabecera_receta" Relationship="pan_dbModel.FK_cabecera_recetadetalle_produccion" FromRole="detalle_produccion" ToRole="cabecera_receta" />
-          <NavigationProperty Name="costo" Relationship="pan_dbModel.FK_costodetalle_produccion" FromRole="detalle_produccion" ToRole="costo" />
-          <NavigationProperty Name="venta" Relationship="pan_dbModel.FK_ventadetalle_produccion" FromRole="detalle_produccion" ToRole="venta" />
+          <NavigationProperty Name="cabecera_produccion" Relationship="Self.FK_cabecera_producciondetalle_produccion" FromRole="detalle_produccion" ToRole="cabecera_produccion" />
+          <NavigationProperty Name="cabecera_receta" Relationship="Self.FK_cabecera_recetadetalle_produccion" FromRole="detalle_produccion" ToRole="cabecera_receta" />
+          <NavigationProperty Name="costo" Relationship="Self.FK_costodetalle_produccion" FromRole="detalle_produccion" ToRole="costo" />
+          <NavigationProperty Name="precio_venta" Relationship="Self.FK_ventadetalle_produccion" FromRole="detalle_produccion" ToRole="precio_venta" />
         </EntityType>
         <EntityType Name="detalle_receta">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="cantidad" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="cantidad" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="cabecera_recetaId" Type="Int32" Nullable="false" />
           <Property Name="articuloId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="articulo" Relationship="pan_dbModel.FK_articulodetalle_receta" FromRole="detalle_receta" ToRole="articulo" />
-          <NavigationProperty Name="cabecera_receta" Relationship="pan_dbModel.FK_cabecera_recetadetalle_receta" FromRole="detalle_receta" ToRole="cabecera_receta" />
+          <NavigationProperty Name="articulo" Relationship="Self.FK_articulodetalle_receta" FromRole="detalle_receta" ToRole="articulo" />
+          <NavigationProperty Name="cabecera_receta" Relationship="Self.FK_cabecera_recetadetalle_receta" FromRole="detalle_receta" ToRole="cabecera_receta" />
         </EntityType>
         <EntityType Name="familia">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="lineaId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="articuloes" Relationship="pan_dbModel.FK_familiaarticulo" FromRole="familia" ToRole="articulo" />
-          <NavigationProperty Name="linea" Relationship="pan_dbModel.FK_lineafamilia" FromRole="familia" ToRole="linea" />
+          <NavigationProperty Name="articulo" Relationship="Self.FK_familiaarticulo" FromRole="familia" ToRole="articulo" />
+          <NavigationProperty Name="linea" Relationship="Self.FK_lineafamilia" FromRole="familia" ToRole="linea" />
         </EntityType>
         <EntityType Name="linea">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="familias" Relationship="pan_dbModel.FK_lineafamilia" FromRole="linea" ToRole="familia" />
-        </EntityType>
-        <EntityType Name="unidad_medida">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="articuloes" Relationship="pan_dbModel.FK_unidad_medidaarticulo" FromRole="unidad_medida" ToRole="articulo" />
+          <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="familia" Relationship="Self.FK_lineafamilia" FromRole="linea" ToRole="familia" />
         </EntityType>
         <EntityType Name="precio_venta">
           <Key>
@@ -430,11 +370,28 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="valor" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="detalle_produccion" Relationship="pan_dbModel.FK_ventadetalle_produccion" FromRole="venta" ToRole="detalle_produccion" />
+          <NavigationProperty Name="detalle_produccion" Relationship="Self.FK_ventadetalle_produccion" FromRole="precio_venta" ToRole="detalle_produccion" />
+        </EntityType>
+        <EntityType Name="unidad_medida">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="articulo" Relationship="Self.FK_unidad_medidaarticulo" FromRole="unidad_medida" ToRole="articulo" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nombre_usuario" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="contraseña" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <Association Name="FK_articulocabecera_receta">
-          <End Type="pan_dbModel.articulo" Role="articulo" Multiplicity="1" />
-          <End Type="pan_dbModel.cabecera_receta" Role="cabecera_receta" Multiplicity="*" />
+          <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
+          <End Role="cabecera_receta" Type="Self.cabecera_receta" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="articulo">
               <PropertyRef Name="Id" />
@@ -445,8 +402,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_articulodetalle_receta">
-          <End Type="pan_dbModel.articulo" Role="articulo" Multiplicity="1" />
-          <End Type="pan_dbModel.detalle_receta" Role="detalle_receta" Multiplicity="*" />
+          <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
+          <End Role="detalle_receta" Type="Self.detalle_receta" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="articulo">
               <PropertyRef Name="Id" />
@@ -457,8 +414,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_familiaarticulo">
-          <End Type="pan_dbModel.familia" Role="familia" Multiplicity="1" />
-          <End Type="pan_dbModel.articulo" Role="articulo" Multiplicity="*" />
+          <End Role="familia" Type="Self.familia" Multiplicity="1" />
+          <End Role="articulo" Type="Self.articulo" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="familia">
               <PropertyRef Name="Id" />
@@ -469,8 +426,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_unidad_medidaarticulo">
-          <End Type="pan_dbModel.unidad_medida" Role="unidad_medida" Multiplicity="1" />
-          <End Type="pan_dbModel.articulo" Role="articulo" Multiplicity="*" />
+          <End Role="unidad_medida" Type="Self.unidad_medida" Multiplicity="1" />
+          <End Role="articulo" Type="Self.articulo" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="unidad_medida">
               <PropertyRef Name="Id" />
@@ -481,8 +438,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_cabecera_producciondetalle_produccion">
-          <End Type="pan_dbModel.cabecera_produccion" Role="cabecera_produccion" Multiplicity="1" />
-          <End Type="pan_dbModel.detalle_produccion" Role="detalle_produccion" Multiplicity="*" />
+          <End Role="cabecera_produccion" Type="Self.cabecera_produccion" Multiplicity="1" />
+          <End Role="detalle_produccion" Type="Self.detalle_produccion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="cabecera_produccion">
               <PropertyRef Name="Id" />
@@ -493,8 +450,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_cabecera_recetadetalle_produccion">
-          <End Type="pan_dbModel.cabecera_receta" Role="cabecera_receta" Multiplicity="1" />
-          <End Type="pan_dbModel.detalle_produccion" Role="detalle_produccion" Multiplicity="*" />
+          <End Role="cabecera_receta" Type="Self.cabecera_receta" Multiplicity="1" />
+          <End Role="detalle_produccion" Type="Self.detalle_produccion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="cabecera_receta">
               <PropertyRef Name="Id" />
@@ -505,8 +462,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_cabecera_recetadetalle_receta">
-          <End Type="pan_dbModel.cabecera_receta" Role="cabecera_receta" Multiplicity="1" />
-          <End Type="pan_dbModel.detalle_receta" Role="detalle_receta" Multiplicity="*" />
+          <End Role="cabecera_receta" Type="Self.cabecera_receta" Multiplicity="1" />
+          <End Role="detalle_receta" Type="Self.detalle_receta" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="cabecera_receta">
               <PropertyRef Name="Id" />
@@ -517,8 +474,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_costodetalle_produccion">
-          <End Type="pan_dbModel.costo" Role="costo" Multiplicity="1" />
-          <End Type="pan_dbModel.detalle_produccion" Role="detalle_produccion" Multiplicity="*" />
+          <End Role="costo" Type="Self.costo" Multiplicity="1" />
+          <End Role="detalle_produccion" Type="Self.detalle_produccion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="costo">
               <PropertyRef Name="Id" />
@@ -529,10 +486,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ventadetalle_produccion">
-          <End Type="pan_dbModel.precio_venta" Role="venta" Multiplicity="1" />
-          <End Type="pan_dbModel.detalle_produccion" Role="detalle_produccion" Multiplicity="*" />
+          <End Role="precio_venta" Type="Self.precio_venta" Multiplicity="1" />
+          <End Role="detalle_produccion" Type="Self.detalle_produccion" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="venta">
+            <Principal Role="precio_venta">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="detalle_produccion">
@@ -541,8 +498,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_lineafamilia">
-          <End Type="pan_dbModel.linea" Role="linea" Multiplicity="1" />
-          <End Type="pan_dbModel.familia" Role="familia" Multiplicity="*" />
+          <End Role="linea" Type="Self.linea" Multiplicity="1" />
+          <End Role="familia" Type="Self.familia" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="linea">
               <PropertyRef Name="Id" />
@@ -552,127 +509,172 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="usuario">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="nombre_usuario" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="contraseña" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        </Schema>
+        <EntityContainer Name="pan_dbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="articulo" EntityType="Self.articulo" />
+          <EntitySet Name="cabecera_produccion" EntityType="Self.cabecera_produccion" />
+          <EntitySet Name="cabecera_receta" EntityType="Self.cabecera_receta" />
+          <EntitySet Name="costo" EntityType="Self.costo" />
+          <EntitySet Name="detalle_produccion" EntityType="Self.detalle_produccion" />
+          <EntitySet Name="detalle_receta" EntityType="Self.detalle_receta" />
+          <EntitySet Name="familia" EntityType="Self.familia" />
+          <EntitySet Name="linea" EntityType="Self.linea" />
+          <EntitySet Name="precio_venta" EntityType="Self.precio_venta" />
+          <EntitySet Name="unidad_medida" EntityType="Self.unidad_medida" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" />
+          <AssociationSet Name="FK_articulocabecera_receta" Association="Self.FK_articulocabecera_receta">
+            <End Role="articulo" EntitySet="articulo" />
+            <End Role="cabecera_receta" EntitySet="cabecera_receta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_articulodetalle_receta" Association="Self.FK_articulodetalle_receta">
+            <End Role="articulo" EntitySet="articulo" />
+            <End Role="detalle_receta" EntitySet="detalle_receta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_familiaarticulo" Association="Self.FK_familiaarticulo">
+            <End Role="familia" EntitySet="familia" />
+            <End Role="articulo" EntitySet="articulo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_unidad_medidaarticulo" Association="Self.FK_unidad_medidaarticulo">
+            <End Role="unidad_medida" EntitySet="unidad_medida" />
+            <End Role="articulo" EntitySet="articulo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cabecera_producciondetalle_produccion" Association="Self.FK_cabecera_producciondetalle_produccion">
+            <End Role="cabecera_produccion" EntitySet="cabecera_produccion" />
+            <End Role="detalle_produccion" EntitySet="detalle_produccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cabecera_recetadetalle_produccion" Association="Self.FK_cabecera_recetadetalle_produccion">
+            <End Role="cabecera_receta" EntitySet="cabecera_receta" />
+            <End Role="detalle_produccion" EntitySet="detalle_produccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cabecera_recetadetalle_receta" Association="Self.FK_cabecera_recetadetalle_receta">
+            <End Role="cabecera_receta" EntitySet="cabecera_receta" />
+            <End Role="detalle_receta" EntitySet="detalle_receta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_costodetalle_produccion" Association="Self.FK_costodetalle_produccion">
+            <End Role="costo" EntitySet="costo" />
+            <End Role="detalle_produccion" EntitySet="detalle_produccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ventadetalle_produccion" Association="Self.FK_ventadetalle_produccion">
+            <End Role="precio_venta" EntitySet="precio_venta" />
+            <End Role="detalle_produccion" EntitySet="detalle_produccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_lineafamilia" Association="Self.FK_lineafamilia">
+            <End Role="linea" EntitySet="linea" />
+            <End Role="familia" EntitySet="familia" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="pan_dbModelStoreContainer" CdmEntityContainer="pan_dbEntities1">
-          <EntitySetMapping Name="articuloes">
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="pan_dbModelStoreContainer" CdmEntityContainer="pan_dbEntities">
+          <EntitySetMapping Name="articulo">
             <EntityTypeMapping TypeName="pan_dbModel.articulo">
-              <MappingFragment StoreEntitySet="articuloes">
-                <ScalarProperty Name="formato" ColumnName="formato" />
-                <ScalarProperty Name="marca" ColumnName="marca" />
-                <ScalarProperty Name="codigo_barra" ColumnName="codigo_barra" />
-                <ScalarProperty Name="unidad_medidaId" ColumnName="unidad_medidaId" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="familiaId" ColumnName="familiaId" />
+              <MappingFragment StoreEntitySet="articulo">
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="familiaId" ColumnName="familiaId" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="unidad_medidaId" ColumnName="unidad_medidaId" />
+                <ScalarProperty Name="codigo_barra" ColumnName="codigo_barra" />
+                <ScalarProperty Name="marca" ColumnName="marca" />
+                <ScalarProperty Name="formato" ColumnName="formato" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="cabecera_produccion">
             <EntityTypeMapping TypeName="pan_dbModel.cabecera_produccion">
               <MappingFragment StoreEntitySet="cabecera_produccion">
-                <ScalarProperty Name="fecha" ColumnName="fecha" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="cabecera_receta">
             <EntityTypeMapping TypeName="pan_dbModel.cabecera_receta">
               <MappingFragment StoreEntitySet="cabecera_receta">
-                <ScalarProperty Name="articuloId" ColumnName="articuloId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="articuloId" ColumnName="articuloId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="costos">
+          <EntitySetMapping Name="costo">
             <EntityTypeMapping TypeName="pan_dbModel.costo">
-              <MappingFragment StoreEntitySet="costos">
-                <ScalarProperty Name="valor" ColumnName="valor" />
-                <ScalarProperty Name="fecha" ColumnName="fecha" />
+              <MappingFragment StoreEntitySet="costo">
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="valor" ColumnName="valor" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="detalle_produccion">
             <EntityTypeMapping TypeName="pan_dbModel.detalle_produccion">
               <MappingFragment StoreEntitySet="detalle_produccion">
-                <ScalarProperty Name="ventaId" ColumnName="ventaId" />
-                <ScalarProperty Name="costoId" ColumnName="costoId" />
-                <ScalarProperty Name="cabecera_recetaId" ColumnName="cabecera_recetaId" />
-                <ScalarProperty Name="kilos" ColumnName="kilos" />
-                <ScalarProperty Name="cabecera_produccionId" ColumnName="cabecera_produccionId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="cabecera_produccionId" ColumnName="cabecera_produccionId" />
+                <ScalarProperty Name="kilos" ColumnName="kilos" />
+                <ScalarProperty Name="cabecera_recetaId" ColumnName="cabecera_recetaId" />
+                <ScalarProperty Name="costoId" ColumnName="costoId" />
+                <ScalarProperty Name="ventaId" ColumnName="ventaId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="detalle_receta">
             <EntityTypeMapping TypeName="pan_dbModel.detalle_receta">
               <MappingFragment StoreEntitySet="detalle_receta">
-                <ScalarProperty Name="articuloId" ColumnName="articuloId" />
-                <ScalarProperty Name="cabecera_recetaId" ColumnName="cabecera_recetaId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="cantidad" ColumnName="cantidad" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="cabecera_recetaId" ColumnName="cabecera_recetaId" />
+                <ScalarProperty Name="articuloId" ColumnName="articuloId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="familias">
+          <EntitySetMapping Name="familia">
             <EntityTypeMapping TypeName="pan_dbModel.familia">
-              <MappingFragment StoreEntitySet="familias">
-                <ScalarProperty Name="lineaId" ColumnName="lineaId" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              <MappingFragment StoreEntitySet="familia">
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="lineaId" ColumnName="lineaId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="lineas">
+          <EntitySetMapping Name="linea">
             <EntityTypeMapping TypeName="pan_dbModel.linea">
-              <MappingFragment StoreEntitySet="lineas">
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              <MappingFragment StoreEntitySet="linea">
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="precio_venta">
+            <EntityTypeMapping TypeName="pan_dbModel.precio_venta">
+              <MappingFragment StoreEntitySet="precio_venta">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="valor" ColumnName="valor" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="unidad_medida">
             <EntityTypeMapping TypeName="pan_dbModel.unidad_medida">
               <MappingFragment StoreEntitySet="unidad_medida">
+                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="precio_venta">
-            <EntityTypeMapping TypeName="pan_dbModel.precio_venta">
-              <MappingFragment StoreEntitySet="ventas">
-                <ScalarProperty Name="valor" ColumnName="valor" />
-                <ScalarProperty Name="fecha" ColumnName="fecha" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="usuarios">
+          <EntitySetMapping Name="usuario">
             <EntityTypeMapping TypeName="pan_dbModel.usuario">
               <MappingFragment StoreEntitySet="usuario">
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="contraseña" ColumnName="contraseña" />
-                <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
+                <ScalarProperty Name="contraseña" ColumnName="contraseña" />
+                <ScalarProperty Name="email" ColumnName="email" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
         </EntityContainerMapping>
-</Mapping></edmx:Mappings>
+      </Mapping>
+    </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -684,9 +686,9 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
       </DesignerInfoPropertySet>
     </Options>

@@ -13,8 +13,8 @@ namespace MVC_Panderia.Controllers
         // GET: Linea
         public ActionResult Index()
         {
-            pan_dbEntities1 db = new pan_dbEntities1();
-            var lineas = db.lineas.ToList();
+            pan_dbEntities db = new pan_dbEntities();
+            var lineas = db.linea.ToList();
             ViewBag.lineas = lineas;
             return View();
         }
@@ -38,10 +38,10 @@ namespace MVC_Panderia.Controllers
             try
             {
                 // TODO: Add insert logic here
-                pan_dbEntities1 db = new pan_dbEntities1();
+                pan_dbEntities db = new pan_dbEntities();
                 linea ln = new linea();
                 ln.nombre = collection.Get("nombre");
-                db.lineas.Add(ln);
+                db.linea.Add(ln);
                 db.SaveChanges();
 
 
@@ -56,8 +56,8 @@ namespace MVC_Panderia.Controllers
         // GET: Linea/Edit/5
         public ActionResult Edit(int id)
         {
-            pan_dbEntities1 db = new pan_dbEntities1();
-            var Row = db.lineas.Where(s => s.Id == id).FirstOrDefault();
+            pan_dbEntities db = new pan_dbEntities();
+            var Row = db.linea.Where(s => s.Id == id).FirstOrDefault();
             return View(Row);
         }
 
@@ -68,9 +68,9 @@ namespace MVC_Panderia.Controllers
             try
             {
                 // TODO: Add update logic here
-                pan_dbEntities1 db = new pan_dbEntities1();
+                pan_dbEntities db = new pan_dbEntities();
                 linea ln = new linea();
-                ln = db.lineas.Find(Convert.ToInt16(collection.Get("id")));
+                ln = db.linea.Find(Convert.ToInt16(collection.Get("id")));
                 ln.nombre = collection.Get("nombre");
                 db.SaveChanges();
 
@@ -85,8 +85,8 @@ namespace MVC_Panderia.Controllers
         // GET: Linea/Delete/5
         public ActionResult Delete(int id)
         {
-            pan_dbEntities1 db = new pan_dbEntities1();
-            var Row = db.lineas.Where(s => s.Id == id).FirstOrDefault();
+            pan_dbEntities db = new pan_dbEntities();
+            var Row = db.linea.Where(s => s.Id == id).FirstOrDefault();
             return View(Row);
         }
 
@@ -96,10 +96,10 @@ namespace MVC_Panderia.Controllers
         {
             try
             {
-                pan_dbEntities1 db = new pan_dbEntities1();
+                pan_dbEntities db = new pan_dbEntities();
                 linea ln = new linea();
-                ln = db.lineas.Find(Convert.ToInt16(collection.Get("id")));
-                db.lineas.Remove(ln);
+                ln = db.linea.Find(Convert.ToInt16(collection.Get("id")));
+                db.linea.Remove(ln);
                 db.SaveChanges();
 
                 return RedirectToAction("Index");

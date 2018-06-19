@@ -11,7 +11,7 @@ namespace MVC_Panderia.Controllers
 {
     public class usuarioController : Controller
     {
-        pan_dbEntities1 db = new pan_dbEntities1();
+        pan_dbEntities db = new pan_dbEntities();
 
         // GET: /Account/Login
         [AllowAnonymous]
@@ -24,7 +24,7 @@ namespace MVC_Panderia.Controllers
         public ActionResult signIn(FormCollection collection)
         {
             //var Row = db.usuarios.Where(s => s.Id == collection.Get("Id")).FirstOrDefault();
-            var Row = db.usuarios.Find(collection.Get("Id"));
+            var Row = db.usuario.Find(collection.Get("Id"));
             if (Row!=null)
             {
                 Helpers.sha1 OjbSha1 = new Helpers.sha1();
@@ -56,7 +56,7 @@ namespace MVC_Panderia.Controllers
         // GET: Linea
         public ActionResult Index()
         {
-            return View(db.usuarios.ToList());
+            return View(db.usuario.ToList());
         }
 
         // GET: Linea/Details/5
@@ -78,7 +78,7 @@ namespace MVC_Panderia.Controllers
             try
             {
                 // TODO: Add insert logic here
-                pan_dbEntities1 db = new pan_dbEntities1();
+                pan_dbEntities db = new pan_dbEntities();
                 usuario usr = new usuario();
                 usr.Id = collection.Get("Id");
                 usr.nombre_usuario = collection.Get("nombre_usuario");
@@ -92,7 +92,7 @@ namespace MVC_Panderia.Controllers
                     usr.contraseña = collection.Get("contraseña");
                 }
                 usr.email = collection.Get("email");
-                db.usuarios.Add(usr);
+                db.usuario.Add(usr);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -105,8 +105,8 @@ namespace MVC_Panderia.Controllers
         // GET: Linea/Edit/5
         public ActionResult Edit(string id)
         {
-            pan_dbEntities1 db = new pan_dbEntities1();
-            var Row = db.usuarios.Where(s => s.Id == id).FirstOrDefault();
+            pan_dbEntities db = new pan_dbEntities();
+            var Row = db.usuario.Where(s => s.Id == id).FirstOrDefault();
             return View(Row);
         }
 
@@ -117,9 +117,9 @@ namespace MVC_Panderia.Controllers
             try
             {
                 // TODO: Add update logic here
-                pan_dbEntities1 db = new pan_dbEntities1();
+                pan_dbEntities db = new pan_dbEntities();
                 usuario usr = new usuario();
-                usr = db.usuarios.Find(id);
+                usr = db.usuario.Find(id);
                 usr.nombre_usuario = collection.Get("nombre_usuario");
                 if (txt_password_confirmar != null)
                 {
@@ -144,8 +144,8 @@ namespace MVC_Panderia.Controllers
         // GET: Linea/Delete/5
         public ActionResult Delete(string id)
         {
-            pan_dbEntities1 db = new pan_dbEntities1();
-            var Row = db.usuarios.Where(s => s.Id == id).FirstOrDefault();
+            pan_dbEntities db = new pan_dbEntities();
+            var Row = db.usuario.Where(s => s.Id == id).FirstOrDefault();
             return View(Row);
         }
 
@@ -155,10 +155,10 @@ namespace MVC_Panderia.Controllers
         {
             try
             {
-                pan_dbEntities1 db = new pan_dbEntities1();
+                pan_dbEntities db = new pan_dbEntities();
                 usuario usr = new usuario();
-                usr = db.usuarios.Find(id);
-                db.usuarios.Remove(usr);
+                usr = db.usuario.Find(id);
+                db.usuario.Remove(usr);
                 db.SaveChanges();
 
                 return RedirectToAction("Index");

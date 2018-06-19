@@ -13,8 +13,8 @@ namespace MVC_Panderia.Controllers
         // GET: Costo
         public ActionResult Index()
         {
-            pan_dbEntities1 db = new pan_dbEntities1();
-            return View(db.costos.ToList());
+            pan_dbEntities db = new pan_dbEntities();
+            return View(db.costo.ToList());
         }
 
         // GET: Costo/Details/5
@@ -36,11 +36,11 @@ namespace MVC_Panderia.Controllers
             try
             {
                 // TODO: Add insert logic here
-                pan_dbEntities1 db = new pan_dbEntities1();
+                pan_dbEntities db = new pan_dbEntities();
                 costo cs = new costo();
                 cs.fecha = Convert.ToDateTime(collection.Get("fecha"));
                 cs.valor = Convert.ToInt32(collection.Get("valor"));
-                db.costos.Add(cs);
+                db.costo.Add(cs);
                 db.SaveChanges();
 
 
@@ -55,8 +55,8 @@ namespace MVC_Panderia.Controllers
         // GET: Costo/Edit/5
         public ActionResult Edit(int id)
         {
-            pan_dbEntities1 db = new pan_dbEntities1();
-            var Row = db.costos.Where(s => s.Id == id).FirstOrDefault();
+            pan_dbEntities db = new pan_dbEntities();
+            var Row = db.costo.Where(s => s.Id == id).FirstOrDefault();
             return View(Row);
         }
 
@@ -67,9 +67,9 @@ namespace MVC_Panderia.Controllers
             try
             {
                 // TODO: Add update logic here
-                pan_dbEntities1 db = new pan_dbEntities1();
+                pan_dbEntities db = new pan_dbEntities();
                 costo cs = new costo();
-                cs = db.costos.Find(Convert.ToInt16(collection.Get("id")));
+                cs = db.costo.Find(Convert.ToInt16(collection.Get("id")));
                 cs.fecha = Convert.ToDateTime(collection.Get("fecha"));
                 cs.valor = Convert.ToInt32(collection.Get("valor"));
                 db.SaveChanges();
@@ -85,8 +85,8 @@ namespace MVC_Panderia.Controllers
         // GET: Costo/Delete/5
         public ActionResult Delete(int id)
         {
-            pan_dbEntities1 db = new pan_dbEntities1();
-            var Row = db.costos.Where(s => s.Id == id).FirstOrDefault();
+            pan_dbEntities db = new pan_dbEntities();
+            var Row = db.costo.Where(s => s.Id == id).FirstOrDefault();
             return View(Row);
         }
 
@@ -96,10 +96,10 @@ namespace MVC_Panderia.Controllers
         {
             try
             {
-                pan_dbEntities1 db = new pan_dbEntities1();
+                pan_dbEntities db = new pan_dbEntities();
                 costo cs = new costo();
-                cs = db.costos.Find(Convert.ToInt16(collection.Get("id")));
-                db.costos.Remove(cs);
+                cs = db.costo.Find(Convert.ToInt16(collection.Get("id")));
+                db.costo.Remove(cs);
                 db.SaveChanges();
 
                 return RedirectToAction("Index");

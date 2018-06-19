@@ -16,14 +16,14 @@ namespace MVC_Panderia.Models
     {
         public familia()
         {
-            this.articuloes = new HashSet<articulo>();
+            this.articulo = new HashSet<articulo>();
         }
     
         public int Id { get; set; }
         public string nombre { get; set; }
         public int lineaId { get; set; }
     
-        public virtual ICollection<articulo> articuloes { get; set; }
+        public virtual ICollection<articulo> articulo { get; set; }
         public virtual linea linea { get; set; }
     }
 }

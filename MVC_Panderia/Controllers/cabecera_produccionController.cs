@@ -13,7 +13,7 @@ namespace MVC_Panderia.Controllers
         // GET: Linea
         public ActionResult Index()
         {
-            pan_dbEntities1 db = new pan_dbEntities1();
+            pan_dbEntities db = new pan_dbEntities();
             var cabecera_produccion = db.cabecera_produccion.ToList();
             ViewBag.cabecera_produccion = cabecera_produccion;
             return View();
@@ -38,7 +38,7 @@ namespace MVC_Panderia.Controllers
             try
             {
                 // TODO: Add insert logic here
-                pan_dbEntities1 db = new pan_dbEntities1();
+                pan_dbEntities db = new pan_dbEntities();
                 cabecera_produccion ln = new cabecera_produccion();
                 ln.fecha = Convert.ToDateTime(collection.Get("fecha"));
                 db.cabecera_produccion.Add(ln);
@@ -56,7 +56,7 @@ namespace MVC_Panderia.Controllers
         // GET: Linea/Edit/5
         public ActionResult Edit(int id)
         {
-            pan_dbEntities1 db = new pan_dbEntities1();
+            pan_dbEntities db = new pan_dbEntities();
             var Row = db.cabecera_produccion.Where(s => s.Id == id).FirstOrDefault();
             return View(Row);
         }
@@ -68,7 +68,7 @@ namespace MVC_Panderia.Controllers
             try
             {
                 // TODO: Add update logic here
-                pan_dbEntities1 db = new pan_dbEntities1();
+                pan_dbEntities db = new pan_dbEntities();
                 cabecera_produccion ln = new cabecera_produccion();
                 ln = db.cabecera_produccion.Find(Convert.ToInt16(collection.Get("fecha")));
                 ln.fecha = Convert.ToDateTime(collection.Get("fecha"));
@@ -85,7 +85,7 @@ namespace MVC_Panderia.Controllers
         // GET: Linea/Delete/5
         public ActionResult Delete(int id)
         {
-            pan_dbEntities1 db = new pan_dbEntities1();
+            pan_dbEntities db = new pan_dbEntities();
             var Row = db.cabecera_produccion.Where(s => s.Id == id).FirstOrDefault();
             return View(Row);
         }
@@ -96,7 +96,7 @@ namespace MVC_Panderia.Controllers
         {
             try
             {
-                pan_dbEntities1 db = new pan_dbEntities1();
+                pan_dbEntities db = new pan_dbEntities();
                 cabecera_produccion ln = new cabecera_produccion();
                 ln = db.cabecera_produccion.Find(Convert.ToInt16(collection.Get("id")));
                 db.cabecera_produccion.Remove(ln);

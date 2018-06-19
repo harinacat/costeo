@@ -13,10 +13,10 @@ namespace MVC_Panderia.Controllers
         // GET: Familia
         public ActionResult Index()
         {
-            pan_dbEntities1 db = new pan_dbEntities1();
-            var familias = db.familias.ToList();
+            pan_dbEntities db = new pan_dbEntities();
+            var familias = db.familia.ToList();
             ViewBag.familias = familias;
-            return View(db.familias.ToList());
+            return View(db.familia.ToList());
         }
 
         // GET: Familia/Details/5
@@ -29,8 +29,8 @@ namespace MVC_Panderia.Controllers
         public ActionResult Create()
         {
            
-            pan_dbEntities1 db = new pan_dbEntities1();
-            ViewBag.lineaId = new SelectList(db.lineas, "Id", "nombre");
+            pan_dbEntities db = new pan_dbEntities();
+            ViewBag.lineaId = new SelectList(db.linea, "Id", "nombre");
             return View();
 
         }
@@ -42,11 +42,11 @@ namespace MVC_Panderia.Controllers
             try
             {
                
-                pan_dbEntities1 db = new pan_dbEntities1();
+                pan_dbEntities db = new pan_dbEntities();
                 familia fml = new familia();
                 fml.lineaId = Convert.ToInt32(collection.Get("lineaId"));
                 fml.nombre = collection.Get("nombre");
-                db.familias.Add(fml);
+                db.familia.Add(fml);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -59,9 +59,9 @@ namespace MVC_Panderia.Controllers
         // GET: Linea/Edit/5
         public ActionResult Edit(int id)
         {
-            pan_dbEntities1 db = new pan_dbEntities1();
-            var Row = db.familias.Where(s => s.Id == id).FirstOrDefault();
-            ViewBag.lineaId = new SelectList(db.lineas, "Id", "nombre", Row.lineaId);
+            pan_dbEntities db = new pan_dbEntities();
+            var Row = db.familia.Where(s => s.Id == id).FirstOrDefault();
+            ViewBag.lineaId = new SelectList(db.linea, "Id", "nombre", Row.lineaId);
             return View(Row);
      
         }
@@ -73,9 +73,9 @@ namespace MVC_Panderia.Controllers
             try
             {
                 // TODO: Add update logic here
-                pan_dbEntities1 db = new pan_dbEntities1();
+                pan_dbEntities db = new pan_dbEntities();
                 familia fml = new familia();
-                fml = db.familias.Find(Convert.ToInt16(collection.Get("id")));
+                fml = db.familia.Find(Convert.ToInt16(collection.Get("id")));
                 fml.nombre = collection.Get("nombre");
                 fml.lineaId = Convert.ToInt16(collection.Get("lineaId"));
                
@@ -92,9 +92,9 @@ namespace MVC_Panderia.Controllers
         //// GET: Familia/Delete/5
         public ActionResult Delete(int id)
         {
-            pan_dbEntities1 db = new pan_dbEntities1();
-            var Row = db.familias.Where(s => s.Id == id).FirstOrDefault();
-            ViewBag.lineaId = new SelectList(db.lineas, "Id", "nombre", Row.lineaId);
+            pan_dbEntities db = new pan_dbEntities();
+            var Row = db.familia.Where(s => s.Id == id).FirstOrDefault();
+            ViewBag.lineaId = new SelectList(db.linea, "Id", "nombre", Row.lineaId);
             return View(Row);
         }
 
@@ -104,10 +104,10 @@ namespace MVC_Panderia.Controllers
         {
             try
             {
-                pan_dbEntities1 db = new pan_dbEntities1();
+                pan_dbEntities db = new pan_dbEntities();
                 familia fml = new familia();
-                fml = db.familias.Find(Convert.ToInt16(collection.Get("id")));
-                db.familias.Remove(fml);
+                fml = db.familia.Find(Convert.ToInt16(collection.Get("id")));
+                db.familia.Remove(fml);
                 db.SaveChanges();
 
                 return RedirectToAction("Index");
