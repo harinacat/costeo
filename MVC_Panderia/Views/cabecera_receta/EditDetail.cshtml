@@ -1,24 +1,23 @@
-﻿@model MVC_Panderia.Models.cabecera_receta
+﻿@model MVC_Panderia.Models.detalle_receta
 
 @{
-    ViewBag.Title = "Editar Receta";
+    ViewBag.Title = "Editar Detalle Receta";
 }
 
-@using (Html.BeginForm())
-{
+<form method="post" action="@Url.Action("EditDetail", "cabecera_receta", new {id_cabecera=ViewBag.cabecera_recetaId,  nombre=ViewBag.NombreReceta })">
+    
     <div class="row  pb-2">
         <div class="col-12"><h4>@ViewBag.Title </h4></div>
     </div>
     @Html.HiddenFor(model => model.Id)
     <div class="form-group">
-        <label>Id</label>
-        @Html.EditorFor(model => model.Id, new { htmlAttributes = new { @class = "form-control" } })
+
         <label>Articulo</label>
         @Html.DropDownList("articuloId", null, htmlAttributes: new { @class = "form-control" })
+        <label>Cantidad</label>
+        @Html.EditorFor(model => model.cantidad, new { htmlAttributes = new { @class = "form-control" } })
     </div>
-
-
 
     <button type="submit" value="Save" class="btn btn-success pl-2">Guardar</button>
     <button type="button" value="Cancel" class="btn btn-primary pl-2" onclick="javascript:document.location.href='@Url.Action("Index", "costo")'">Cancelar</button>
-}
+ </form>
