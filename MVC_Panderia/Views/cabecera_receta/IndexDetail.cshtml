@@ -8,8 +8,12 @@
     <div class="row  pb-2">
         <div class="col-6"><h4>@ViewBag.Title </h4></div>
         <div class="col-6">
-            @Html.ActionLink("Nuevo Detalle Receta", "CreateDetail", "cabecera_receta", new { id = ViewBag.cabecera_recetaId, nombre=ViewBag.NombreReceta },  new { @class = "btn btn-primary float-right" })
+            @Html.ActionLink("Nuevo Detalle Receta", "CreateDetail", "cabecera_receta", new { id = ViewBag.cabecera_recetaId, nombre = ViewBag.NombreReceta }, new { @class = "btn btn-primary float-right" })
         </div>
+    </div>
+    <div>
+        <p>Receta equivalente a producir 1 kilo del producto @ViewBag.NombreReceta</p>
+        
     </div>
     <div class="row">
         <div class="table-responsive col-12">
