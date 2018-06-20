@@ -160,8 +160,6 @@
     <Compile Include="Controllers\cabecera_recetaController.cs" />
     <Compile Include="Controllers\cabecera_produccionController.cs" />
     <Compile Include="Controllers\costoController.cs" />
-    <Compile Include="Controllers\detalle_recetaController.cs" />
-    <Compile Include="Controllers\detalle_produccionController.cs" />
     <Compile Include="Controllers\familiaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\lineaController.cs" />
@@ -353,14 +351,6 @@
     <Content Include="Views\costo\Delete.cshtml" />
     <Content Include="Views\costo\Edit.cshtml" />
     <Content Include="Views\costo\Index.cshtml" />
-    <Content Include="Views\detalle_produccion\Create.cshtml" />
-    <Content Include="Views\detalle_produccion\Delete.cshtml" />
-    <Content Include="Views\detalle_produccion\Edit.cshtml" />
-    <Content Include="Views\detalle_produccion\Index.cshtml" />
-    <Content Include="Views\detalle_receta\Create.cshtml" />
-    <Content Include="Views\detalle_receta\Delete.cshtml" />
-    <Content Include="Views\detalle_receta\Edit.cshtml" />
-    <Content Include="Views\detalle_receta\Index.cshtml" />
     <Content Include="Views\familia\Create.cshtml" />
     <Content Include="Views\familia\Delete.cshtml" />
     <Content Include="Views\familia\Edit.cshtml" />
