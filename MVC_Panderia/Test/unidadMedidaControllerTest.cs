@@ -57,7 +57,7 @@ namespace MVC_Panderia.Tests.Controllers
             unidad_medidaController controller = new unidad_medidaController();
 
             // Act
-            ViewResult result = controller.Delete(1) as ViewResult;
+            ViewResult result = controller.Delete(0) as ViewResult;
 
             // Assert
             Assert.IsNotNull(result);

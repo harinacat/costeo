@@ -54,6 +54,10 @@ namespace MVC_Panderia.Controllers
         public ActionResult Edit(int id)
         {
             var Row = db.cabecera_receta.Where(s => s.Id == id).FirstOrDefault();
+            if (Row == null)
+            {
+                return View();
+            }
             ViewBag.articuloId = new SelectList(db.articulo, "Id", "nombre", Row.articuloId);
             return View(Row);
         }
@@ -82,6 +86,10 @@ namespace MVC_Panderia.Controllers
         public ActionResult Delete(int id)
         {
             var Row = db.cabecera_receta.Where(s => s.Id == id).FirstOrDefault();
+            if (Row == null)
+            {
+                return View();
+            }
             ViewBag.articuloId = new SelectList(db.articulo, "Id", "nombre", Row.articuloId);
             return View(Row);
         }
@@ -150,6 +158,10 @@ namespace MVC_Panderia.Controllers
             ViewBag.NombreReceta = nombre;
             ViewBag.cabecera_recetaId = id_cabecera;
             var Row = db.detalle_receta.Where(s => s.Id == id).FirstOrDefault();
+            if (Row == null)
+            {
+                return View();
+            }
             ViewBag.articuloId = new SelectList(db.articulo, "Id", "nombre", Row.articuloId);
             return View(Row);
         }
@@ -181,6 +193,10 @@ namespace MVC_Panderia.Controllers
             ViewBag.NombreReceta = nombre;
             ViewBag.cabecera_recetaId = id_cabecera;
             var Row = db.detalle_receta.Where(s => s.Id == id).FirstOrDefault();
+            if (Row == null)
+            {
+                return View();
+            }
             ViewBag.articuloId = new SelectList(db.articulo, "Id", "nombre", Row.articuloId);
             return View(Row);
         }

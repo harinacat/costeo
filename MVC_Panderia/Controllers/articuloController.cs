@@ -60,6 +60,10 @@ namespace MVC_Panderia.Controllers
         {
             
             var Row = db.articulo.Where(s => s.Id == id).FirstOrDefault();
+            if (Row == null)
+            {
+                return View();
+            }
             ViewBag.familiaId = new SelectList(db.familia, "Id", "nombre", Row.familiaId );
             ViewBag.unidad_medidaId = new SelectList(db.unidad_medida, "Id", "nombre", Row.unidad_medidaId);
             return View(Row);
@@ -93,6 +97,10 @@ namespace MVC_Panderia.Controllers
         public ActionResult Delete(int id)
         {
             var Row = db.articulo.Where(s => s.Id == id).FirstOrDefault();
+            if(Row==null)
+            {
+                return View();
+            }
             ViewBag.familiaId = new SelectList(db.familia, "Id", "nombre", Row.familiaId);
             ViewBag.unidad_medidaId = new SelectList(db.unidad_medida, "Id", "nombre", Row.unidad_medidaId);
             return View(Row);

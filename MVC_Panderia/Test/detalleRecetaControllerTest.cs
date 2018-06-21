@@ -57,7 +57,7 @@
 //            detalle_recetaController controller = new detalle_recetaController();
 
 //            // Act
-//            ViewResult result = controller.Delete(1) as ViewResult;
+//            ViewResult result = controller.Delete(0) as ViewResult;
 
 //            // Assert
 //            Assert.IsNotNull(result);

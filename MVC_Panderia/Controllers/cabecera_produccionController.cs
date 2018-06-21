@@ -58,6 +58,10 @@ namespace MVC_Panderia.Controllers
         {
             pan_dbEntities db = new pan_dbEntities();
             var Row = db.cabecera_produccion.Where(s => s.Id == id).FirstOrDefault();
+            if (Row == null)
+            {
+                return View();
+            }
             return View(Row);
         }
 
@@ -87,6 +91,10 @@ namespace MVC_Panderia.Controllers
         {
             pan_dbEntities db = new pan_dbEntities();
             var Row = db.cabecera_produccion.Where(s => s.Id == id).FirstOrDefault();
+            if (Row == null)
+            {
+                return View();
+            }
             return View(Row);
         }
 

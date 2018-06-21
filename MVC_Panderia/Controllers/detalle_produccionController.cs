@@ -60,8 +60,12 @@ namespace MVC_Panderia.Controllers
         public ActionResult Edit(int id)
         {
                 pan_dbEntities db = new pan_dbEntities();
-            var Row = db.cabecera_produccion.Where(s => s.Id == id).FirstOrDefault();
-            return View(Row);
+                var Row = db.cabecera_produccion.Where(s => s.Id == id).FirstOrDefault();
+                if (Row == null)
+                {
+                    return View();
+                }
+                return View(Row);
         }
 
         // POST: Linea/Edit/5
@@ -90,6 +94,10 @@ namespace MVC_Panderia.Controllers
         {
             pan_dbEntities db = new pan_dbEntities();
             var Row = db.cabecera_produccion.Where(s => s.Id == id).FirstOrDefault();
+            if (Row == null)
+            {
+                return View();
+            }
             return View(Row);
         }
 

@@ -57,7 +57,7 @@ namespace MVC_Panderia.Tests.Controllers
             costoController controller = new costoController();
 
             // Act
-            ViewResult result = controller.Delete(1) as ViewResult;
+            ViewResult result = controller.Delete(0) as ViewResult;
 
             // Assert
             Assert.IsNotNull(result);

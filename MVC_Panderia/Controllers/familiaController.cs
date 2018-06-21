@@ -61,6 +61,10 @@ namespace MVC_Panderia.Controllers
         {
             pan_dbEntities db = new pan_dbEntities();
             var Row = db.familia.Where(s => s.Id == id).FirstOrDefault();
+            if (Row == null)
+            {
+                return View();
+            }
             ViewBag.lineaId = new SelectList(db.linea, "Id", "nombre", Row.lineaId);
             return View(Row);
      
@@ -94,6 +98,10 @@ namespace MVC_Panderia.Controllers
         {
             pan_dbEntities db = new pan_dbEntities();
             var Row = db.familia.Where(s => s.Id == id).FirstOrDefault();
+            if (Row == null)
+            {
+                return View();
+            }
             ViewBag.lineaId = new SelectList(db.linea, "Id", "nombre", Row.lineaId);
             return View(Row);
         }
