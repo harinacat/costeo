@@ -82,6 +82,10 @@ namespace MVC_Panderia.Controllers
         public ActionResult Delete(int id)
         {
             var Row = db.cabecera_receta.Where(s => s.Id == id).FirstOrDefault();
+            if(Row==null)
+            {
+                return View();
+            }
             ViewBag.articuloId = new SelectList(db.articulo, "Id", "nombre", Row.articuloId);
             return View(Row);
         }
