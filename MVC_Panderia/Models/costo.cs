@@ -14,15 +14,10 @@ namespace MVC_Panderia.Models
     
     public partial class costo
     {
-        public costo()
-        {
-            this.detalle_produccion = new HashSet<detalle_produccion>();
-        }
-    
-        public int Id { get; set; }
+        public int cabecera_recetaId { get; set; }
         public System.DateTime fecha { get; set; }
         public int valor { get; set; }
     
-        public virtual ICollection<detalle_produccion> detalle_produccion { get; set; }
+        public virtual cabecera_receta cabecera_receta { get; set; }
     }
 }
