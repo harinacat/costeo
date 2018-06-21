@@ -374,6 +374,10 @@
     <Content Include="Views\cabecera_receta\CreateDetail.cshtml" />
     <Content Include="Views\cabecera_receta\EditDetail.cshtml" />
     <Content Include="Views\cabecera_receta\DeleteDetail.cshtml" />
+    <Content Include="Views\cabecera_receta\IndexDetailCosto.cshtml" />
+    <Content Include="Views\cabecera_receta\CreateDetailCosto.cshtml" />
+    <Content Include="Views\cabecera_receta\EditDetailCosto.cshtml" />
+    <Content Include="Views\cabecera_receta\DeleteDetailCosto.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

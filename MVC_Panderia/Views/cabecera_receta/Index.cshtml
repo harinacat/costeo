@@ -31,7 +31,9 @@
                         <td>
                             @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-primary pl-2" })
                             @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }, new { @class = "btn btn-primary pl-2" })
-                            @Html.ActionLink("Detalle", "IndexDetail", new { id = item.Id, nombre = item.articulo.nombre  }, new { @class = "btn btn-primary pl-2" })
+                            @Html.ActionLink("Detalle", "IndexDetail", new { id = item.Id, nombre = item.articulo.nombre }, new { @class = "btn btn-primary pl-2" })
+                            @Html.ActionLink("Costo", "IndexDetailCosto", new { id = item.Id, nombre = item.articulo.nombre }, new { @class = "btn btn-primary pl-2" })
+                            @Html.ActionLink("Precio Venta", "IndexDetailPrecioVenta", new { id = item.Id, nombre = item.articulo.nombre }, new { @class = "btn btn-primary pl-2" })
                         </td>
                     </tr>
                 }

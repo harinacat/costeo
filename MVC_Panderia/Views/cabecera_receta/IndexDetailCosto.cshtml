@@ -1,0 +1,46 @@
+﻿@model IEnumerable<MVC_Panderia.Models.costo>
+
+@{
+    ViewBag.Title = "Costo " + ViewBag.NombreReceta;
+}
+@using (Html.BeginForm())
+{
+    <div class="row  pb-2">
+        <div class="col-6"><h4>@ViewBag.Title </h4></div>
+        <div class="col-6">
+            @Html.ActionLink("Nuevo Costo", "CreateDetailCosto", "cabecera_receta", new { id = ViewBag.cabecera_recetaId, nombre = ViewBag.NombreReceta }, new { @class = "btn btn-primary float-right" })
+        </div>
+    </div>
+    <div>
+        <p>Costo equivalente a producir 1 kilo del producto @ViewBag.NombreReceta</p>
+        
+    </div>
+    <div class="row">
+        <div class="table-responsive col-12">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Valor</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>@item.fecha.ToShortDateString()</td>
+                        <td>@item.valor</td>
+
+                        <td>
+                            @Html.ActionLink("Editar", "EditDetailCosto", new { fecha = item.fecha, id_cabecera = ViewBag.cabecera_recetaId, nombre = ViewBag.NombreReceta }, new { @class = "btn btn-primary pl-2" })
+                            @Html.ActionLink("Eliminar", "DeleteDetailCosto", new { fecha = item.fecha, id_cabecera = ViewBag.cabecera_recetaId, nombre = ViewBag.NombreReceta }, new { @class = "btn btn-primary pl-2" })
+
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
