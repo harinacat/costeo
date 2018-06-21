@@ -18,6 +18,8 @@ namespace MVC_Panderia.Models
         {
             this.detalle_produccion = new HashSet<detalle_produccion>();
             this.detalle_receta = new HashSet<detalle_receta>();
+            this.costo = new HashSet<costo>();
+            this.precio_venta = new HashSet<precio_venta>();
         }
     
         public int Id { get; set; }
@@ -26,5 +28,7 @@ namespace MVC_Panderia.Models
         public virtual articulo articulo { get; set; }
         public virtual ICollection<detalle_produccion> detalle_produccion { get; set; }
         public virtual ICollection<detalle_receta> detalle_receta { get; set; }
+        public virtual ICollection<costo> costo { get; set; }
+        public virtual ICollection<precio_venta> precio_venta { get; set; }
     }
 }
