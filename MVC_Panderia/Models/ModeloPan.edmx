@@ -36,7 +36,7 @@
             <PropertyRef Name="cabecera_recetaId" />
             <PropertyRef Name="fecha" />
           </Key>
-          <Property Name="cabecera_recetaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cabecera_recetaId" Type="int" Nullable="false" />
           <Property Name="fecha" Type="datetime" Nullable="false" />
           <Property Name="valor" Type="int" Nullable="false" />
         </EntityType>
@@ -80,7 +80,7 @@
             <PropertyRef Name="cabecera_recetaId" />
             <PropertyRef Name="fecha" />
           </Key>
-          <Property Name="cabecera_recetaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cabecera_recetaId" Type="int" Nullable="false" />
           <Property Name="fecha" Type="datetime" Nullable="false" />
           <Property Name="valor" Type="int" Nullable="false" />
         </EntityType>
@@ -526,7 +526,7 @@
             <PropertyRef Name="cabecera_recetaId" />
             <PropertyRef Name="fecha" />
           </Key>
-          <Property Name="cabecera_recetaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cabecera_recetaId" Type="Int32" Nullable="false" />
           <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="valor" Type="Int32" Nullable="false" />
           <NavigationProperty Name="cabecera_receta" Relationship="pan_dbModel.FK_costo_cabecera_receta" FromRole="costo" ToRole="cabecera_receta" />
@@ -536,7 +536,7 @@
             <PropertyRef Name="cabecera_recetaId" />
             <PropertyRef Name="fecha" />
           </Key>
-          <Property Name="cabecera_recetaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cabecera_recetaId" Type="Int32" Nullable="false" />
           <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="valor" Type="Int32" Nullable="false" />
           <NavigationProperty Name="cabecera_receta" Relationship="pan_dbModel.FK_precio_venta_cabecera_receta" FromRole="precio_venta" ToRole="cabecera_receta" />

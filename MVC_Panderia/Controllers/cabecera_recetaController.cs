@@ -204,6 +204,99 @@ namespace MVC_Panderia.Controllers
             }
         }
 
+        // GET: Costo
+        public ActionResult IndexDetailCosto(int id, string nombre)
+        {
+            ViewBag.NombreReceta = nombre;
+            ViewBag.cabecera_recetaId = id;
+            return View(db.costo.Where(s => s.cabecera_recetaId == id));
+        }
+
+        // GET: Costo/Create
+        public ActionResult CreateDetailCosto(int id, string nombre)
+        {
+            ViewBag.NombreReceta = nombre;
+            ViewBag.cabecera_recetaId = id;
+            return View();
+        }
+
+        // POST: costo/CreateDetail
+        [HttpPost]
+        public ActionResult CreateDetailCosto(FormCollection collection, int id, string nombre)
+        {
+            try
+            {
+                // TODO: Add insert logic here
+                costo dr = new costo();
+                dr.cabecera_recetaId = id;
+                dr.fecha= Convert.ToDateTime(collection.Get("fecha"));
+                dr.valor = Convert.ToInt32(collection.Get("valor"));
+                db.costo.Add(dr);
+                db.SaveChanges();
+                return RedirectToAction("IndexDetailCosto", new { id = id, nombre = nombre });
+            }
+            catch( Exception exp)
+            {
+                return View();
+            }
+        }
+
+        // GET: Costo/Edit/5
+        public ActionResult EditDetailCosto(DateTime fecha, int id_cabecera, string nombre)
+        {
+            ViewBag.NombreReceta = nombre;
+            ViewBag.cabecera_recetaId = id_cabecera;
+            var Row = db.costo.Where(s => s.cabecera_recetaId == id_cabecera).Where(s=> s.fecha == fecha).FirstOrDefault();
+            return View(Row);
+        }
+
+        // POST: costo/Edit/5
+        [HttpPost]
+        public ActionResult EditDetailCosto(FormCollection collection,  int id_cabecera, string nombre)
+        {
+            try
+            {
+                // TODO: Add update costo here
+                costo cr = new costo();
+                cr = db.costo.Find(new object[] {id_cabecera, Convert.ToDateTime(collection.Get("fecha")) });
+                cr.valor = Convert.ToInt32(collection.Get("valor"));
+                db.SaveChanges();
+
+                return RedirectToAction("IndexDetailCosto", new { id = id_cabecera, nombre = nombre });
+            }
+            catch(Exception exp)
+            {
+                return View();
+            }
+        }
+
+        // GET: Costo/Delete/5
+        public ActionResult DeleteDetailCosto(DateTime fecha, int id_cabecera, string nombre)
+        {
+            ViewBag.NombreReceta = nombre;
+            ViewBag.cabecera_recetaId = id_cabecera;
+            var Row = db.costo.Where(s => s.cabecera_recetaId == id_cabecera).Where(s => s.fecha == fecha).FirstOrDefault();
+            return View(Row);
+        }
+
+        // POST: Costo/Delete/5
+        [HttpPost]
+        public ActionResult DeleteDetailCosto(FormCollection collection, int id_cabecera, string nombre)
+        {
+            try
+            {
+                costo cr = new costo();
+                cr = db.costo.Find(new object[] { id_cabecera, Convert.ToDateTime(collection.Get("fecha")) });
+                db.costo.Remove(cr);
+                db.SaveChanges();
+
+                return RedirectToAction("IndexDetailCosto", new { id = id_cabecera, nombre = nombre });
+            }
+            catch
+            {
+                return View();
+            }
+        }
 
     }
 
