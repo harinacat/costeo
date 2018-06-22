@@ -301,6 +301,99 @@ namespace MVC_Panderia.Controllers
                 return View();
             }
         }
+        // GET: Precio Venta
+        public ActionResult IndexDetailPrecioVenta(int id, string nombre)
+        {
+            ViewBag.NombreReceta = nombre;
+            ViewBag.cabecera_recetaId = id;
+            return View(db.costo.Where(s => s.cabecera_recetaId == id));
+        }
+
+        // GET: PrecioVenta/Create
+        public ActionResult CreateDetailPrecioVenta(int id, string nombre)
+        {
+            ViewBag.NombreReceta = nombre;
+            ViewBag.cabecera_recetaId = id;
+            return View();
+        }
+
+        // POST: PrecioVenta/CreateDetail
+        [HttpPost]
+        public ActionResult CreateDetailPrecioVenta(FormCollection collection, int id, string nombre)
+        {
+            try
+            {
+                // TODO: Add insert logic here
+                precio_venta dr = new precio_venta();
+                dr.cabecera_recetaId = id;
+                dr.fecha = Convert.ToDateTime(collection.Get("fecha"));
+                dr.valor = Convert.ToInt32(collection.Get("valor"));
+                db.precio_venta.Add(dr);
+                db.SaveChanges();
+                return RedirectToAction("IndexDetailPrecioVenta", new { id = id, nombre = nombre });
+            }
+            catch (Exception exp)
+            {
+                return View();
+            }
+        }
+
+        // GET: PrecioVenta/Edit/5
+        public ActionResult EditDetailPrecioVenta(DateTime fecha, int id_cabecera, string nombre)
+        {
+            ViewBag.NombreReceta = nombre;
+            ViewBag.cabecera_recetaId = id_cabecera;
+            var Row = db.precio_venta.Where(s => s.cabecera_recetaId == id_cabecera).Where(s => s.fecha == fecha).FirstOrDefault();
+            return View(Row);
+        }
+
+        // POST: PrecioVenta/Edit/5
+        [HttpPost]
+        public ActionResult EditDetailPrecioVenta(FormCollection collection, int id_cabecera, string nombre)
+        {
+            try
+            {
+                // TODO: Add update PrecioVenta here
+                precio_venta cr = new precio_venta();
+                cr = db.precio_venta.Find(new object[] { id_cabecera, Convert.ToDateTime(collection.Get("fecha")) });
+                cr.valor = Convert.ToInt32(collection.Get("valor"));
+                db.SaveChanges();
+
+                return RedirectToAction("IndexDetailPrecioVenta", new { id = id_cabecera, nombre = nombre });
+            }
+            catch (Exception exp)
+            {
+                return View();
+            }
+        }
+
+        // GET: PrecioVenta/Delete/5
+        public ActionResult DeleteDetailPrecioVenta(DateTime fecha, int id_cabecera, string nombre)
+        {
+            ViewBag.NombreReceta = nombre;
+            ViewBag.cabecera_recetaId = id_cabecera;
+            var Row = db.precio_venta.Where(s => s.cabecera_recetaId == id_cabecera).Where(s => s.fecha == fecha).FirstOrDefault();
+            return View(Row);
+        }
+
+        // POST: PrecioVenta/Delete/5
+        [HttpPost]
+        public ActionResult DeleteDetailPrecioVenta(FormCollection collection, int id_cabecera, string nombre)
+        {
+            try
+            {
+                precio_venta cr = new precio_venta();
+                cr = db.precio_venta.Find(new object[] { id_cabecera, Convert.ToDateTime(collection.Get("fecha")) });
+                db.precio_venta.Remove(cr);
+                db.SaveChanges();
+
+                return RedirectToAction("IndexDetailPrecioVenta", new { id = id_cabecera, nombre = nombre });
+            }
+            catch
+            {
+                return View();
+            }
+        }
 
     }
 
