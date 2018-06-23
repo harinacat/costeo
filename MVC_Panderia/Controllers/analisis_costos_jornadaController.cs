@@ -16,5 +16,10 @@ namespace MVC_Panderia.Controllers
         {
             return View();
         }
+
+        public ActionResult analisisJornada()
+        {
+            return View();
+        }
     }
 }
