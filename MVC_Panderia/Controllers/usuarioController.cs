@@ -56,18 +56,21 @@ namespace MVC_Panderia.Controllers
         }
 
         // GET: Linea
+        [Authorize]
         public ActionResult Index()
         {
             return View(db.usuario.ToList());
         }
 
         // GET: Linea/Details/5
+        [Authorize]
         public ActionResult Details(int id)
         {
             return View();
         }
 
         // GET: Linea/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.rolId = new SelectList(db.rol, "Id", "nombre_rol");
@@ -75,6 +78,7 @@ namespace MVC_Panderia.Controllers
         }
 
         // POST: Linea/Create
+        [Authorize]
         [HttpPost]
         public ActionResult Create(FormCollection collection, string txt_password_confirmar)
         {
@@ -106,6 +110,7 @@ namespace MVC_Panderia.Controllers
         }
 
         // GET: Linea/Edit/5
+        [Authorize]
         public ActionResult Edit(string id)
         {
             ViewBag.rolId = new SelectList(db.rol, "Id", "nombre_rol");
@@ -116,6 +121,7 @@ namespace MVC_Panderia.Controllers
 
         // POST: Linea/Edit/5
         [HttpPost]
+        [Authorize]
         public ActionResult Edit(string id, FormCollection collection, string txt_password_confirmar)
         {
             try
@@ -146,6 +152,7 @@ namespace MVC_Panderia.Controllers
         }
 
         // GET: Linea/Delete/5
+        [Authorize]
         public ActionResult Delete(string id)
         {
             var Row = db.usuario.Where(s => s.Id == id).FirstOrDefault();
@@ -154,6 +161,7 @@ namespace MVC_Panderia.Controllers
 
         // POST: Linea/Delete/5
         [HttpPost]
+        [Authorize]
         public ActionResult Delete(string id, FormCollection collection)
         {
             try

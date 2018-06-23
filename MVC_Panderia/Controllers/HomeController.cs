@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVC_Panderia.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,7 @@ namespace MVC_Panderia.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.rol = Session["Rol"];
             return View();
         }
 
