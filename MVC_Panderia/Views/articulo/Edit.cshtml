@@ -1,7 +1,7 @@
 ﻿@model MVC_Panderia.Models.articulo
 
 @{
-    ViewBag.Title = "Editar Linea";
+    ViewBag.Title = "Editar Articulo";
 }
 
 @using (Html.BeginForm())
@@ -44,5 +44,5 @@
 
 
     <button type="submit" value="Save" class="btn btn-success pl-2">Guardar</button>
-    <button type="button" value="Cancel" class="btn btn-primary pl-2" onclick="javascript:document.location.href='@Url.Action("Index", "linea")'">Cancelar</button>
+    <button type="button" value="Cancel" class="btn btn-primary pl-2" onclick="javascript:document.location.href='@Url.Action("Index", "articulo")'">Cancelar</button>
 }

@@ -13,7 +13,6 @@
         <EntityTypeShape EntityType="pan_dbModel.familia" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="pan_dbModel.linea" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="pan_dbModel.unidad_medida" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="pan_dbModel.usuario" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
         <AssociationConnector Association="pan_dbModel.FK_articulocabecera_receta" ManuallyRouted="false" />
         <AssociationConnector Association="pan_dbModel.FK_articulodetalle_receta" ManuallyRouted="false" />
         <AssociationConnector Association="pan_dbModel.FK_familiaarticulo" ManuallyRouted="false" />
@@ -26,6 +25,9 @@
         <EntityTypeShape EntityType="pan_dbModel.precio_venta" Width="1.5" PointX="9.75" PointY="0.75" />
         <AssociationConnector Association="pan_dbModel.FK_costo_cabecera_receta" />
         <AssociationConnector Association="pan_dbModel.FK_precio_venta_cabecera_receta" />
+        <EntityTypeShape EntityType="pan_dbModel.rol" Width="1.5" PointX="0.75" PointY="8.25" />
+        <EntityTypeShape EntityType="pan_dbModel.usuario" Width="1.5" PointX="3" PointY="7.875" />
+        <AssociationConnector Association="pan_dbModel.FK_usuario_rol" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

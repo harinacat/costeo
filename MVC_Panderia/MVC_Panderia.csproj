@@ -210,6 +210,9 @@
     <Compile Include="Models\precio_venta.cs">
       <DependentUpon>ModeloPan.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\rol.cs">
+      <DependentUpon>ModeloPan.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\unidad_medida.cs">
       <DependentUpon>ModeloPan.tt</DependentUpon>
     </Compile>
@@ -242,6 +245,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\Logo.png" />
     <Content Include="Models\ModeloPan.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModeloPan.edmx</DependentUpon>

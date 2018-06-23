@@ -8,6 +8,7 @@ using MVC_Panderia.Models;
 
 namespace MVC_Panderia.Controllers
 {
+    [Authorize]
     public class lineaController:Controller
      {
         // GET: Linea

@@ -8,6 +8,7 @@ using MVC_Panderia.Models;
 
 namespace MVC_Panderia.Controllers
 {
+    [Authorize]
     public class unidad_medidaController : Controller
     {
         // GET: Unidad_medida
@@ -57,7 +58,7 @@ namespace MVC_Panderia.Controllers
         public ActionResult Edit(int id)
         {
             pan_dbEntities db = new pan_dbEntities();
-            var Row = db.linea.Where(s => s.Id == id).FirstOrDefault();
+            var Row = db.unidad_medida.Where(s => s.Id == id).FirstOrDefault();
             return View(Row);
         }
 
