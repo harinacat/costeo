@@ -306,7 +306,7 @@ namespace MVC_Panderia.Controllers
         {
             ViewBag.NombreReceta = nombre;
             ViewBag.cabecera_recetaId = id;
-            return View(db.costo.Where(s => s.cabecera_recetaId == id));
+            return View(db.precio_venta.Where(s => s.cabecera_recetaId == id));
         }
 
         // GET: PrecioVenta/Create
