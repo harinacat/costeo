@@ -1,7 +1,7 @@
 ﻿@model MVC_Panderia.Models.cabecera_produccion
 
 @{
-    ViewBag.Title = "cabecera_produccion";
+    ViewBag.Title = "Produccion";
 }
 
 @using (Html.BeginForm())
@@ -12,7 +12,8 @@
     @Html.HiddenFor(model => model.Id)
     <div class="form-group">
         <label>Fecha</label>
-        @Html.EditorFor(model => model.Id, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.EditorFor(model => model.fecha, new { htmlAttributes = new { @class = "form-control" } })
+
     </div>
 
     <button type="submit" value="Save" class="btn btn-success pl-2">Guardar</button>
