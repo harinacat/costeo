@@ -11,13 +11,11 @@ namespace MVC_Panderia.Controllers
     [Authorize]
     public class cabecera_produccionController : Controller
     {
+        pan_dbEntities db = new pan_dbEntities();
         // GET: Linea
         public ActionResult Index()
         {
-            pan_dbEntities db = new pan_dbEntities();
-            var cabecera_produccion = db.cabecera_produccion.ToList();
-            ViewBag.cabecera_produccion = cabecera_produccion;
-            return View();
+            return View(db.cabecera_produccion.ToList());
         }
 
         // GET: Linea/Details/5
@@ -110,6 +108,14 @@ namespace MVC_Panderia.Controllers
                 return View();
             }
         }
+
+        // GET: cabecera_produccion
+        public ActionResult IndexDetail(int id, string nombre)
+        {
+            ViewBag.cabecera_produccionId = id;
+            return View(db.detalle_produccion.Where(s => s.cabecera_produccionId == id));
+        }
+
 
     }
 }

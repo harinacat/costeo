@@ -1,0 +1,48 @@
+﻿@model IEnumerable<MVC_Panderia.Models.detalle_produccion>
+
+@{
+    ViewBag.Title = "Detalle Produccion ";
+}
+@using (Html.BeginForm())
+{
+    <div class="row  pb-2">
+        <div class="col-6"><h4>@ViewBag.Title </h4></div>
+        <div class="col-6">
+            @Html.ActionLink("Nuevo Detalle Produccion", "CreateDetail", "detalle_produccion", new { id = ViewBag.cabecera_produccionId}, new { @class = "btn btn-primary float-right" })
+        </div>
+    </div>
+  
+    <div class="row">
+        <div class="table-responsive col-12">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Id</th>
+                        <th>Cabecera Produccion ID</th>
+                        <th>Kilos</th>
+                        <th>Cabecera Receta ID</th>
+                        <th>Costo ID</th>
+                        <th>Venta ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@Html.DisplayFor(modelItem => item.cabecera_receta.articulo.nombre)</td>
+                            <td>@item.kilos</td>
+                            <td>@Html.DisplayFor(modelItem => item.cabecera_recetaId)</td>
+
+                            <td>
+                                @Html.ActionLink("Editar", "EditDetail", new { id = item.Id, id_cabecera = ViewBag.cabecera_recetaId, nombre = ViewBag.NombreReceta }, new { @class = "btn btn-primary pl-2" })
+                                @Html.ActionLink("Eliminar", "DeleteDetail", new { id = item.Id, id_cabecera = ViewBag.cabecera_recetaId, nombre = ViewBag.NombreReceta }, new { @class = "btn btn-primary pl-2" })
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
