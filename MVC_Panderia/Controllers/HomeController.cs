@@ -13,7 +13,6 @@ namespace MVC_Panderia.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.rol = Session["Rol"];
             return View();
         }
 
