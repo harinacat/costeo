@@ -217,16 +217,15 @@
       <DependentUpon>ModeloPan.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Test\analisisCostosKilosControllerTest.cs" />
+    <Compile Include="Test\analisisCostosJornadaControllerTest.cs" />
     <Compile Include="Test\articuloControllerTest.cs" />
     <Compile Include="Test\cabeceraProduccionControllerTest.cs" />
     <Compile Include="Test\cabeceraRecetaControllerTest.cs" />
-    <Compile Include="Test\costoControllerTest.cs" />
-    <Compile Include="Test\detalleProduccionControllerTest.cs" />
-    <Compile Include="Test\detalleRecetaControllerTest.cs" />
     <Compile Include="Test\familiaControllerTest.cs" />
     <Compile Include="Test\HomeControllerTest.cs" />
     <Compile Include="Test\lineaControllerTest.cs" />
-    <Compile Include="Test\precioVentaControllerTest.cs" />
+    <Compile Include="Test\usuarioControllerTest.cs" />
     <Compile Include="Test\unidadMedidaControllerTest.cs" />
   </ItemGroup>
   <ItemGroup>
