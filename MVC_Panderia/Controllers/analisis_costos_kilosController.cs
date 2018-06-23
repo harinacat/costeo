@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace MVC_Panderia.Controllers
 {
     public class analisis_costos_kilosController : Controller
@@ -14,8 +15,15 @@ namespace MVC_Panderia.Controllers
         // GET: Linea
         public ActionResult Index()
         {
-            ViewBag.familiaId = new SelectList(db.familia, "Id", "nombre");
+            return View();
+        }
+
+
+    public ActionResult analisisCostosKilos()
+        {
+
             return View();
         }
     }
 }
+    
