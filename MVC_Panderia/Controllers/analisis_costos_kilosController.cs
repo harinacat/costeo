@@ -15,6 +15,7 @@ namespace MVC_Panderia.Controllers
         // GET: Linea
         public ActionResult Index()
         {
+            ViewBag.familiaId = new SelectList(db.familia, "Id", "nombre");
             return View();
         }
 
