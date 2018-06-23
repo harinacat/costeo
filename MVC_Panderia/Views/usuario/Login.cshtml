@@ -5,60 +5,66 @@
     ViewBag.Title = "Iniciar sesión";
 }
 
-<h2>@ViewBag.Title.</h2>
-<div class="row">
-    <div class="col-md-8">
-        <section id="loginForm">
-            @using (Html.BeginForm("SignIn", "usuario", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-            {
-                @Html.AntiForgeryToken()
-                <h4>Use una cuenta local para iniciar sesión.</h4>
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Id, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Id, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Id, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.contraseña, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.PasswordFor(m => m.contraseña, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.contraseña, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                @*<div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <div class="checkbox">
-                            @Html.CheckBoxFor(m => m.RememberMe)
-                            @Html.LabelFor(m => m.RememberMe)
+
+@using (Html.BeginForm("signIn", "usuario", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <div class="container-fluid" >
+        <div class="row">
+            <div class="col-3">
+
+            </div>
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="float-left">Inicio de sesion</h3>
+                            <button class="btn btn-link btn-lg float-right" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <i class="fa fa-info-circle"></i>
+                            </button>
                         </div>
                     </div>
-                </div>*@
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Iniciar sesión" class="btn btn-default" />
+                    <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            Permite registrar las variables de monitoreo que se registran en el procesamiento de productos. ustede puede definir variables propias o seleccionar variables desde otros sistemas o bases de datos.
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label class="form-control-label">Usuario</label>
+                            <input class="form-control" name="Id">*
+                            @*@Html.ValidationMessageFor(model => model.Id)*@
+                            <small id="usernameHelp" class="form-text text-muted">Nunca comparta su cuenta de usuario y contraseña con otros usuarios.</small>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">Contraseña</label>
+                            <input type="password" class="form-control" name="contrasena">*
+                            @*@Html.ValidationMessageFor(model => model.contraseña)*@
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="checkbox" id="chkRecordar" class="form-check-input" runat="server">
+                                Recordarme
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-success pl-2">Aceptar</button>
                     </div>
                 </div>
-                <p>
-                    @Html.ActionLink("Registrar como nuevo usuario", "Register")
-                </p>
-                @* Habilite esta opción después de habilitar la confirmación de la cuenta para la función de restablecimiento de contraseña
-                    <p>
-                        @Html.ActionLink("¿Ha olvidado su contraseña?", "ForgotPassword")
-                    </p>*@
-            }
-        </section>
-    </div>
-    <div class="col-md-4">
-        <section id="socialLoginForm">
-            @*@Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })*@
-        </section>
-    </div>
-</div>
+            </div>
+            <div class="col-3">
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+            </div>
+        </div>
+
+    </div>
 }
+    <script type="text/javascript">
+
+        function check(input) {
+            if (input.value != document.getElementById('txt_password_nueva').value) {
+                input.setCustomValidity('Las contraseñas deben ser iguales.');
+            } else {
+                // input is valid -- reset the error message
+                input.setCustomValidity('');
+            }
+        }
+    </script>

@@ -84,6 +84,13 @@
           <Property Name="fecha" Type="datetime" Nullable="false" />
           <Property Name="valor" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="rol">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre_rol" Type="nvarchar" MaxLength="150" />
+        </EntityType>
         <EntityType Name="unidad_medida">
           <Key>
             <PropertyRef Name="Id" />
@@ -99,6 +106,7 @@
           <Property Name="nombre_usuario" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="contraseña" Type="nvarchar(max)" Nullable="false" />
           <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="rolId" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_articulocabecera_receta">
           <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
@@ -220,6 +228,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_usuario_rol">
+          <End Role="rol" Type="Self.rol" Multiplicity="1" />
+          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rol">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="rolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="pan_dbModelStoreContainer">
           <EntitySet Name="articulo" EntityType="Self.articulo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="cabecera_produccion" EntityType="Self.cabecera_produccion" Schema="dbo" store:Type="Tables" />
@@ -230,6 +250,7 @@
           <EntitySet Name="familia" EntityType="Self.familia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="linea" EntityType="Self.linea" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="precio_venta" EntityType="Self.precio_venta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rol" EntityType="Self.rol" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="unidad_medida" EntityType="Self.unidad_medida" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_articulocabecera_receta" Association="Self.FK_articulocabecera_receta">
@@ -271,6 +292,10 @@
           <AssociationSet Name="FK_unidad_medidaarticulo" Association="Self.FK_unidad_medidaarticulo">
             <End Role="unidad_medida" EntitySet="unidad_medida" />
             <End Role="articulo" EntitySet="articulo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuario_rol" Association="Self.FK_usuario_rol">
+            <End Role="rol" EntitySet="rol" />
+            <End Role="usuario" EntitySet="usuario" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -362,15 +387,6 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="articulo" Relationship="Self.FK_unidad_medidaarticulo" FromRole="unidad_medida" ToRole="articulo" />
-        </EntityType>
-        <EntityType Name="usuario">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="nombre_usuario" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="contraseña" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <Association Name="FK_articulocabecera_receta">
           <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
@@ -477,7 +493,6 @@
           <EntitySet Name="familia" EntityType="Self.familia" />
           <EntitySet Name="linea" EntityType="Self.linea" />
           <EntitySet Name="unidad_medida" EntityType="Self.unidad_medida" />
-          <EntitySet Name="usuario" EntityType="Self.usuario" />
           <AssociationSet Name="FK_articulocabecera_receta" Association="Self.FK_articulocabecera_receta">
             <End Role="articulo" EntitySet="articulo" />
             <End Role="cabecera_receta" EntitySet="cabecera_receta" />
@@ -519,6 +534,12 @@
           <AssociationSet Name="FK_precio_venta_cabecera_receta" Association="pan_dbModel.FK_precio_venta_cabecera_receta">
             <End Role="cabecera_receta" EntitySet="cabecera_receta" />
             <End Role="precio_venta" EntitySet="precio_venta" />
+          </AssociationSet>
+          <EntitySet Name="rol" EntityType="pan_dbModel.rol" />
+          <EntitySet Name="usuario" EntityType="pan_dbModel.usuario" />
+          <AssociationSet Name="FK_usuario_rol" Association="pan_dbModel.FK_usuario_rol">
+            <End Role="rol" EntitySet="rol" />
+            <End Role="usuario" EntitySet="usuario" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="costo">
@@ -562,6 +583,37 @@
             </Principal>
             <Dependent Role="precio_venta">
               <PropertyRef Name="cabecera_recetaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="rol">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_rol" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="usuario" Relationship="pan_dbModel.FK_usuario_rol" FromRole="rol" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nombre_usuario" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="contraseña" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="rolId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="rol" Relationship="pan_dbModel.FK_usuario_rol" FromRole="usuario" ToRole="rol" />
+        </EntityType>
+        <Association Name="FK_usuario_rol">
+          <End Type="pan_dbModel.rol" Role="rol" Multiplicity="1" />
+          <End Type="pan_dbModel.usuario" Role="usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rol">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="rolId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -647,16 +699,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="usuario">
-            <EntityTypeMapping TypeName="pan_dbModel.usuario">
-              <MappingFragment StoreEntitySet="usuario">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
-                <ScalarProperty Name="contraseña" ColumnName="contraseña" />
-                <ScalarProperty Name="email" ColumnName="email" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="costo">
             <EntityTypeMapping TypeName="pan_dbModel.costo">
               <MappingFragment StoreEntitySet="costo">
@@ -672,6 +714,25 @@
                 <ScalarProperty Name="valor" ColumnName="valor" />
                 <ScalarProperty Name="fecha" ColumnName="fecha" />
                 <ScalarProperty Name="cabecera_recetaId" ColumnName="cabecera_recetaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rol">
+            <EntityTypeMapping TypeName="pan_dbModel.rol">
+              <MappingFragment StoreEntitySet="rol">
+                <ScalarProperty Name="nombre_rol" ColumnName="nombre_rol" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuario">
+            <EntityTypeMapping TypeName="pan_dbModel.usuario">
+              <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="rolId" ColumnName="rolId" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="contraseña" ColumnName="contraseña" />
+                <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

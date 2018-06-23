@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Nueva unidad_medida";
+    ViewBag.Title = "Nueva Unidad Medida";
 }
 
 <form method="post" action="@Url.Action("Create", "unidad_medida")">
@@ -11,9 +11,8 @@
         <label>Nombre</label>
         <input class="form-control" name="nombre">
     </div>
-
-
-    <button type="submit" class="btn btn-primary">Guardar</button>
+    <button type="submit" class="btn btn-success">Guardar</button>
+    <button type="button" value="Cancel" class="btn btn-primary pl-2" onclick="javascript:document.location.href='@Url.Action("Index", "unidad_medida")'">Cancelar</button>
 
 
 </form>

@@ -12,14 +12,16 @@ namespace MVC_Panderia.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class usuario
+    public partial class rol
     {
-        public string Id { get; set; }
-        public string nombre_usuario { get; set; }
-        public string contraseña { get; set; }
-        public string email { get; set; }
-        public int rolId { get; set; }
+        public rol()
+        {
+            this.usuario = new HashSet<usuario>();
+        }
     
-        public virtual rol rol { get; set; }
+        public int Id { get; set; }
+        public string nombre_rol { get; set; }
+    
+        public virtual ICollection<usuario> usuario { get; set; }
     }
 }

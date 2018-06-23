@@ -9,18 +9,20 @@ using MVC_Panderia.Models;
 
 namespace MVC_Panderia.Controllers
 {
+
     public class usuarioController : Controller
     {
         pan_dbEntities db = new pan_dbEntities();
 
         // GET: /Account/Login
-        [AllowAnonymous]
+        [HttpGet]
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
+        [AllowAnonymous]
         public ActionResult signIn(FormCollection collection)
         {
             //var Row = db.usuarios.Where(s => s.Id == collection.Get("Id")).FirstOrDefault();
@@ -68,6 +70,7 @@ namespace MVC_Panderia.Controllers
         // GET: Linea/Create
         public ActionResult Create()
         {
+            ViewBag.rolId = new SelectList(db.rol, "Id", "nombre_rol");
             return View();
         }
 
@@ -78,10 +81,10 @@ namespace MVC_Panderia.Controllers
             try
             {
                 // TODO: Add insert logic here
-                pan_dbEntities db = new pan_dbEntities();
                 usuario usr = new usuario();
                 usr.Id = collection.Get("Id");
                 usr.nombre_usuario = collection.Get("nombre_usuario");
+                usr.rolId = Convert.ToInt32(collection.Get("rolId"));
                 if (txt_password_confirmar != null)
                 {
                     MVC_Panderia.Helpers.sha1 objSha1 = new Helpers.sha1();
@@ -105,7 +108,8 @@ namespace MVC_Panderia.Controllers
         // GET: Linea/Edit/5
         public ActionResult Edit(string id)
         {
-            pan_dbEntities db = new pan_dbEntities();
+            ViewBag.rolId = new SelectList(db.rol, "Id", "nombre_rol");
+            
             var Row = db.usuario.Where(s => s.Id == id).FirstOrDefault();
             return View(Row);
         }
@@ -117,7 +121,6 @@ namespace MVC_Panderia.Controllers
             try
             {
                 // TODO: Add update logic here
-                pan_dbEntities db = new pan_dbEntities();
                 usuario usr = new usuario();
                 usr = db.usuario.Find(id);
                 usr.nombre_usuario = collection.Get("nombre_usuario");
@@ -131,6 +134,7 @@ namespace MVC_Panderia.Controllers
                     usr.contraseña = collection.Get("contraseña");
                 }
                 usr.email = collection.Get("email");
+                usr.rolId = Convert.ToInt32(collection.Get("rolId"));
                 db.SaveChanges();
 
                 return RedirectToAction("Index");
@@ -144,7 +148,6 @@ namespace MVC_Panderia.Controllers
         // GET: Linea/Delete/5
         public ActionResult Delete(string id)
         {
-            pan_dbEntities db = new pan_dbEntities();
             var Row = db.usuario.Where(s => s.Id == id).FirstOrDefault();
             return View(Row);
         }
@@ -155,7 +158,6 @@ namespace MVC_Panderia.Controllers
         {
             try
             {
-                pan_dbEntities db = new pan_dbEntities();
                 usuario usr = new usuario();
                 usr = db.usuario.Find(id);
                 db.usuario.Remove(usr);

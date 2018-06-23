@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace MVC_Panderia.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         public ActionResult Index()

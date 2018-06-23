@@ -8,6 +8,7 @@ using MVC_Panderia.Models;
 
 namespace MVC_Panderia.Controllers
 {
+    [Authorize]
     public class cabecera_recetaController : Controller
     {
         pan_dbEntities db = new pan_dbEntities();

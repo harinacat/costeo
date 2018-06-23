@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace MVC_Panderia.Controllers
 {
+    [Authorize]
     public class analisis_costos_jornadaController : Controller
     {
         pan_dbEntities db = new pan_dbEntities();
