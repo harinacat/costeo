@@ -227,7 +227,7 @@
     <Compile Include="Test\cabeceraProduccionControllerTest.cs" />
     <Compile Include="Test\cabeceraProduccionTest.cs" />
     <Compile Include="Test\cabeceraRecetaControllerTest.cs" />
-    <Compile Include="Test\costoTest.cs" />
+
     <Compile Include="Test\detalle_recetaTest.cs" />
     <Compile Include="Test\familiaControllerTest.cs" />
     <Compile Include="Test\cabecera_recetaTest.cs" />
