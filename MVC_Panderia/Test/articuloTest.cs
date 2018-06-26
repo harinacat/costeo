@@ -16,7 +16,7 @@ namespace MVC_Panderia.Tests.Datos
         int testId = 1;
 
         [TestMethod]
-        public void insercionArticulo()
+        public void InsercionArticulo()
         {
             int ln_originales = db.articulo.Count();
             articulo ln = new articulo();
@@ -36,7 +36,7 @@ namespace MVC_Panderia.Tests.Datos
             db.SaveChanges();
         }
         [TestMethod]
-        public void eliminarArticulo()
+        public void EliminarArticulo()
         {
             articulo ln = new articulo();
             int ln_originales = db.articulo.Count();
@@ -59,7 +59,7 @@ namespace MVC_Panderia.Tests.Datos
         }
 
         [TestMethod]
-        public void multipleArticulo()
+        public void MultipleArticulo()
         {
             // insertar
             articulo ln = new articulo();
