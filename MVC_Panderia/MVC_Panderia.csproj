@@ -232,6 +232,7 @@
     <Compile Include="Test\lineaControllerTest.cs" />
     <Compile Include="Test\familiaTest.cs" />
     <Compile Include="Test\lineaTest.cs" />
+    <Compile Include="Test\precioVentaTest.cs" />
     <Compile Include="Test\usuarioControllerTest.cs" />
     <Compile Include="Test\unidadMedidaControllerTest.cs" />
   </ItemGroup>
