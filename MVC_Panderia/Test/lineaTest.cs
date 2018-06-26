@@ -15,7 +15,7 @@ namespace MVC_Panderia.Tests.Datos
         String nombre_linea = "";
 
         [TestMethod]
-        public void Insecion()
+        public void InsecionLinea()
         {
             int ln_originales = db.linea.Count();
             linea ln = new linea();
@@ -30,7 +30,7 @@ namespace MVC_Panderia.Tests.Datos
             db.SaveChanges();
         }
         [TestMethod]
-        public void Eliminar()
+        public void EliminarLinea()
         {
             linea ln = new linea();
             int ln_original = db.linea.Count();
@@ -48,7 +48,7 @@ namespace MVC_Panderia.Tests.Datos
         }
 
         [TestMethod]
-        public void Multiple()
+        public void MultipleLinea()
         {
             // insertar
             int ln_originales = db.linea.Count();
