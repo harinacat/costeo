@@ -16,7 +16,7 @@ namespace MVC_Panderia.Tests.Datos
 
 
         [TestMethod]
-        public void Insecion()
+        public void insercionCosto()
         {
             int ln_originales = db.costo.Count();
             costo ln = new costo();
@@ -34,7 +34,7 @@ namespace MVC_Panderia.Tests.Datos
             db.SaveChanges();
         }
         [TestMethod]
-        public void Eliminar()
+        public void eliminarCosto()
         {
             String fecha = "" + DateTime.Now;
             int ln_originales = db.costo.Count();
@@ -63,7 +63,7 @@ namespace MVC_Panderia.Tests.Datos
         }
 
         [TestMethod]
-        public void Multiple()
+        public void multipleCosto()
         {
             // insertar
             costo ln = new costo();

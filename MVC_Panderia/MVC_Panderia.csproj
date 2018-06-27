@@ -225,12 +225,15 @@
     <Compile Include="Test\articuloControllerTest.cs" />
     <Compile Include="Test\articuloTest.cs" />
     <Compile Include="Test\cabeceraProduccionControllerTest.cs" />
+    <Compile Include="Test\cabeceraProduccionTest.cs" />
     <Compile Include="Test\cabeceraRecetaControllerTest.cs" />
+
     <Compile Include="Test\detalle_recetaTest.cs" />
     <Compile Include="Test\familiaControllerTest.cs" />
     <Compile Include="Test\cabecera_recetaTest.cs" />
     <Compile Include="Test\HomeControllerTest.cs" />
     <Compile Include="Test\lineaControllerTest.cs" />
+    <Compile Include="Test\unidadMedidaTest.cs" />
     <Compile Include="Test\lineaTest.cs" />
     <Compile Include="Test\precioVentaTest.cs" />
     <Compile Include="Test\usuarioControllerTest.cs" />
