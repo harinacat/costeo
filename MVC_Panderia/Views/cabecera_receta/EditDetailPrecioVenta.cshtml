@@ -10,10 +10,10 @@
     <div class="row  pb-2">
         <div class="col-12"><h4>@ViewBag.fecha </h4></div>
     </div>
-    @Html.HiddenFor(m => m.fecha, new { @Value = Model.fecha.ToString("d") })
+    @Html.HiddenFor(m => m.fecha, new { @Value = Model.fecha.ToString("dd-MM-yyyy") })
     <div class="form-group">
         <label>Fecha</label>
-        @Html.TextBoxFor(m => m.fecha, new { @Value = Model.fecha.ToString("d"), disabled = "disabled", @class = "form-control" })
+        @Html.EditorFor(model => model.fecha, new { htmlAttributes = new { Value = Model.fecha.ToString("dd-MM-yyyy"), @class = "form-control date-picker", disabled = "disabled" } })
     </div>
 
     <div class="form-group">

@@ -69,13 +69,13 @@ namespace MVC_Panderia.Controllers
                 // TODO: Add update logic here
                 pan_dbEntities db = new pan_dbEntities();
                 cabecera_produccion ln = new cabecera_produccion();
-                ln = db.cabecera_produccion.Find(Convert.ToInt16(collection.Get("fecha")));
+                ln = db.cabecera_produccion.Find(Convert.ToInt16(collection.Get("Id")));
                 ln.fecha = Convert.ToDateTime(collection.Get("fecha"));
                 db.SaveChanges();
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch(Exception exp)
             {
                 return View();
             }

@@ -8,7 +8,6 @@
         <EntityTypeShape EntityType="pan_dbModel.articulo" Width="1.5" PointX="5.25" PointY="3" IsExpanded="true" />
         <EntityTypeShape EntityType="pan_dbModel.cabecera_produccion" Width="2.375" PointX="6.625" PointY="6.875" IsExpanded="true" />
         <EntityTypeShape EntityType="pan_dbModel.cabecera_receta" Width="1.5" PointX="7.5" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="pan_dbModel.detalle_produccion" Width="2.5" PointX="9.75" PointY="3.125" IsExpanded="true" />
         <EntityTypeShape EntityType="pan_dbModel.detalle_receta" Width="1.5" PointX="12.75" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="pan_dbModel.familia" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="pan_dbModel.linea" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
@@ -17,17 +16,20 @@
         <AssociationConnector Association="pan_dbModel.FK_articulodetalle_receta" ManuallyRouted="false" />
         <AssociationConnector Association="pan_dbModel.FK_familiaarticulo" ManuallyRouted="false" />
         <AssociationConnector Association="pan_dbModel.FK_unidad_medidaarticulo" ManuallyRouted="false" />
-        <AssociationConnector Association="pan_dbModel.FK_cabecera_producciondetalle_produccion" ManuallyRouted="false" />
-        <AssociationConnector Association="pan_dbModel.FK_cabecera_recetadetalle_produccion" ManuallyRouted="false" />
         <AssociationConnector Association="pan_dbModel.FK_cabecera_recetadetalle_receta" ManuallyRouted="false" />
         <AssociationConnector Association="pan_dbModel.FK_lineafamilia" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="pan_dbModel.costo" Width="1.5" PointX="11" PointY="7.5" />
-        <EntityTypeShape EntityType="pan_dbModel.precio_venta" Width="1.5" PointX="9.75" PointY="0.75" />
-        <AssociationConnector Association="pan_dbModel.FK_costo_cabecera_receta" />
-        <AssociationConnector Association="pan_dbModel.FK_precio_venta_cabecera_receta" />
         <EntityTypeShape EntityType="pan_dbModel.rol" Width="1.5" PointX="0.75" PointY="8.25" />
         <EntityTypeShape EntityType="pan_dbModel.usuario" Width="1.5" PointX="3" PointY="7.875" />
         <AssociationConnector Association="pan_dbModel.FK_usuario_rol" />
+        <EntityTypeShape EntityType="pan_dbModel.costo" Width="1.5" PointX="9.75" PointY="5" />
+        <EntityTypeShape EntityType="pan_dbModel.detalle_produccion" Width="1.5" PointX="12" PointY="6.875" />
+        <EntityTypeShape EntityType="pan_dbModel.precio_venta" Width="1.5" PointX="9.75" PointY="2.375" />
+        <AssociationConnector Association="pan_dbModel.FK_cabecera_producciondetalle_produccion" />
+        <AssociationConnector Association="pan_dbModel.FK_cabecera_recetadetalle_produccion" />
+        <AssociationConnector Association="pan_dbModel.FK_costo_cabecera_receta" />
+        <AssociationConnector Association="pan_dbModel.FK_precio_venta_cabecera_receta" />
+        <AssociationConnector Association="pan_dbModel.FK_detalle_produccion_costo" />
+        <AssociationConnector Association="pan_dbModel.FK_detalle_produccion_precio_venta" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

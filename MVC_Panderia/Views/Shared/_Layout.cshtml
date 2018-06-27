@@ -8,6 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
@@ -15,6 +16,7 @@
     @RenderSection("scripts", required: false)
 
     <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
 
 </head>
 <body>
@@ -88,3 +90,12 @@
     </div>
 </body>
 </html>
+<script type="text/javascript">
+    $(function () {
+        $(".date-picker").datepicker({
+            dateFormat: 'dd-mm-yy'
+        });
+
+    });
+
+</script>

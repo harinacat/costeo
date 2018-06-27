@@ -18,10 +18,12 @@ namespace MVC_Panderia.Models
         public int cabecera_produccionId { get; set; }
         public decimal kilos { get; set; }
         public int cabecera_recetaId { get; set; }
-        public int costoId { get; set; }
-        public int ventaId { get; set; }
+        public System.DateTime fechacosto { get; set; }
+        public System.DateTime fechaventa { get; set; }
     
         public virtual cabecera_produccion cabecera_produccion { get; set; }
         public virtual cabecera_receta cabecera_receta { get; set; }
+        public virtual costo costo { get; set; }
+        public virtual precio_venta precio_venta { get; set; }
     }
 }
