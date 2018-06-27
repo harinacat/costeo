@@ -1,17 +1,17 @@
 ﻿@model IEnumerable<MVC_Panderia.Models.detalle_produccion>
 
 @{
-    ViewBag.Title = "Detalle Produccion ";
+    ViewBag.Title = "Detalle Produccion " + ViewBag.Fecha;
 }
 @using (Html.BeginForm())
 {
     <div class="row  pb-2">
         <div class="col-6"><h4>@ViewBag.Title </h4></div>
         <div class="col-6">
-            @Html.ActionLink("Nuevo Detalle Produccion", "CreateDetail", "detalle_produccion", new { id = ViewBag.cabecera_produccionId}, new { @class = "btn btn-primary float-right" })
+            @Html.ActionLink("Nuevo Detalle Produccion", "CreateDetail", "cabecera_produccion", new { id = ViewBag.cabecera_produccionId }, new { @class = "btn btn-primary float-right" })
         </div>
     </div>
-  
+
     <div class="row">
         <div class="table-responsive col-12">
             <table class="table">
@@ -19,21 +19,30 @@
                     <tr>
                         <th>Receta</th>
                         <th>Kilos</th>
+                        <th>Costo</th>
+                        <th>(Fecha $Costo)</th>
+                        <th>Venta</th>
+                        <th>(Fecha $Venta)</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Model)
                     {
-                    <tr>
-                        <td>@Html.DisplayFor(modelItem => item.cabecera_receta.articulo.nombre)</td>
-                        <td>@item.kilos</td>
-                        <td>@item.kilos</td>
-                        <td>
-                            @Html.ActionLink("Editar", "EditDetail", new { id = item.Id, id_cabecera = ViewBag.cabecera_recetaId, nombre = ViewBag.NombreReceta }, new { @class = "btn btn-primary pl-2" })
-                            @Html.ActionLink("Eliminar", "DeleteDetail", new { id = item.Id, id_cabecera = ViewBag.cabecera_recetaId, nombre = ViewBag.NombreReceta }, new { @class = "btn btn-primary pl-2" })
+                        <tr>
+                            
+                            <td>@Html.DisplayFor(modelItem => item.cabecera_receta.articulo.nombre)</td>
+                            <td>@item.kilos</td>
+                            <td>@Html.DisplayFor(modelItem => item.costo.valor)</td>
+                            <td>@item.fechacosto.ToShortDateString()</td>
+                            <td>@Html.DisplayFor(modelItem => item.precio_venta.valor)</td>
+                            <td>@item.fechaventa.ToShortDateString()</td>
+                            <td>
+                                @Html.ActionLink("Editar", "EditDetail", new { id = item.Id, id_cabecera = ViewBag.cabecera_produccionId }, new { @class = "btn btn-primary pl-2" })
+                                @Html.ActionLink("Eliminar", "DeleteDetail", new { id = item.Id, id_cabecera = ViewBag.cabecera_produccionId }, new { @class = "btn btn-primary pl-2" })
 
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
                     }
                 </tbody>
             </table>
