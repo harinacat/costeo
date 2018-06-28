@@ -427,7 +427,9 @@
     <Content Include="Views\cabecera_receta\EditDetailPrecioVenta.cshtml" />
     <Content Include="Views\cabecera_receta\DeleteDetailPrecioVenta.cshtml" />
     <Content Include="Views\cabecera_produccion\IndexDetail.cshtml" />
-    <Content Include="Views\cabecera_produccion\EditDetailProduccion.cshtml" />
+    <Content Include="Views\cabecera_produccion\CreateDetail.cshtml" />
+    <Content Include="Views\cabecera_produccion\EditDetail.cshtml" />
+    <Content Include="Views\cabecera_produccion\DeleteDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
