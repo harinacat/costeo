@@ -32,6 +32,7 @@ namespace MVC_Panderia.Controllers
                 Helpers.sha1 OjbSha1 = new Helpers.sha1();
                 if (Row.contraseña == OjbSha1.Encode(collection.Get("contrasena")))
                 {
+                    Session["rol"] = Row.rolId;
                     FormsAuthentication.SetAuthCookie(collection.Get("Id"), false);
                 }
                 else

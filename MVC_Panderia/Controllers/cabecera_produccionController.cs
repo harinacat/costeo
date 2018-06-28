@@ -118,7 +118,16 @@ namespace MVC_Panderia.Controllers
         // GET: DetalleProduccion/Create
         public ActionResult CreateDetail(int id, string nombre)
         {
-            ViewBag.cabecera_recetaId = new SelectList(db.cabecera_receta,"Id", "Id");
+
+            var Resultado = from CabRec in db.cabecera_receta
+                        join Articulo in db.articulo on CabRec.articuloId equals Articulo.Id
+                        select new
+                        {
+                            CabRec.Id,
+                            Articulo.nombre,
+                        };
+
+            ViewBag.cabecera_recetaId = new SelectList(Resultado, "Id", "nombre");
             return View();
         }
 
@@ -153,7 +162,15 @@ namespace MVC_Panderia.Controllers
         {
             ViewBag.cabecera_produccionId = id_cabecera;
             var Row = db.detalle_produccion.Where(s => s.Id == id).FirstOrDefault();
-            ViewBag.cabecera_recetaId = new SelectList(db.cabecera_receta, "Id", "Id", Row.cabecera_recetaId);
+            var Resultado = from CabRec in db.cabecera_receta
+                            join Articulo in db.articulo on CabRec.articuloId equals Articulo.Id
+                            select new
+                            {
+                                CabRec.Id,
+                                Articulo.nombre,
+                            };
+
+            ViewBag.cabecera_recetaId = new SelectList(Resultado, "Id", "nombre", Row.cabecera_recetaId);
             return View(Row);
         }
 
