@@ -4,7 +4,7 @@ VisualStudioVersion = 15.0.27130.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC_Panderia", "MVC_Panderia\MVC_Panderia.csproj", "{0D7E1A88-19C7-4298-8087-F17073A761AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UITestProject", "..\..\..\Downloads\CUnitTestProject\CUnitTestProject\UITestProject.csproj", "{D5C9BC50-F97F-4CEB-A2CB-9EDD4912032B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UITestProject", "UnitTestPanaderia\UITestProject.csproj", "{D5C9BC50-F97F-4CEB-A2CB-9EDD4912032B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
