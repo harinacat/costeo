@@ -38,19 +38,12 @@ namespace MVC_Panderia.Tests.Datos
             ln.nombre = nombre_linea;
             db.unidad_medida.Add(ln);
             db.SaveChanges();
-
-            int ln_cambiadas = db.unidad_medida.Count();
-            Assert.AreEqual(ln_originales + 1, ln_cambiadas);
-            db.unidad_medida.Remove(ln);
-            db.SaveChanges();
-
-
             int ultima_linea_agregada = db.unidad_medida.OrderByDescending(x => x.Id).First().Id;
             ln = db.unidad_medida.Find(Convert.ToInt16(ultima_linea_agregada));
             db.unidad_medida.Remove(ln);
             db.SaveChanges();
-            //int ln_cambiadas = db.unidad_medida.Count();
-            //Assert.AreEqual(ln_cambiadas, ln_original);
+            int ln_cambiadas = db.unidad_medida.Count();
+            Assert.AreEqual(ln_cambiadas, ln_originales);
 
         }
 
