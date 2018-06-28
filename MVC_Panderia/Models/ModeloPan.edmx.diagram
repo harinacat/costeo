@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ddf856d5f2af47d39f0528d77a3a021b" Name="Diagram1" ZoomLevel="126">
+      <Diagram DiagramId="ddf856d5f2af47d39f0528d77a3a021b" Name="Diagram1" ZoomLevel="93">
         <EntityTypeShape EntityType="pan_dbModel.articulo" Width="1.5" PointX="5.25" PointY="3" IsExpanded="true" />
         <EntityTypeShape EntityType="pan_dbModel.cabecera_produccion" Width="2.375" PointX="6.625" PointY="6.875" IsExpanded="true" />
         <EntityTypeShape EntityType="pan_dbModel.cabecera_receta" Width="1.5" PointX="7.5" PointY="3.5" IsExpanded="true" />
@@ -22,7 +22,7 @@
         <EntityTypeShape EntityType="pan_dbModel.usuario" Width="1.5" PointX="3" PointY="7.875" />
         <AssociationConnector Association="pan_dbModel.FK_usuario_rol" />
         <EntityTypeShape EntityType="pan_dbModel.costo" Width="1.5" PointX="9.75" PointY="5" />
-        <EntityTypeShape EntityType="pan_dbModel.detalle_produccion" Width="1.5" PointX="12" PointY="6.875" />
+        <EntityTypeShape EntityType="pan_dbModel.detalle_produccion" Width="1.5" PointX="12.25" PointY="5.875" />
         <EntityTypeShape EntityType="pan_dbModel.precio_venta" Width="1.5" PointX="9.75" PointY="2.375" />
         <AssociationConnector Association="pan_dbModel.FK_cabecera_producciondetalle_produccion" />
         <AssociationConnector Association="pan_dbModel.FK_cabecera_recetadetalle_produccion" />

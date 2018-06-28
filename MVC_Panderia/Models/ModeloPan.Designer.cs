@@ -1,4 +1,4 @@
-﻿// La generación de código T4 está habilitada para el modelo 'D:\AKVA_Rodrigo\ULagos\Quinto Semestre\Taller de pruebas\2 Evaluacion\4 - Desarrollo\costeo\MVC_Panderia\Models\ModeloPan.edmx'. 
+﻿// La generación de código T4 está habilitada para el modelo 'C:\Users\freddy\Documents\GitHub\costeo\MVC_Panderia\Models\ModeloPan.edmx'. 
 // Para habilitar la generación de código heredada, cambie el valor de la propiedad del diseñador 'Estrategia de generación de código'
 // por 'ObjectContext heredado'. Esta propiedad está disponible en la ventana Propiedades cuando se abre
 // el modelo en el diseñador.
