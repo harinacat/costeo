@@ -58,9 +58,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EliminarArticuloUITest.cs" />
-    <Compile Include="EditarArticuloUITest.cs" />
-    <Compile Include="ArticuloUITest.cs" />
+    <Compile Include="ArticuloEliminarUITest.cs" />
+    <Compile Include="ArticuloEditarUITest.cs" />
+    <Compile Include="ArticuloCrearUITest.cs" />
     <Compile Include="LoginUITest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
