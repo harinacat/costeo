@@ -63,6 +63,7 @@
     <Compile Include="ArticuloUITest.cs" />
     <Compile Include="LoginUITest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecetaCrearUITest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

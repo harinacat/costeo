@@ -165,10 +165,8 @@
     <Compile Include="Controllers\analisis_costos_jornadaController.cs" />
     <Compile Include="Controllers\analisis_costos_kilosController.cs" />
     <Compile Include="Controllers\articuloController.cs" />
+    <Compile Include="Controllers\cabecera_produccionController.cs" />
     <Compile Include="Controllers\cabecera_recetaController.cs" />
-    <Compile Include="C:\Users\Rodrigo\Desktop\cabecera_produccionController.cs">
-      <Link>Controllers\cabecera_produccionController.cs</Link>
-    </Compile>
     <Compile Include="Controllers\familiaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\lineaController.cs" />
