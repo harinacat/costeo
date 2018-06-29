@@ -34,8 +34,8 @@
                         <td>
                             @if (@Session["rol"].ToString() == "1" || @Session["rol"].ToString() == "4")
                             {
-                                @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-primary pl-2" })
-                                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }, new { @class = "btn btn-primary pl-2" })
+                                @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { id = "editar-receta", @class = "btn btn-primary pl-2" })
+                                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }, new { id = "eliminar-receta", @class = "btn btn-primary pl-2" })
                                 @Html.ActionLink("Detalle", "IndexDetail", new { id = item.Id, nombre = item.articulo.nombre }, new { @class = "btn btn-primary pl-2" })
                             }
                             @if (@Session["rol"].ToString() == "1" || @Session["rol"].ToString() == "3" || @Session["rol"].ToString() == "4")
