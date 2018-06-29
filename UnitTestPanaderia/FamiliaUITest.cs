@@ -29,9 +29,7 @@ namespace UITestProject
             Thread.Sleep(2000);
 
             //Ir a index familia y agregar familia
-            driver.FindElement(By.Id("navbarDropdownMenuLink")).SendKeys(Keys.ArrowDown +
-            Keys.ArrowDown + Keys.ArrowDown + Keys.ArrowDown + Keys.ArrowDown
-            + Keys.ArrowDown + Keys.ArrowDown + Keys.Enter);
+            driver.Navigate().GoToUrl(url + "/familia");
             Thread.Sleep(2000);
             driver.FindElement(By.Id("btn-nuevo")).Click();
             Thread.Sleep(2000);
