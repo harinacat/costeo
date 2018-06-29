@@ -7,7 +7,7 @@
 <div class="row  pb-2">
     <div class="col-6"><h4>@ViewBag.Title </h4></div>
     <div class="col-6">
-        @Html.ActionLink("Nueva Unidad_medida", "Create", "unidad_medida", new { @class = "btn btn-primary float-right" })
+        @Html.ActionLink("Nueva Unidad_medida", "Create", "unidad_medida", new { id="botonNuevo", @class = "btn btn-primary float-right" })
     </div>
 </div>
 <div class="row">
@@ -27,8 +27,8 @@
                         <td>@item.Id</td>
                         <td>@item.nombre</td>
                         <td>
-                            @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-primary pl-2" })
-                            @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }, new { @class = "btn btn-primary pl-2" })
+                            @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { id= "botonEditar", @class = "btn btn-primary pl-2" })
+                            @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }, new {id="botonEliminar", @class = "btn btn-primary pl-2" })
                         </td>
                     </tr>
                 }
