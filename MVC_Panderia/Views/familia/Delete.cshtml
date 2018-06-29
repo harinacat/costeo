@@ -17,6 +17,6 @@
         <label>Linea</label>
         @Html.DropDownList("lineaId", null, htmlAttributes: new { @class = "form-control", disabled = "disabled"})
     </div>
-    <button type="submit" value="Delete" class="btn btn-danger  pl-2">Eliminar</button>
+    <button type="submit" value="Delete" class="btn btn-danger  pl-2" id="btn-eliminar2">Eliminar</button>
     <button type="button" value="Cancel" class="btn btn-primary  pl-2" onclick="javascript:document.location.href='@Url.Action("Index", "familia")'">Cancelar</button>
 }
