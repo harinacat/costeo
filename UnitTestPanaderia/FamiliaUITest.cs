@@ -33,7 +33,7 @@ namespace UITestProject
             Thread.Sleep(2000);
             driver.FindElement(By.Id("btn-nuevo")).Click();
             Thread.Sleep(2000);
-            driver.FindElement(By.Id("txt_nombre")).SendKeys("test");
+            driver.FindElement(By.Name("nombre")).SendKeys("Test");
             Thread.Sleep(2000);
             driver.FindElement(By.Id("ddl_linea")).Click();
             Thread.Sleep(2000);
