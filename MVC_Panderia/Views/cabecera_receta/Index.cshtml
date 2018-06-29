@@ -8,8 +8,11 @@
     <div class="row  pb-2">
         <div class="col-6"><h4>@ViewBag.Title </h4></div>
         <div class="col-6">
-            @Html.ActionLink("Nueva Receta", "Create", "cabecera_receta", new { @class = "btn btn-primary float-right" })
-        </div>
+            @if (@Session["rol"].ToString() == "1" || @Session["rol"].ToString() == "4")
+            {
+                @Html.ActionLink("Nueva Receta", "Create", "cabecera_receta", new { @class = "btn btn-primary float-right" })
+            }
+            </div>
     </div>
 <div class="row">
     <div class="table-responsive col-12">
@@ -29,12 +32,21 @@
                         <td>@Html.DisplayFor(modelItem => item.articulo.nombre)</td>
 
                         <td>
-                            @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-primary pl-2" })
-                            @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }, new { @class = "btn btn-primary pl-2" })
-                            @Html.ActionLink("Detalle", "IndexDetail", new { id = item.Id, nombre = item.articulo.nombre }, new { @class = "btn btn-primary pl-2" })
-                            @Html.ActionLink("Costo", "IndexDetailCosto", new { id = item.Id, nombre = item.articulo.nombre }, new { @class = "btn btn-primary pl-2" })
-                            @Html.ActionLink("Precio Venta", "IndexDetailPrecioVenta", new { id = item.Id, nombre = item.articulo.nombre }, new { @class = "btn btn-primary pl-2" })
-                        </td>
+                            @if (@Session["rol"].ToString() == "1" || @Session["rol"].ToString() == "4")
+                            {
+                                @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-primary pl-2" })
+                                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }, new { @class = "btn btn-primary pl-2" })
+                                @Html.ActionLink("Detalle", "IndexDetail", new { id = item.Id, nombre = item.articulo.nombre }, new { @class = "btn btn-primary pl-2" })
+                            }
+                            @if (@Session["rol"].ToString() == "1" || @Session["rol"].ToString() == "3" || @Session["rol"].ToString() == "4")
+                            {
+                                @Html.ActionLink("Costo", "IndexDetailCosto", new { id = item.Id, nombre = item.articulo.nombre }, new { @class = "btn btn-primary pl-2" })
+                            }
+                            @if (@Session["rol"].ToString() == "1" || @Session["rol"].ToString() == "4")
+                            {
+                                @Html.ActionLink("Precio Venta", "IndexDetailPrecioVenta", new { id = item.Id, nombre = item.articulo.nombre }, new { @class = "btn btn-primary pl-2" })
+                            }
+                            </td>
                     </tr>
                 }
             </tbody>
