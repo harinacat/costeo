@@ -68,5 +68,14 @@ namespace UITestProject
             driver.FindElement(By.Id("eliminar-receta")).Click();
         }
 
+        [Test]
+        public void ListaCostoRecetaTest()
+        {
+            //Acceder a contenedor Maestro: Receta
+            driver.Navigate().GoToUrl(url + "/cabecera_receta");
+            //Accede a eliminar Receta
+            driver.FindElement(By.Id("costo-receta")).Click();
+        }
+
     }
 }
