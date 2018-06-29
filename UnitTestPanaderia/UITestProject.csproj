@@ -62,9 +62,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArticuloEliminarUITest.cs" />
-    <Compile Include="ArticuloEditarUITest.cs" />
-    <Compile Include="ArticuloCrearUITest.cs" />
+    <Compile Include="ArticuloUITest.cs" />
     <Compile Include="UnidadMedidaUITest.cs" />
     <Compile Include="LoginUITest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

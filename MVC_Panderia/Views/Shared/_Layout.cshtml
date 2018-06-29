@@ -34,7 +34,7 @@
                                 Maestros
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                @if (@Session["rol"].ToString() == "1" || @Session["rol"].ToString() == "4")
+                                @*@if (@Session["rol"].ToString() == "1" || @Session["rol"].ToString() == "4")*@
                                 {
                                     <a class="dropdown-item" href="#">@Html.ActionLink("Medidas", "Index", "unidad_medida", new { area = "" }, new { @class = "dropdown-item" })</a>
                                     <a class="dropdown-item" href="#">@Html.ActionLink("Lineas", "Index", "linea", new { area = "" }, new { @class = "dropdown-item" })</a>
