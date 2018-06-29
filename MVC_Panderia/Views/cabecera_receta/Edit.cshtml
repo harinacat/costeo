@@ -14,11 +14,11 @@
         <label>Id</label>
         @Html.EditorFor(model => model.Id, new { htmlAttributes = new { @class = "form-control" } })
         <label>Articulo</label>
-        @Html.DropDownList("articuloId", null, htmlAttributes: new { @class = "form-control" })
+        @Html.DropDownList("articuloId", null, htmlAttributes: new {id="articulo-Id", @class = "form-control" })
     </div>
 
 
 
-    <button type="submit" value="Save" class="btn btn-success pl-2">Guardar</button>
+    <button type="submit" value="Save" id="guardar-receta" class="btn btn-success pl-2">Guardar</button>
     <button type="button" value="Cancel" class="btn btn-primary pl-2" onclick="javascript:document.location.href='@Url.Action("Index", "costo")'">Cancelar</button>
 }
