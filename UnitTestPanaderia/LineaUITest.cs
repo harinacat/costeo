@@ -15,8 +15,8 @@ namespace UITestProject
         IWebDriver driver = new ChromeDriver();
 
 
-        [Test]
-        public void LogearseTest()
+        
+        private void _LogearseTest()
         {
             //logearse
             driver.Navigate().GoToUrl(url + "/usuario/Login?ReturnUrl=%2f");
@@ -31,14 +31,15 @@ namespace UITestProject
         [Test]
         public void CrearTest()
         {
+            _LogearseTest();
             //Ir a index Linea y agregar Linea
             driver.Navigate().GoToUrl(url + "/linea");
             Thread.Sleep(1000);
-            driver.FindElement(By.XPath("/html/body/div[2]/div[1]/div[2]/a")).Click();
+            driver.FindElement(By.Id("btn-crear-index")).Click();
             Thread.Sleep(1000);
-            driver.FindElement(By.Name("nombre")).SendKeys("PAN CON QUESITO");
+            driver.FindElement(By.Name("nombre")).SendKeys("Tortas mil hojas");
             Thread.Sleep(1000);
-            driver.FindElement(By.XPath("/html/body/div[2]/form/button[1]")).Click();
+            driver.FindElement(By.Id("btn-guardar-linea")).Click();
             Thread.Sleep(1000);
         }
 
@@ -46,13 +47,13 @@ namespace UITestProject
         public void ModificarTest()
         {
             //Editar primer registro 
-            driver.FindElement(By.XPath("/html/body/div[2]/div[2]/div/table/tbody/tr[6]/td[3]/a[1]")).Click();
+            driver.FindElement(By.Id("btn-editar-index")).Click();
             driver.FindElement(By.Name("nombre")).Clear();
             Thread.Sleep(1000);
-            driver.FindElement(By.Name("nombre")).SendKeys("PAN CON CHANCO");
+            driver.FindElement(By.Name("nombre")).SendKeys("Tortas de Frambuesa");
             Thread.Sleep(1000);
             Thread.Sleep(1000);
-            driver.FindElement(By.XPath("/html/body/div[2]/form/button[1]")).Click();
+            driver.FindElement(By.Id("btn-guardar-linea")).Click();
             Thread.Sleep(1000);
         }
 
@@ -60,9 +61,9 @@ namespace UITestProject
         public void EliminarTest()
         {
             //Eliminar Registro
-            driver.FindElement(By.XPath("/html/body/div[2]/div[2]/div/table/tbody/tr[7]/td[3]/a[2]")).Click();
+            driver.FindElement(By.Id("btn-eliminar-index")).Click();
             Thread.Sleep(1000);
-            driver.FindElement(By.XPath("/html/body/div[2]/form/button[1]")).Click();
+            driver.FindElement(By.Id("btn-eliminar-linea")).Click();
             Thread.Sleep(1000);
         }
 
