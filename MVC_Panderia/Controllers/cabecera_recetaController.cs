@@ -214,7 +214,7 @@ namespace MVC_Panderia.Controllers
         {
             ViewBag.NombreReceta = nombre;
             ViewBag.cabecera_recetaId = id;
-            return View(db.costo.Where(s => s.cabecera_recetaId == id));
+            return View(db.costo.Where(s => s.cabecera_recetaId == id).OrderByDescending(s => s.fecha));
         }
 
         // GET: Costo/Create
