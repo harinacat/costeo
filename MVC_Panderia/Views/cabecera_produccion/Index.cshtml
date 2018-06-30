@@ -8,7 +8,7 @@
     <div class="row  pb-2">
         <div class="col-6"><h4>@ViewBag.Title </h4></div>
         <div class="col-6">
-            @Html.ActionLink("Nueva Produccion", "Create", "cabecera_produccion", new { @class = "btn btn-primary float-right" })
+            @Html.ActionLink("Nueva Produccion", "Create", "cabecera_produccion", new { id="nueva-produccion", @class = "btn btn-primary float-right" })
         </div>
     </div>
     <div class="row">
@@ -29,7 +29,7 @@
                             <td>@item.fecha.ToShortDateString()</td>
 
                             <td>
-                                @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-primary pl-2" })
+                                @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-primary pl-2", id="edit" })
                                 @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }, new { @class = "btn btn-primary pl-2" })
                                 @Html.ActionLink("Detalle", "IndexDetail", new { id = item.Id}, new { @class = "btn btn-primary pl-2" })
 
