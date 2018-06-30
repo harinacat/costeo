@@ -16,7 +16,8 @@ namespace MVC_Panderia.Controllers
         // GET: cabecera_receta
         public ActionResult Index()
         {
-            return View(db.cabecera_receta.ToList());
+
+            return View(db.cabecera_receta.ToList().OrderByDescending(s => s.Id));
         }
 
         // GET: cabecera_receta/Details/5
@@ -132,8 +133,16 @@ namespace MVC_Panderia.Controllers
         [HttpPost]
         public ActionResult CreateDetail(FormCollection collection, int id, string nombre)
         {
+            ViewBag.NombreReceta = nombre;
+            ViewBag.cabecera_recetaId = id;
+            ViewBag.articuloId = new SelectList(db.articulo, "Id", "nombre");
             try
             {
+                if (Convert.ToInt32(collection.Get("cantidad")) < 0)
+                {
+                    ViewBag.Error = "Valor no puede ser negativo";
+                    return (View());
+                }
                 // TODO: Add insert logic here
                 detalle_receta dr = new detalle_receta();
                 dr.articuloId = Convert.ToInt32(collection.Get("articuloId"));
@@ -143,8 +152,9 @@ namespace MVC_Panderia.Controllers
                 db.SaveChanges();
                 return RedirectToAction("IndexDetail", new { id=id, nombre=nombre});
             }
-            catch
+            catch(Exception exp)
             {
+                ViewBag.Error = exp.Message;
                 return View();
             }
         }
@@ -163,20 +173,30 @@ namespace MVC_Panderia.Controllers
         [HttpPost]
         public ActionResult EditDetail(FormCollection collection, int id, int id_cabecera, string nombre)
         {
+            ViewBag.NombreReceta = nombre;
+            ViewBag.cabecera_recetaId = id_cabecera;
+            ViewBag.articuloId = new SelectList(db.articulo, "Id", "nombre");
             try
             {
                 // TODO: Add update logic here
-                detalle_receta cr = new detalle_receta();
-                cr = db.detalle_receta.Find(id);
-                cr.articuloId = Convert.ToInt32(collection.Get("articuloId"));
-                cr.cantidad = Convert.ToDecimal(collection.Get("cantidad"));
+                detalle_receta Row = new detalle_receta();
+                if (Convert.ToInt32(collection.Get("cantidad")) < 0)
+                {
+                    ViewBag.Error = "Valor no puede ser menor a cero";
+                    return (View(Row));
+                }
+                Row = db.detalle_receta.Find(id);
+                Row.articuloId = Convert.ToInt32(collection.Get("articuloId"));
+                Row.cantidad = Convert.ToDecimal(collection.Get("cantidad"));
                 db.SaveChanges();
 
                 return RedirectToAction("IndexDetail", new { id = id_cabecera, nombre = nombre });
             }
-            catch
+            catch(Exception exp)
             {
-                return View();
+                ViewBag.Error = exp.Message;
+                costo Row = Row = db.costo.Find(new object[] { id_cabecera, Convert.ToDateTime(collection.Get("fecha")) });
+                return View(Row);
             }
         }
 
@@ -214,7 +234,7 @@ namespace MVC_Panderia.Controllers
         {
             ViewBag.NombreReceta = nombre;
             ViewBag.cabecera_recetaId = id;
-            return View(db.costo.Where(s => s.cabecera_recetaId == id));
+            return View(db.costo.Where(s => s.cabecera_recetaId == id).OrderByDescending(s => s.fecha));
         }
 
         // GET: Costo/Create
@@ -229,8 +249,15 @@ namespace MVC_Panderia.Controllers
         [HttpPost]
         public ActionResult CreateDetailCosto(FormCollection collection, int id, string nombre)
         {
+            ViewBag.NombreReceta = nombre;
+            ViewBag.cabecera_recetaId = id;
             try
             {
+                if (Convert.ToInt32(collection.Get("valor")) < 0)
+                {
+                    ViewBag.Error = "Valor no puede ser negativo";
+                    return (View());
+                }
                 // TODO: Add insert logic here
                 costo dr = new costo();
                 dr.cabecera_recetaId = id;
@@ -242,6 +269,7 @@ namespace MVC_Panderia.Controllers
             }
             catch( Exception exp)
             {
+                ViewBag.Error = exp.Message;
                 return View();
             }
         }
@@ -259,19 +287,27 @@ namespace MVC_Panderia.Controllers
         [HttpPost]
         public ActionResult EditDetailCosto(FormCollection collection,  int id_cabecera, string nombre)
         {
+            ViewBag.NombreReceta = nombre;
+            ViewBag.cabecera_recetaId = id_cabecera;
             try
-            {
+            {   
                 // TODO: Add update costo here
-                costo cr = new costo();
-                cr = db.costo.Find(new object[] {id_cabecera, Convert.ToDateTime(collection.Get("fecha")) });
-                cr.valor = Convert.ToInt32(collection.Get("valor"));
+                costo Row = new costo();
+                Row = db.costo.Find(new object[] { id_cabecera, Convert.ToDateTime(collection.Get("fecha")) });
+                if(Convert.ToInt32(collection.Get("valor"))<0)
+                {   
+                    ViewBag.Error = "Valor no puede ser menor a cero";
+                    return (View(Row));
+                }
+                Row.valor = Convert.ToInt32(collection.Get("valor"));
                 db.SaveChanges();
-
                 return RedirectToAction("IndexDetailCosto", new { id = id_cabecera, nombre = nombre });
             }
             catch(Exception exp)
             {
-                return View();
+                ViewBag.Error = exp.Message;
+                costo Row = Row = db.costo.Find(new object[] { id_cabecera, Convert.ToDateTime(collection.Get("fecha")) });
+                return View(Row);
             }
         }
 
@@ -322,8 +358,16 @@ namespace MVC_Panderia.Controllers
         [HttpPost]
         public ActionResult CreateDetailPrecioVenta(FormCollection collection, int id, string nombre)
         {
+            ViewBag.NombreReceta = nombre;
+            ViewBag.cabecera_recetaId = id;
             try
             {
+                if (Convert.ToInt32(collection.Get("valor")) < 0)
+                {
+                    ViewBag.Error = "Valor no puede ser negativo";
+                    return (View());
+                }
+
                 // TODO: Add insert logic here
                 precio_venta dr = new precio_venta();
                 dr.cabecera_recetaId = id;
@@ -335,6 +379,7 @@ namespace MVC_Panderia.Controllers
             }
             catch (Exception exp)
             {
+                ViewBag.Error = exp.Message;
                 return View();
             }
         }
@@ -352,19 +397,27 @@ namespace MVC_Panderia.Controllers
         [HttpPost]
         public ActionResult EditDetailPrecioVenta(FormCollection collection, int id_cabecera, string nombre)
         {
+            ViewBag.NombreReceta = nombre;
+            ViewBag.cabecera_recetaId = id_cabecera;
             try
             {
                 // TODO: Add update PrecioVenta here
-                precio_venta cr = new precio_venta();
-                cr = db.precio_venta.Find(new object[] { id_cabecera, Convert.ToDateTime(collection.Get("fecha")) });
-                cr.valor = Convert.ToInt32(collection.Get("valor"));
+                precio_venta Row = new precio_venta();
+                Row = db.precio_venta.Find(new object[] { id_cabecera, Convert.ToDateTime(collection.Get("fecha")) });
+                if (Convert.ToInt32(collection.Get("valor")) < 0)
+                {
+                    ViewBag.Error = "Valor no puede ser menor a cero";
+                    return (View(Row));
+                }
+                Row.valor = Convert.ToInt32(collection.Get("valor"));
                 db.SaveChanges();
-
                 return RedirectToAction("IndexDetailPrecioVenta", new { id = id_cabecera, nombre = nombre });
             }
             catch (Exception exp)
             {
-                return View();
+                ViewBag.Error = exp.Message;
+                precio_venta Row = Row = db.precio_venta.Find(new object[] { id_cabecera, Convert.ToDateTime(collection.Get("fecha")) });
+                return View(Row);
             }
         }
 

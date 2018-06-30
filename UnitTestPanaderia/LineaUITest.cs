@@ -55,6 +55,8 @@ namespace UITestProject
             Thread.Sleep(1000);
             driver.FindElement(By.Id("btn-guardar-linea")).Click();
             Thread.Sleep(1000);
+            driver.Close();
+            driver.Quit();
         }
 
         [Test]

@@ -62,7 +62,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DetalleProduccion.cs" />
+    <Compile Include="dProduccionUITest.cs" />
     <Compile Include="ArticuloUITest.cs" />
+    <Compile Include="PrecioUITest.cs" />
     <Compile Include="CostoUITest.cs" />
     <Compile Include="FamiliaUITest.cs" />
     <Compile Include="LineaUITest.cs" />
@@ -78,6 +81,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MVC_Panderia\MVC_Panderia.csproj">
+      <Project>{0d7e1a88-19c7-4298-8087-f17073a761ae}</Project>
+      <Name>MVC_Panderia</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

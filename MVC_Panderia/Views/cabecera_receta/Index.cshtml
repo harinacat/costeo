@@ -40,11 +40,11 @@
                             }
                             @if (@Session["rol"].ToString() == "1" || @Session["rol"].ToString() == "3" || @Session["rol"].ToString() == "4")
                             {
-                                @Html.ActionLink("Costo", "IndexDetailCosto", new { id = item.Id, nombre = item.articulo.nombre }, new { id = "costo-receta", @class = "btn btn-primary pl-2" })
+                                @Html.ActionLink("Costo", "IndexDetailCosto", new { id = item.Id, nombre = item.articulo.nombre }, new { id = "costoreceta", @class = "btn btn-primary pl-2" })
                             }
                             @if (@Session["rol"].ToString() == "1" || @Session["rol"].ToString() == "4")
                             {
-                                @Html.ActionLink("Precio Venta", "IndexDetailPrecioVenta", new { id = item.Id, nombre = item.articulo.nombre }, new { @class = "btn btn-primary pl-2" })
+                                @Html.ActionLink("Precio Venta", "IndexDetailPrecioVenta", new { id = item.Id, nombre = item.articulo.nombre }, new {id="precio-receta", @class = "btn btn-primary pl-2" })
                             }
                          </td>
                     </tr>

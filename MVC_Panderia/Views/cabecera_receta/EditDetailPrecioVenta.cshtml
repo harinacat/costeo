@@ -5,6 +5,11 @@
     ViewBag.Title = "Editar Precio Venta Receta";
 }
 
+@if (@ViewBag.Error != "")
+{
+    <p class="bg-danger">@ViewBag.Error</p>
+}
+
 <form method="post" action="@Url.Action("EditDetailPrecioVenta", "cabecera_receta", new {id_cabecera=ViewBag.cabecera_recetaId,  nombre=ViewBag.NombreReceta })">
 
     <div class="row  pb-2">
@@ -18,9 +23,9 @@
 
     <div class="form-group">
         <label>Valor</label>
-        @Html.EditorFor(model => model.valor, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.EditorFor(model => model.valor, new { htmlAttributes = new {id="nuevo-valor", @class = "form-control" } })
     </div>
 
-    <button type="submit" value="Save" class="btn btn-success pl-2">Guardar</button>
-    <button type="button" value="Cancel" class="btn btn-primary pl-2" onclick="javascript:document.location.href='@Url.Action("Index", "Precio Venta")'">Cancelar</button>
+    <button type="submit" id="botonGuardar" value="Save" class="btn btn-success pl-2">Guardar</button>
+    <button type="button" id="guardar-costo" value="Cancel" class="btn btn-primary pl-2" onclick="javascript:document.location.href='@Url.Action("Index", "Precio Venta")'">Cancelar</button>
 </form>

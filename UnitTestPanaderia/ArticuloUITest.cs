@@ -1,7 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -14,12 +13,13 @@ namespace UITestProject
         IWebDriver driver = new ChromeDriver();
 
         [Test]
-        public void LoginTest()
+        public void _LoginTest()
         {
             driver.Navigate().GoToUrl(url + "/usuario/Login?ReturnUrl=%2f");
             driver.FindElement(By.Name("Id")).SendKeys("jlagos");
             driver.FindElement(By.Name("contrasena")).SendKeys("test");
             driver.FindElement(By.Id("login")).Click();
+           
         }
 
         [Test]
@@ -69,6 +69,9 @@ namespace UITestProject
             driver.Navigate().GoToUrl(url + "/articulo");
             driver.FindElement(By.Id("boton-eliminar")).Click();
             driver.FindElement(By.Id("boton-eliminar2")).Click();
+
+            driver.Close();
+            driver.Quit();
         }
     }
 }

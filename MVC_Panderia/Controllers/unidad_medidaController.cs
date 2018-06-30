@@ -16,7 +16,8 @@ namespace MVC_Panderia.Controllers
         // GET: Unidad_medida
         public ActionResult Index()
         {
-            return View(db.unidad_medida.ToList());
+            //return View(db.unidad_medida.ToList());
+            return View(db.unidad_medida.ToList().OrderByDescending(s => s.Id));
         }
 
         // GET: Unidad_medida/Details/5
