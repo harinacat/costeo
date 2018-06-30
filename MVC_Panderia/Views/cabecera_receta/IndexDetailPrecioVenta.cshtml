@@ -8,7 +8,7 @@
     <div class="row  pb-2">
         <div class="col-6"><h4>@ViewBag.Title </h4></div>
         <div class="col-6">
-            @Html.ActionLink("Nuevo Precio Venta", "CreateDetailPrecioVenta", "cabecera_receta", new { id = ViewBag.cabecera_recetaId, nombre = ViewBag.NombreReceta }, new { @class = "btn btn-primary float-right" })
+            @Html.ActionLink("Nuevo Precio Venta", "CreateDetailPrecioVenta", "cabecera_receta", new { id = ViewBag.cabecera_recetaId, nombre = ViewBag.NombreReceta }, new {id="nuevo-precio", @class = "btn btn-primary float-right" })
         </div>
     </div>
     <div>
@@ -33,8 +33,8 @@
                         <td>@item.valor</td>
 
                         <td>
-                            @Html.ActionLink("Editar", "EditDetailPrecioVenta", new { fecha = item.fecha, id_cabecera = ViewBag.cabecera_recetaId, nombre = ViewBag.NombreReceta }, new { @class = "btn btn-primary pl-2" })
-                            @Html.ActionLink("Eliminar", "DeleteDetailPrecioVenta", new { fecha = item.fecha, id_cabecera = ViewBag.cabecera_recetaId, nombre = ViewBag.NombreReceta }, new { @class = "btn btn-primary pl-2" })
+                            @Html.ActionLink("Editar", "EditDetailPrecioVenta", new { fecha = item.fecha, id_cabecera = ViewBag.cabecera_recetaId, nombre = ViewBag.NombreReceta }, new {id="editar-precio", @class = "btn btn-primary pl-2" })
+                            @Html.ActionLink("Eliminar", "DeleteDetailPrecioVenta", new { fecha = item.fecha, id_cabecera = ViewBag.cabecera_recetaId, nombre = ViewBag.NombreReceta }, new {id="eliminar-precio", @class = "btn btn-primary pl-2" })
 
                         </td>
                     </tr>
