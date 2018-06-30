@@ -11,12 +11,12 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace UITestProject
 {
     [TestClass]
-    public class dProduccionUITest
+    public class CabeceraProduccionUITest
     {
-        
+
         String url = "http://localhost:58102";
         IWebDriver driver = new ChromeDriver();
-       
+
         private void _Login()
         {
             driver.Navigate().GoToUrl(url + "/usuario/Login?ReturnUrl=%2f");
@@ -59,9 +59,13 @@ namespace UITestProject
         }
 
         [Test]
-        public void ListarCabeceraProduccionTest()
+        public void ImagenIndex()
         {
-            driver.Navigate().GoToUrl(url + "/cabecera_produccion");
+            _Login();
+            IWebElement element = driver.FindElement(By.XPath("/html/body/div[2]/div/img"));
+            string src_imagen = element.GetAttribute("src");
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(url + "/Images/Logo.png", src_imagen);
+            driver.Navigate().GoToUrl(url + "/usuario/Login?ReturnUrl=%2f");
 
         }
 
