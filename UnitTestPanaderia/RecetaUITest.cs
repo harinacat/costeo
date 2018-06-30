@@ -4,9 +4,6 @@ using OpenQA.Selenium.Chrome;
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-using MVC_Panderia.Controllers;
-
-
 namespace UITestProject
 {
     [TestClass]
