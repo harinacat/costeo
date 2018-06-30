@@ -83,7 +83,7 @@ namespace UITestProject
             //Acceder a contenedor Maestro: Receta
             driver.Navigate().GoToUrl(url + "/cabecera_receta");
             //Accede a eliminar Receta
-            driver.FindElement(By.Id("costo-receta")).Click();
+            driver.FindElement(By.Id("costoreceta")).Click();
 
             Thread.Sleep(4000);
 
