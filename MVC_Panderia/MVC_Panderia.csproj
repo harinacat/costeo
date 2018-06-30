@@ -439,6 +439,7 @@
     <Content Include="Views\cabecera_produccion\CreateDetail.cshtml" />
     <Content Include="Views\cabecera_produccion\EditDetail.cshtml" />
     <Content Include="Views\cabecera_produccion\DeleteDetail.cshtml" />
+    <Content Include="Views\analisis_costos_kilos\ReportesKilos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
