@@ -15,7 +15,7 @@ namespace UITestProject
         //private IWebElement input;
 
         [TestMethod]
-        public void _Login()
+        public void Login()
         {
             //Accede a Panaderia a traves del Login
             driver.Navigate().GoToUrl(url + "/usuario/Login?ReturnUrl=%2f");
