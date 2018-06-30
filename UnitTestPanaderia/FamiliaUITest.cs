@@ -18,7 +18,6 @@ namespace UITestProject
         [Test]
         public void Login()
         {
-
             //logearse
             driver.Navigate().GoToUrl(url + "/usuario/Login?ReturnUrl=%2f");
             driver.FindElement(By.Name("Id")).SendKeys("gvargas");
@@ -45,7 +44,6 @@ namespace UITestProject
             //IWebElement baseTable1 = driver.FindElement(By.TagName("table"));
             //IWebElement tableRow1 = baseTable1.FindElement(By.XPath("/html/body/div[2]/div[2]/div/table/tbody/tr[8]"));
             //tableRow1.FindElement(By.XPath("/html/body/div[2]/div[2]/div/table/tbody/tr[8]/td[4]/a[1]")).Click();
-
             driver.FindElement(By.XPath("/html/body/div[2]/div[2]/div/table/tbody/tr[1]/td[4]/a[1]")).Click();
             driver.FindElement(By.Name("nombre")).Clear();
             driver.FindElement(By.Name("nombre")).SendKeys("familiaTest");
