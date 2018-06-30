@@ -66,7 +66,8 @@ namespace UITestProject
             string src_imagen = element.GetAttribute("src");
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(url + "/Images/Logo.png", src_imagen);
             driver.Navigate().GoToUrl(url + "/usuario/Login?ReturnUrl=%2f");
-
+            driver.Close();
+            driver.Quit();
         }
 
     }

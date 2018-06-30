@@ -69,6 +69,8 @@ namespace UITestProject
             Thread.Sleep(1000);
             // driver.Navigate().GoToUrl(url + "/unidad_medida");
 
+            driver.Close();
+            driver.Quit();
         }
     }
 }

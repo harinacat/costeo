@@ -33,12 +33,9 @@ namespace UITestProject
         {
             //Ir a index Linea y agregar Linea
             driver.Navigate().GoToUrl(url + "/linea");
-            Thread.Sleep(1000);
-            driver.FindElement(By.XPath("/html/body/div[2]/div[1]/div[2]/a")).Click();
-            Thread.Sleep(1000);
-            driver.FindElement(By.Name("nombre")).SendKeys("PAN CON QUESITO");
-            Thread.Sleep(1000);
-            driver.FindElement(By.XPath("/html/body/div[2]/form/button[1]")).Click();
+            driver.FindElement(By.Id("nueva-linea")).Click();
+            driver.FindElement(By.Name("nombre")).SendKeys("PAN PRUEBA");
+            driver.FindElement(By.Id("guardar-linea")).Click();
             Thread.Sleep(1000);
         }
 
@@ -54,6 +51,8 @@ namespace UITestProject
             Thread.Sleep(1000);
             driver.FindElement(By.XPath("/html/body/div[2]/form/button[1]")).Click();
             Thread.Sleep(1000);
+            driver.Close();
+            driver.Quit();
         }
 
         [Test]
