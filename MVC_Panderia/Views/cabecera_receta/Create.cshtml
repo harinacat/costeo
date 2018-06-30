@@ -10,10 +10,10 @@
    
     <div class="form-group">
         <label>Articulo</label>
-        @Html.DropDownList("articuloId", null, htmlAttributes: new { @class = "form-control" })
+        @Html.DropDownList("articuloId", null, htmlAttributes: new { id = "articulo-Id", @class = "form-control" })
     </div>
 
-    <button type="submit" class="btn btn-primary">Guardar</button>
+    <button type="submit" id="guardar-receta" class="btn btn-primary">Guardar</button>
 
 
 </form>

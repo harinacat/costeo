@@ -36,7 +36,7 @@
                             <td>@item.cantidad</td>
                             <td>@Html.DisplayFor(modelItem => item.articulo.unidad_medida.nombre)</td>
                             <td>
-                                @Html.ActionLink("Editar", "EditDetail", new { id = item.Id, id_cabecera = ViewBag.cabecera_recetaId, nombre = ViewBag.NombreReceta }, new { @class = "btn btn-primary pl-2" })
+                                @Html.ActionLink("Editar", "EditDetail", new { id = item.Id, id_cabecera = ViewBag.cabecera_recetaId, nombre = ViewBag.NombreReceta }, new { id="editar-costo", @class = "btn btn-primary pl-2" })
                                 @Html.ActionLink("Eliminar", "DeleteDetail", new { id = item.Id, id_cabecera = ViewBag.cabecera_recetaId, nombre = ViewBag.NombreReceta }, new { @class = "btn btn-primary pl-2" })
                                 
                             </td>
