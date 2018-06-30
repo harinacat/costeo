@@ -91,5 +91,22 @@ namespace UITestProject
             driver.Quit();
         }
 
+        //[Test]
+        //public void CrearDetalleRecetaTest()
+        //{
+        //    //Acceder a contenedor Maestro: Receta
+        //    driver.Navigate().GoToUrl(url + "/cabecera_receta");
+        //    //Accede a eliminar Receta
+        //    driver.FindElement(By.Id("detalle-receta")).Click();
+        //    driver.FindElement(By.Id("editar-receta")).Click();
+        //    driver.FindElement(By.Name("cantidad")).SendKeys("33");
+        //    driver.FindElement(By.Id("guardar - detalle")).Click();            
+        //    Thread.Sleep(4000);
+
+        //    driver.Close();
+        //    driver.Quit();
+        //}
+
+
     }
 }
