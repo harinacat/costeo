@@ -14,6 +14,7 @@ namespace UITestProject
         IWebDriver driver = new ChromeDriver();
 
 
+
         [Test]
         public void LoginTest()
         {
@@ -22,6 +23,8 @@ namespace UITestProject
             driver.FindElement(By.Name("Id")).SendKeys("jlagos");
             driver.FindElement(By.Name("contrasena")).SendKeys("test");
             driver.FindElement(By.Id("login")).Click();
+
         }
+
     }
 }
