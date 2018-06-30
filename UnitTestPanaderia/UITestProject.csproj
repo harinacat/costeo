@@ -62,16 +62,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-
     <Compile Include="ArticuloUITest.cs" />
-    <Compile Include="CostosUITest.cs" />
     <Compile Include="CostoUITest.cs" />
     <Compile Include="FamiliaUITest.cs" />
     <Compile Include="LoginUITest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecetaUITest.cs" />
     <Compile Include="UnidadMedidaUITest.cs" />
-
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
