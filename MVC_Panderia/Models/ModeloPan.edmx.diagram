@@ -22,7 +22,7 @@
         <EntityTypeShape EntityType="pan_dbModel.usuario" Width="1.5" PointX="3" PointY="7.875" />
         <AssociationConnector Association="pan_dbModel.FK_usuario_rol" />
         <EntityTypeShape EntityType="pan_dbModel.costo" Width="1.5" PointX="9.75" PointY="5" />
-        <EntityTypeShape EntityType="pan_dbModel.detalle_produccion" Width="1.5" PointX="12" PointY="6.875" />
+        <EntityTypeShape EntityType="pan_dbModel.detalle_produccion" Width="1.5" PointX="12.25" PointY="5.875" />
         <EntityTypeShape EntityType="pan_dbModel.precio_venta" Width="1.5" PointX="9.75" PointY="2.375" />
         <AssociationConnector Association="pan_dbModel.FK_cabecera_producciondetalle_produccion" />
         <AssociationConnector Association="pan_dbModel.FK_cabecera_recetadetalle_produccion" />
