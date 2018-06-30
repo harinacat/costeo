@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArticuloUITest.cs" />
+    <Compile Include="PrecioUITest.cs" />
     <Compile Include="CostoUITest.cs" />
     <Compile Include="FamiliaUITest.cs" />
     <Compile Include="LineaUITest.cs" />
