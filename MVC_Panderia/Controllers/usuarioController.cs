@@ -60,7 +60,7 @@ namespace MVC_Panderia.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            return View(db.usuario.ToList());
+            return View(db.usuario.ToList().OrderBy(s => s.Id));
         }
 
         // GET: Linea/Details/5

@@ -8,7 +8,7 @@
 <div class="row  pb-2">
     <div class="col-6"><h4>@ViewBag.Title </h4></div>
     <div class="col-6">
-        @Html.ActionLink("Nuevo Usuario", "Create", "usuario", new { @class = "btn btn-primary float-right" })
+        @Html.ActionLink("Nuevo Usuario", "Create", "usuario", new { @class = "btn btn-primary float-right", Id="btnGuardar" })
     </div>
 </div>
 <div class="row">
@@ -32,8 +32,8 @@
                         <td>@item.email</td>
                         <td>@Html.DisplayFor(modelItem => item.rol.nombre_rol)</td>
                         <td>
-                            @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-primary pl-2" })
-                            @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }, new { @class = "btn btn-primary pl-2" })
+                            @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-primary pl-2", Id= "btn-Editar-index" })
+                            @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }, new { @class = "btn btn-primary pl-2", Id= "btnEliminar-index" })
                         </td>
                     </tr>
                 }

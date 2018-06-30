@@ -8,7 +8,7 @@
     </div>
     <div class="row">
         <div class="form-group col-6">
-            <a href="#" class="btn btn-info pl-2" data-toggle="modal" data-target="#LoginModal">Establecer contraseña</a>
+            <a href="#" id="btnEstablecerContrasena"class="btn btn-info pl-2" data-toggle="modal" data-target="#LoginModal">Establecer contraseña</a>
         </div>
     </div>
     <div class="row">
@@ -40,7 +40,7 @@
         </div>
         <input type="password" class="form-control" name="contraseña" hidden="hidden">
     </div>
-    <button type="submit" class="btn btn-success">Guardar</button>
+    <button Id="btnGuardar" type="submit" class="btn btn-success">Guardar</button>
     <button type="button" value="Cancel" class="btn btn-primary pl-2" onclick="javascript:document.location.href='@Url.Action("Index", "usuario")'">Cancelar</button>
 
 
@@ -65,7 +65,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success pl-2">Establecer</button>
+                    <button Id="btnEstablece" type="submit" class="btn btn-success pl-2">Establecer</button>
                     <button Id="btnHideModal" type="button" value="Cancel" class="btn btn-primary pl-2">Cancelar</button>
                 </div>
             </div>
