@@ -15,14 +15,20 @@ namespace UITestProject
         //private IWebElement input;
 
         [TestMethod]
-        public void Login()
+        public void _Login()
         {
             //Accede a Panaderia a traves del Login
+            driver.Navigate().GoToUrl(url + "/usuario/Login?ReturnUrl=%2f");
+            driver.FindElement(By.Name("Id")).SendKeys("fantipa");
+            driver.FindElement(By.Name("contrasena")).SendKeys("test");
+            driver.FindElement(By.Id("boton")).Click();
+            /*
             driver.Navigate().GoToUrl(url + "/usuario/Login?ReturnUrl=%2f");
             driver.Manage().Window.Maximize();
             driver.FindElement(By.Name("Id")).SendKeys("fantipa");
             driver.FindElement(By.Name("contrasena")).SendKeys("test");
             driver.FindElement(By.Id("login")).Click();
+            */
         }
         
         [TestMethod]
