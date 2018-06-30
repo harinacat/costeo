@@ -65,7 +65,7 @@
     <Compile Include="LoginUITest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecetaUITest.cs" />
-    <Compile Include="UsuarioUitest.cs" />
+    <Compile Include="UsuarioUITest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
