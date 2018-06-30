@@ -15,7 +15,8 @@ namespace MVC_Panderia.Controllers
         // GET: Familia
         public ActionResult Index()
         {
-            return View(db.familia.ToList());
+            //return View(db.familia.ToList());
+            return View(db.familia.ToList().OrderByDescending(s => s.Id));
         }
 
         // GET: Familia/Details/5
