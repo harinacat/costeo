@@ -3,6 +3,8 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Linq;
+using System.Threading;
 
 namespace UITestProject
 {
@@ -27,9 +29,9 @@ namespace UITestProject
         [Test]
         public void CrearRecetaTest()
         {
-            //MVC_Panderia.Models.pan_dbEntities db = new MVC_Panderia.Models.pan_dbEntities();
-            //////Obtiene el numero de recetas actuales
-            //int FilasActuales = db.cabecera_receta.co.
+            MVC_Panderia.Models.pan_dbEntities db = new MVC_Panderia.Models.pan_dbEntities();
+            ////Obtiene el numero de recetas actuales
+            int FilasActuales = db.cabecera_receta.Count();
             //Acceder a contenedor Maestro: Receta
             driver.Navigate().GoToUrl(url + "/cabecera_receta");
             //Accede a Crear Receta
@@ -38,7 +40,7 @@ namespace UITestProject
             driver.FindElement(By.Id("articulo-Id")).SendKeys("Baguette");
             driver.FindElement(By.Id("guardar-receta")).Click();
             ////Valida que se haya insertado la receta
-            //Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(FilasActuales + 1, db.cabecera_receta.Local.Count);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(FilasActuales + 1, db.cabecera_receta.Count());
 
         }
 
@@ -53,16 +55,26 @@ namespace UITestProject
             driver.FindElement(By.Id("articulo-Id")).Click();
             driver.FindElement(By.Id("articulo-Id")).SendKeys("Pan de molde Integral");
             driver.FindElement(By.Id("guardar-receta")).Click();
+
+            MVC_Panderia.Models.pan_dbEntities db = new MVC_Panderia.Models.pan_dbEntities();
+            string nombre_articulo = db.cabecera_receta.ToList().OrderByDescending(s => s.Id).First().articulo.nombre;
+            ////Valida que el articulo modificado, resulte "Pan de molde Integral"
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(nombre_articulo, "Pan de molde Integral");
         }
 
         [Test]
         public void EliminarRecetaTest()
         {
+            MVC_Panderia.Models.pan_dbEntities db = new MVC_Panderia.Models.pan_dbEntities();
+            ////Obtiene el numero de recetas actuales
+            int FilasActuales = db.cabecera_receta.Count();
             //Acceder a contenedor Maestro: Receta
             driver.Navigate().GoToUrl(url + "/cabecera_receta");
             //Accede a eliminar Receta
             driver.FindElement(By.Id("eliminar-receta")).Click();
             driver.FindElement(By.Id("eliminar-receta")).Click();
+            ////Valida que se haya eliminado la receta
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(FilasActuales - 1, db.cabecera_receta.Count());
         }
 
         [Test]
@@ -72,6 +84,11 @@ namespace UITestProject
             driver.Navigate().GoToUrl(url + "/cabecera_receta");
             //Accede a eliminar Receta
             driver.FindElement(By.Id("costo-receta")).Click();
+
+            Thread.Sleep(4000);
+
+            driver.Close();
+            driver.Quit();
         }
 
     }

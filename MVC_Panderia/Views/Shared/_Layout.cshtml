@@ -19,7 +19,7 @@
 <body>
     
     <div class="container">
-        @if (@User.Identity.Name != "")
+        @if (@User.Identity.Name != "" && @Session["rol"]!=null)
         {
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 @Html.ActionLink("Panaderias Dirty CAT", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
@@ -34,14 +34,14 @@
                                 Maestros
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                @*@if (@Session["rol"].ToString() == "1" || @Session["rol"].ToString() == "4")*@
+                                @if (@Session["rol"].ToString() == "1" || @Session["rol"].ToString() == "4")
                                 {
                                     <a class="dropdown-item" href="#">@Html.ActionLink("Medidas", "Index", "unidad_medida", new { area = "" }, new { @class = "dropdown-item" })</a>
                                     <a class="dropdown-item" href="#">@Html.ActionLink("Lineas", "Index", "linea", new { area = "" }, new { @class = "dropdown-item" })</a>
                                     <a class="dropdown-item" href="#">@Html.ActionLink("Familias", "Index", "familia", new { area = "" }, new { @class = "dropdown-item" })</a>
                                     <a class="dropdown-item" href="#">@Html.ActionLink("Articulos", "Index", "articulo", new { area = "" }, new { @class = "dropdown-item" })</a>
                                 }
-                                @*@if (@Session["rol"].ToString() == "1" || @Session["rol"].ToString() == "3" || @Session["rol"].ToString() == "4")*@
+                                @if (@Session["rol"].ToString() == "1" || @Session["rol"].ToString() == "3" || @Session["rol"].ToString() == "4")
                                 {
                                     <a class="dropdown-item" href="#">@Html.ActionLink("Recetas", "Index", "cabecera_receta", new { area = "" }, new { @class = "dropdown-item" })</a>
                                 }

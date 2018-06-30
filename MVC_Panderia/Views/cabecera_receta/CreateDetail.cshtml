@@ -2,6 +2,11 @@
     ViewBag.Title = "Nuevo Detalle Receta " + ViewBag.NombreReceta;
 }
 
+@if (@ViewBag.Error != "")
+{
+    <p class="bg-danger">@ViewBag.Error</p>
+}
+
 <form method="post" action="@Url.Action("CreateDetail", "cabecera_receta", new {  nombre=ViewBag.NombreReceta })">
     <div class="row  pb-2">
         <div class="col-12"><h4>@ViewBag.Title </h4></div>
@@ -9,7 +14,7 @@
 
     <div class="form-group">
         <label>Cantidad</label>
-        <input class="form-control" name="cantidad">
+        <input class="form-control" name="cantidad" required>
     </div>
 
     <div class="form-group">
@@ -18,7 +23,7 @@
     </div>
 
     <button type="submit" class="btn btn-primary">Guardar</button>
-    
+
 
 </form>
 
