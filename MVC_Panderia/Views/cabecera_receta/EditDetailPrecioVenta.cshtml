@@ -5,6 +5,11 @@
     ViewBag.Title = "Editar Precio Venta Receta";
 }
 
+@if (@ViewBag.Error != "")
+{
+    <p class="bg-danger">@ViewBag.Error</p>
+}
+
 <form method="post" action="@Url.Action("EditDetailPrecioVenta", "cabecera_receta", new {id_cabecera=ViewBag.cabecera_recetaId,  nombre=ViewBag.NombreReceta })">
 
     <div class="row  pb-2">

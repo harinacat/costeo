@@ -4,8 +4,13 @@
     ViewBag.Title = "Editar Detalle Receta";
 }
 
+@if (@ViewBag.Error != "")
+{
+    <p class="bg-danger">@ViewBag.Error</p>
+}
+
 <form method="post" action="@Url.Action("EditDetail", "cabecera_receta", new {id_cabecera=ViewBag.cabecera_recetaId,  nombre=ViewBag.NombreReceta })">
-    
+
     <div class="row  pb-2">
         <div class="col-12"><h4>@ViewBag.Title </h4></div>
     </div>
@@ -20,4 +25,4 @@
 
     <button type="submit" value="Save" class="btn btn-success pl-2">Guardar</button>
     <button type="button" value="Cancel" class="btn btn-primary pl-2" onclick="javascript:document.location.href='@Url.Action("Index", "costo")'">Cancelar</button>
- </form>
+</form>
