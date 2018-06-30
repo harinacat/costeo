@@ -62,6 +62,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="dProduccionUITest.cs" />
     <Compile Include="ArticuloUITest.cs" />
     <Compile Include="PrecioUITest.cs" />
     <Compile Include="CostoUITest.cs" />
