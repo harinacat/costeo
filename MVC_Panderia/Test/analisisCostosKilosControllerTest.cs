@@ -32,7 +32,7 @@ namespace MVC_Panderia.Tests.Controllers
             analisis_costos_kilosController controller = new analisis_costos_kilosController();
 
             // Act
-            ViewResult result = controller.analisisCostosKilos() as ViewResult;
+            ViewResult result = controller.analisis_costos_kilos() as ViewResult;
 
             // Assert
             Assert.IsNotNull(result);
