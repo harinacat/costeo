@@ -74,7 +74,8 @@ namespace UITestProject
         {
             //LoginPrecio();
             driver.Navigate().GoToUrl(url + "/cabecera_receta");
-            
+            driver.Close();
+            driver.Quit();
         }
     }
 }

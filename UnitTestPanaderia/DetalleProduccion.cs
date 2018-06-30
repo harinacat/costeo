@@ -73,6 +73,9 @@ namespace UITestProject
             driver.Navigate().GoToUrl(url + "/cabecera_produccion");
             driver.FindElement(By.XPath("/html/body/div[2]/form/div[2]/div/table/tbody/tr[1]/td[3]/a[3]")).Click();
             driver.Navigate().GoToUrl(url + "/cabecera_produccion");
+
+            driver.Close();
+            driver.Quit();
         }
 
 

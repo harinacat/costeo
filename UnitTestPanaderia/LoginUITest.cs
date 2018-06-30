@@ -23,7 +23,8 @@ namespace UITestProject
             driver.FindElement(By.Name("Id")).SendKeys("jlagos");
             driver.FindElement(By.Name("contrasena")).SendKeys("test");
             driver.FindElement(By.Id("login")).Click();
-
+            driver.Close();
+            driver.Quit();
         }
 
     }

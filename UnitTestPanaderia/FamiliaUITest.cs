@@ -75,6 +75,8 @@ namespace UITestProject
             String src_imagen = element.GetAttribute("src");
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(url + "/Images/Logo.png", src_imagen);
 
+            driver.Close();
+            driver.Quit();
         }
 
         [Test]
