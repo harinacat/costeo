@@ -25,19 +25,7 @@ namespace MVC_Panderia.Tests.Controllers
             Assert.IsNotNull(result);
         }
 
-        [TestMethod]
-        public void Create()
-        {
-            // Arrange
-            analisis_costos_kilosController controller = new analisis_costos_kilosController();
-
-            // Act
-            ViewResult result = controller.analisis_costos_kilos() as ViewResult;
-
-            // Assert
-            Assert.IsNotNull(result);
-        }
-
+       
     }
 }
 
