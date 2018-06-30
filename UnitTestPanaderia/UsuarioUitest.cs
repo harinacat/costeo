@@ -5,8 +5,6 @@ using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 
-using MVC_Panderia.Controllers;
-
 namespace CUnitTestProject
 {
     [TestClass]
