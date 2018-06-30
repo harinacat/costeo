@@ -16,6 +16,7 @@ namespace MVC_Panderia.Controllers
         // GET: cabecera_receta
         public ActionResult Index()
         {
+
             return View(db.cabecera_receta.ToList().OrderByDescending(s => s.Id));
         }
 

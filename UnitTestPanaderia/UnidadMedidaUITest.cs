@@ -4,6 +4,7 @@ using OpenQA.Selenium.Chrome;
 
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Threading;
 
 namespace UITestProject
 {
@@ -25,7 +26,7 @@ namespace UITestProject
         }
 
         [Test]
-        public void nuevaUnidadMedida()  
+        public void CrearUnidadMedida()   
         {
             //LoginUnidad();
             driver.Navigate().GoToUrl(url + "/unidad_medida");
@@ -39,7 +40,7 @@ namespace UITestProject
         }
 
         [Test]
-        public void editarUnidadMedida()
+        public void EditarUnidadMedida()    
         {
            // LoginUnidad();
             driver.Navigate().GoToUrl(url + "/unidad_medida");
@@ -53,18 +54,20 @@ namespace UITestProject
         }
 
         [Test]
-        public void eliminaUnidadMedida()   
+        public void EliminaUnidadMedida()      
         {
-            _LoginUnidad();
+            //_LoginUnidad();
             driver.Navigate().GoToUrl(url + "/unidad_medida");
 
             //BORRAR UNIDAD DE MEDIDA
             driver.FindElement(By.Id("botonEliminar")).Click();
 
             //CONFIRMAR ELIMINAR
-            driver.Navigate().GoToUrl(url + "/unidad_medida/Delete/108");
-            driver.FindElement(By.Id("botonEliminar")).Click();
             driver.Navigate().GoToUrl(url + "/unidad_medida");
+            Thread.Sleep(1000);
+            driver.FindElement(By.Id("botonEliminar")).Click();
+            Thread.Sleep(1000);
+            // driver.Navigate().GoToUrl(url + "/unidad_medida");
 
         }
     }
