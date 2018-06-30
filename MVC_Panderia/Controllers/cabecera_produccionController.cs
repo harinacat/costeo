@@ -15,7 +15,7 @@ namespace MVC_Panderia.Controllers
         // GET: Linea
         public ActionResult Index()
         {
-            return View(db.cabecera_produccion.ToList());
+            return View(db.cabecera_produccion.ToList().OrderByDescending(x => x.Id));
         }
 
         // GET: Linea/Details/5
