@@ -14,35 +14,35 @@
     <div class="row">
         <div class="form-group col-6">
             <label>Nombre</label>
-            @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.nombre, new { htmlAttributes = new {id="editar-nombre",@class = "form-control" } })
         </div>
         <div class="form-group col-6">
             <label>Familia</label>
-            @Html.DropDownList("familiaId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.DropDownList("familiaId", null, htmlAttributes: new {id="editar-familia", @class = "form-control" })
         </div>
     </div>
     <div class="row">
         <div class="form-group col-6">
             <label>Medida</label>
-            @Html.DropDownList("unidad_medidaId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.DropDownList("unidad_medidaId", null, htmlAttributes: new {id="editar-medida", @class = "form-control" })
         </div>
         <div class="form-group col-6">
             <label>Codigo Barra</label>
-            @Html.EditorFor(model => model.codigo_barra, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.codigo_barra, new { htmlAttributes = new {id="editar-barra", @class = "form-control" } })
         </div>
     </div>
     <div class="row">
         <div class="form-group col-6">
             <label>marca</label>
-            @Html.EditorFor(model => model.marca, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.marca, new { htmlAttributes = new {id="editar-marca", @class = "form-control" } })
         </div>
         <div class="form-group col-6">
             <label>formato</label>
-            @Html.EditorFor(model => model.formato, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.formato, new { htmlAttributes = new {id="editar-formato", @class = "form-control" } })
         </div>
     </div>
 
 
-    <button type="submit" value="Save" class="btn btn-success pl-2">Guardar</button>
+    <button type="submit" value="Save" id="guardar-editar" class="btn btn-success pl-2">Guardar</button>
     <button type="button" value="Cancel" class="btn btn-primary pl-2" onclick="javascript:document.location.href='@Url.Action("Index", "articulo")'">Cancelar</button>
 }
