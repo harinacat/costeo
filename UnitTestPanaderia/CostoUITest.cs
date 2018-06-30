@@ -3,6 +3,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Threading;
 
 namespace UITestProject
 {
@@ -28,7 +29,8 @@ namespace UITestProject
             driver.FindElement(By.Id("costoreceta")).Click();
             driver.FindElement(By.Id("costonuevo")).Click();
             driver.FindElement(By.Id("nueva-fecha")).SendKeys("14-06-2020");
-            driver.FindElement(By.Id("nuevo-costo")).Click();
+            driver.FindElement(By.Id("nueva-fecha")).SendKeys(Keys.Return);
+            Thread.Sleep(1000);            
             driver.FindElement(By.Id("nuevo-costo")).SendKeys("1350");
             driver.FindElement(By.Id("guardarcosto")).Click();
         }
