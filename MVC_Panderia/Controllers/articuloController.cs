@@ -16,7 +16,7 @@ namespace MVC_Panderia.Controllers
         public ActionResult Index()
         {
             //FormsAuthentication.
-            return View(db.articulo.ToList());
+            return View(db.articulo.ToList().OrderByDescending(s => s.Id));
         }
 
         // GET: Linea/Details/5
