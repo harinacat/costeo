@@ -439,7 +439,7 @@ namespace MVC_Panderia.Controllers
                 precio_venta cr = new precio_venta();
                 cr = db.precio_venta.Find(new object[] { id_cabecera, Convert.ToDateTime(collection.Get("fecha")) });
                 db.precio_venta.Remove(cr);
-                db.SaveChanges();
+               // db.SaveChanges();
 
                 return RedirectToAction("IndexDetailPrecioVenta", new { id = id_cabecera, nombre = nombre });
             }

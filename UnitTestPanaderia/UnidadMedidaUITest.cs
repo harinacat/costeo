@@ -1,9 +1,9 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Linq;
 using System.Threading;
 
 namespace UITestProject
@@ -28,15 +28,22 @@ namespace UITestProject
         [Test]
         public void CrearUnidadMedida()   
         {
-            //LoginUnidad();
+            _LoginUnidad();
+
             driver.Navigate().GoToUrl(url + "/unidad_medida");
+            MVC_Panderia.Models.pan_dbEntities db = new MVC_Panderia.Models.pan_dbEntities();
+            ////Obtiene el numero de recetas actuales
+            int FilasActuales = db.unidad_medida.Count();
 
             //GUARDAR UNIDAD DE MEDIDA
             driver.FindElement(By.Id("botonNuevo")).Click();
             driver.FindElement(By.Id("nombreNuevo")).SendKeys("PRUEBA AGREGAR");
             driver.FindElement(By.Id("guardaNuevo")).Click();
-            
-                       
+
+            ////Valida que se haya insertado la receta
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(FilasActuales + 1, db.unidad_medida.Count());
+
+
         }
 
         [Test]

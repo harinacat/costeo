@@ -42,7 +42,7 @@ namespace MVC_Panderia.Controllers
                 unidad_medida ln = new unidad_medida();
                 ln.nombre = collection.Get("nombre");
                 db.unidad_medida.Add(ln);
-                db.SaveChanges();
+               db.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch (Exception exp)
